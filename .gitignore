@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+
+# Large / regenerable data artifacts — keep only the deliverable
+states/*/data/raw/
+states/*/data/manifest.jsonl
+states/*/data/*.log
+states/*/data/nodes.csv
+states/*/data/universe.csv
+states/*/data/edges.csv
+# states/*/data/universe_categorized.csv IS committed (not ignored)
