@@ -12,6 +12,7 @@ The site is geo-fenced to Indian IPs, so run it with an Indian egress (e.g.
 ProtonVPN India connected). It throttles, retries with backoff, and is resumable
 (rerunning skips offices already in the manifest).
 """
+
 from __future__ import annotations
 
 import argparse
@@ -23,7 +24,8 @@ from collections import deque
 
 import requests
 
-from common import (
+from .common import (
+    BASE,
     ENTRY,
     INDEX,
     MANIFEST,
@@ -31,7 +33,6 @@ from common import (
     RAW,
     ROOT_ID,
     UA,
-    BASE,
     node_id_for,
     norm,
     parse_rows,
@@ -78,8 +79,10 @@ def preflight(session, timeout):
             "  The TN RTI site is geo-fenced to Indian IPs -- is ProtonVPN India connected?\n"
         )
     if not (r.text and len(r.text) > 500):
-        sys.exit(f"\n  {ENTRY} returned no usable body (status {r.status_code}).\n"
-                 "  Is ProtonVPN India connected?\n")
+        sys.exit(
+            f"\n  {ENTRY} returned no usable body (status {r.status_code}).\n"
+            "  Is ProtonVPN India connected?\n"
+        )
     print(f"  OK ({len(r.text)} bytes). Indian egress confirmed.", flush=True)
     return r.text
 
@@ -119,9 +122,16 @@ def crawl(*, max_depth, limit, timeout, retries, throttle):
     if ROOT_ID not in done:
         record(
             {
-                "node_id": ROOT_ID, "parent_id": None, "depth": 0, "name": "TAMIL NADU (ROOT)",
-                "address": "", "path": "", "file": "displayPa.html", "is_leaf": False,
-                "http_status": 200, "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+                "node_id": ROOT_ID,
+                "parent_id": None,
+                "depth": 0,
+                "name": "TAMIL NADU (ROOT)",
+                "address": "",
+                "path": "",
+                "file": "displayPa.html",
+                "is_leaf": False,
+                "http_status": 200,
+                "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
             }
         )
 
@@ -150,9 +160,13 @@ def crawl(*, max_depth, limit, timeout, retries, throttle):
                 continue
             frontier.append(
                 {
-                    "nid": nid, "url": row["url"], "name": row["name"],
-                    "address": row["address"], "parent_id": parent_id,
-                    "path": path_key, "depth": depth,
+                    "nid": nid,
+                    "url": row["url"],
+                    "name": row["name"],
+                    "address": row["address"],
+                    "parent_id": parent_id,
+                    "path": path_key,
+                    "depth": depth,
                 }
             )
 
@@ -175,16 +189,22 @@ def crawl(*, max_depth, limit, timeout, retries, throttle):
                 print(f"Reached --limit {limit}; stopping.", flush=True)
                 break
             time.sleep(throttle + random.uniform(0, 0.5))
-            status, html = fetch(session, item["url"], ENTRY,
-                                 timeout=timeout, retries=retries, throttle=throttle)
+            status, html = fetch(
+                session, item["url"], ENTRY, timeout=timeout, retries=retries, throttle=throttle
+            )
             if html is None:
                 print(f"  FAILED depth={depth} {item['name'][:40]!r} ({status})", flush=True)
                 continue
             record(
                 {
-                    "node_id": nid, "parent_id": item["parent_id"], "depth": depth,
-                    "name": item["name"], "address": item["address"], "path": item["path"],
-                    "file": f"{nid}.html", "is_leaf": False,
+                    "node_id": nid,
+                    "parent_id": item["parent_id"],
+                    "depth": depth,
+                    "name": item["name"],
+                    "address": item["address"],
+                    "path": item["path"],
+                    "file": f"{nid}.html",
+                    "is_leaf": False,
                     "http_status": status if isinstance(status, int) else None,
                     "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
                 },
@@ -202,17 +222,34 @@ def crawl(*, max_depth, limit, timeout, retries, throttle):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--max-depth", type=int, default=None,
-                    help="Stop expanding past this depth (root=0). Default: full tree.")
-    ap.add_argument("--limit", type=int, default=0,
-                    help="Stop after fetching this many new pages (0 = no limit).")
+    ap.add_argument(
+        "--max-depth",
+        type=int,
+        default=None,
+        help="Stop expanding past this depth (root=0). Default: full tree.",
+    )
+    ap.add_argument(
+        "--limit",
+        type=int,
+        default=0,
+        help="Stop after fetching this many new pages (0 = no limit).",
+    )
     ap.add_argument("--timeout", type=float, default=40.0)
     ap.add_argument("--retries", type=int, default=4)
-    ap.add_argument("--throttle", type=float, default=1.2,
-                    help="Base delay (s) between requests; jitter and backoff added.")
+    ap.add_argument(
+        "--throttle",
+        type=float,
+        default=1.2,
+        help="Base delay (s) between requests; jitter and backoff added.",
+    )
     args = ap.parse_args()
-    crawl(max_depth=args.max_depth, limit=args.limit, timeout=args.timeout,
-          retries=args.retries, throttle=args.throttle)
+    crawl(
+        max_depth=args.max_depth,
+        limit=args.limit,
+        timeout=args.timeout,
+        retries=args.retries,
+        throttle=args.throttle,
+    )
 
 
 if __name__ == "__main__":

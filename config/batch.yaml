@@ -1,0 +1,50 @@
+# One batch, fully reproducible from (this file + the frame CSV + the code).
+# A new wave means a new batch_id AND a new seed. Never reuse a seed.
+
+batch_id: b2026q3_01
+seed: 20260809
+
+frame_csv: data/frame.csv   # built by `rti-build-frame`, never hand-edited
+
+sampling:
+  relevant_only: true       # keep Relevant == 1; a state with none is skipped
+  n_per_state: 25           # min(n, available) per state
+  one_per_department: true  # dedupe on (State, Department) before drawing
+
+topics:
+  # How each sampled department gets its request.
+  #   fixed       -> everyone gets `fixed_topic`  (the current design)
+  #   random      -> seeded weighted draw, making topic an analysable treatment
+  #   by_category -> category_map below
+  #
+  # `by_category` does not currently work: Category is empty on 88.6% of the
+  # frame and the values it does carry are administrative types
+  # ("Urban body: Town Panchayat"), not the subject areas mapped below. It stays
+  # here as a stub until the frame is re-classified.
+  strategy: fixed
+  fixed_topic: rti_meta
+  weights:
+    rti_meta: 0.4
+    attendance: 0.3
+    financial: 0.3
+  category_map:
+    Health: attendance
+    Education: attendance
+    Finance: financial
+
+languages:
+  # The language the application is written in. Every letter also carries an
+  # English copy below it, so this chooses what comes first, not what is sent.
+  default: en
+  by_state:
+    Delhi: hi
+    Rajasthan: hi
+    Uttar Pradesh: hi
+    Bihar: hi
+    Tamil Nadu: ta
+    Telangana: te
+    Karnataka: kn
+    Maharashtra: mr
+
+filing:
+  reference_period_months: 12

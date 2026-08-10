@@ -1,0 +1,12 @@
+# Data files are stored byte for byte. Line-ending normalisation would change
+# their content hashes, and data/frame_provenance.json records the SHA-256 of
+# every source the frame was built from. A hash that changes on checkout is
+# worse than no hash at all.
+data/** -text
+out/** -text
+
+*.py   text eol=lf
+*.md   text eol=lf
+*.yaml text eol=lf
+*.sql  text eol=lf
+*.toml text eol=lf

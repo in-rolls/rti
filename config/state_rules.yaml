@@ -1,0 +1,73 @@
+# Per-state RTI rules. Two jobs: putting the right number in the letter, and
+# making "was that demand lawful?" a subtraction rather than an RA's judgment.
+#
+# `statutory_days` is the deadline for a reply to a request made to the PIO
+# directly (s.7(1)). It becomes 35 when routed via an APIO (s.5(2)) and 45 for
+# security and intelligence organisations under s.24; neither is used here.
+#
+# Verify each row against the state's own RTI Rules before a batch goes out and
+# update `verified_on`. Nothing downstream re-checks these numbers for you.
+
+states:
+  _default:
+    fee_inr: 10
+    per_page_fee_inr: 2
+    statutory_days: 30
+    appeal_fee_inr: 0
+    fee_modes: [online, ipo, dd, court_fee_stamp, cash]
+    rule_citation: "RTI (Regulation of Fee and Cost) Rules, 2005"
+    verified_on: null
+
+  Delhi:
+    fee_inr: 10
+    per_page_fee_inr: 2
+    statutory_days: 30
+    appeal_fee_inr: 0
+    fee_modes: [online, ipo, dd, court_fee_stamp, cash]
+    rule_citation: "Delhi RTI Rules, 2005"
+    verified_on: null
+
+  Karnataka:
+    fee_inr: 10
+    per_page_fee_inr: 2
+    statutory_days: 30
+    appeal_fee_inr: 0
+    fee_modes: [online, ipo, dd, cash]
+    rule_citation: "Karnataka RTI Rules, 2005"
+    verified_on: null
+
+  Maharashtra:
+    fee_inr: 10
+    per_page_fee_inr: 2
+    statutory_days: 30
+    appeal_fee_inr: 20
+    fee_modes: [online, ipo, dd, court_fee_stamp, cash]
+    rule_citation: "Maharashtra RTI Rules, 2005"
+    verified_on: null
+
+  Rajasthan:
+    fee_inr: 10
+    per_page_fee_inr: 2
+    statutory_days: 30
+    appeal_fee_inr: 0
+    fee_modes: [online, ipo, dd, cash]
+    rule_citation: "Rajasthan RTI Rules, 2005"
+    verified_on: null
+
+  Tamil Nadu:
+    fee_inr: 10
+    per_page_fee_inr: 2
+    statutory_days: 30
+    appeal_fee_inr: 0
+    fee_modes: [online, ipo, dd, court_fee_stamp, cash]
+    rule_citation: "Tamil Nadu RTI (Fees) Rules, 2005"
+    verified_on: null
+
+  Telangana:
+    fee_inr: 10
+    per_page_fee_inr: 2
+    statutory_days: 30
+    appeal_fee_inr: 0
+    fee_modes: [online, ipo, dd, court_fee_stamp, cash]
+    rule_citation: "Telangana RTI Rules, 2016"
+    verified_on: null

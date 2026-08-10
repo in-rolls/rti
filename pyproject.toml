@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rti"
+version = "0.1.0"
+description = "Reproducible sampling, letter generation, and monitoring for a multi-state RTI audit study"
+readme = "README.md"
+requires-python = ">=3.12"
+license = "MIT"
+authors = [{ name = "in-rolls" }]
+keywords = ["rti", "right-to-information", "india", "audit-study", "transparency"]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Scientific/Engineering",
+]
+dependencies = ["pyyaml>=6.0"]
+
+[project.optional-dependencies]
+scrapers = ["requests>=2.31", "beautifulsoup4>=4.12", "lxml>=5.0"]
+dev = ["pytest>=8.0", "black>=24.0", "isort>=5.13", "flake8>=7.0"]
+
+[project.urls]
+Homepage = "https://github.com/in-rolls/rti"
+Source = "https://github.com/in-rolls/rti"
+
+[project.scripts]
+rti-build-frame = "rti.frame:main"
+rti-sample = "rti.sample:main"
+rti-render = "rti.render:main"
+rti-forms = "rti.forms:main"
+rti-load = "rti.intake:main"
+rti-check = "rti.check:main"
+rti-scrub = "rti.scrub:main"
+rti-build-db = "rti.db:main"
+rti-migrate-log = "rti.migrate_log:main"
+rti-scrape-tn = "rti.scrapers.tamil_nadu.scrape:main"
+rti-parse-tn = "rti.scrapers.tamil_nadu.parse:main"
+rti-categorize-tn = "rti.scrapers.tamil_nadu.categorize:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

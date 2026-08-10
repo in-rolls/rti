@@ -7,14 +7,16 @@ identity. Identity is therefore content-based: an office is identified by the
 normalized path of names from the root to it (e.g.
 ``ADI DRAVIDAR AND TRIBAL WELFARE DEPARTMENT > DIRECTORATE OF TRIBAL WELFARE, CHENNAI``).
 """
+
 from __future__ import annotations
 
 import hashlib
 import re
-from pathlib import Path
 from urllib.parse import parse_qs, unquote, urljoin, urlparse
 
 from bs4 import BeautifulSoup
+
+from ...config import scraper_data_dir
 
 BASE = "https://rtionline.tn.gov.in"
 ENTRY = f"{BASE}/displayPa.php"
@@ -23,7 +25,7 @@ UA = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 )
-DATA = Path(__file__).resolve().parent / "data"
+DATA = scraper_data_dir("tamil_nadu")
 RAW = DATA / "raw"
 MANIFEST = DATA / "manifest.jsonl"
 
@@ -66,7 +68,7 @@ def page_title_name(html: str) -> str:
     text = h.get_text(" ", strip=True) if h else ""
     for pre in _TITLE_PREFIXES:
         if text.startswith(pre):
-            return text[len(pre):].strip()
+            return text[len(pre) :].strip()
     return text
 
 

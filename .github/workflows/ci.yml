@@ -1,0 +1,65 @@
+name: CI
+
+on:
+  # Every branch, not just main. A feature branch is exactly where an
+  # accidentally committed name would arrive, and it used to run nothing.
+  push:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev,scrapers]"
+
+      - name: Lint
+        run: |
+          black --check src tests
+          isort --check-only src tests
+          flake8 src tests
+
+      - name: Test
+        run: pytest
+
+      # The committed tables are edited by hand. This is what turns a bad edit
+      # into a failed pull request.
+      - name: Validate the committed tables
+        run: rti-check
+
+      # A backstop, not the defence. The pre-push hook is what runs before data
+      # leaves a machine; by the time this fires, a push has already happened.
+      - name: Confirm no personal data is tracked
+        run: rti-scrub --check
+
+      # The schema is generated. A drift here means someone edited schema.sql
+      # instead of src/rti/enums.py.
+      - name: Confirm schema.sql matches the enums
+        run: |
+          rti-build-db --schema-only
+          git diff --exit-code -- schema.sql
+
+      - name: Confirm the frame builder is reproducible
+        run: |
+          cp data/frame.csv /tmp/frame_before.csv
+          rti-build-frame
+          diff /tmp/frame_before.csv data/frame.csv

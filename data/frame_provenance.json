@@ -1,0 +1,75 @@
+{
+  "built_utc": "2026-08-10T07:32:11+00:00",
+  "sources": [
+    {
+      "path": "data/raw/state_department_classified_FINAL.csv",
+      "sha256": "a20d012cf6e24b381d112b58af469b07d36b326eeed3b9fa852a7ad4f4f7a2d4"
+    }
+  ],
+  "output": {
+    "path": "data/frame.csv",
+    "sha256": "fdfe6477647d70caef59d9dd880a1fa72c54b3918d5aa66444a076b26ad8c969"
+  },
+  "summary": {
+    "n_rows": 23140,
+    "n_states": 6,
+    "by_state": {
+      "Delhi": 221,
+      "Karnataka": 1699,
+      "Maharashtra": 215,
+      "Rajasthan": 290,
+      "Tamil Nadu": 17401,
+      "Telangana": 3314
+    },
+    "relevant_by_state": {
+      "Delhi": 7,
+      "Karnataka": 309,
+      "Maharashtra": 114,
+      "Rajasthan": 95,
+      "Tamil Nadu": 1393,
+      "Telangana": 562
+    },
+    "n_relevant": 2480
+  },
+  "changes": {
+    "department:quote_as_apostrophe": 2,
+    "department:whitespace": 1,
+    "department:wrapping_quotes": 1,
+    "portal:slug": 23167,
+    "row:duplicate_dropped": 27,
+    "state:alias": 1699
+  },
+  "examples": {
+    "department:quote_as_apostrophe": [
+      "'ST PAUL\"S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET' -> \"ST PAUL'S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET\"",
+      "'ST.JOSEPH\"S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM' -> \"ST.JOSEPH'S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM\""
+    ],
+    "department:whitespace": [
+      "'Department of Animal Husbandry and Dairying\\r\\nGovernment of Maharashtra' -> 'Department of Animal Husbandry and Dairying Government of Maharashtra'"
+    ],
+    "department:wrapping_quotes": [
+      "'\"CHIEF EDUCATIONAL OFFICE, SAMAGRA SHIKSHA, RAMANATHAPURAM DISTRICT.\"' -> 'CHIEF EDUCATIONAL OFFICE, SAMAGRA SHIKSHA, RAMANATHAPURAM DISTRICT.'"
+    ],
+    "portal:slug": [
+      "'RTI_Online_Delhi' -> 'rti_delhi'",
+      "'RTI_Online_Delhi' -> 'rti_delhi'",
+      "'RTI_Online_Delhi' -> 'rti_delhi'",
+      "'RTI_Online_Delhi' -> 'rti_delhi'",
+      "'RTI_Online_Delhi' -> 'rti_delhi'"
+    ],
+    "row:duplicate_dropped": [
+      "'Telangana | Animal Husbadry & Veterinary Department(PVC) ALOOR' -> ''",
+      "'Telangana | Animal Husbadry & Veterinary Department(PVC) Dharoor' -> ''",
+      "'Telangana | Department of Co-operation' -> ''",
+      "'Telangana | Ground Water Department,Bhadradri Kothagudem' -> ''",
+      "'Telangana | Labour employment Training &Factories Department, Kothagudem' -> ''"
+    ],
+    "state:alias": [
+      "'Kanataka' -> 'Karnataka'",
+      "'Kanataka' -> 'Karnataka'",
+      "'Kanataka' -> 'Karnataka'",
+      "'Kanataka' -> 'Karnataka'",
+      "'Kanataka' -> 'Karnataka'"
+    ]
+  }
+}

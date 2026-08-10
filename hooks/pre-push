@@ -1,0 +1,25 @@
+#!/bin/sh
+# Refuse to push if git is tracking anything personal.
+#
+# This is the layer that matters. CI runs the same check, but CI runs after the
+# data has already reached GitHub, and a push cannot be taken back: even a
+# forced rewrite leaves the objects retrievable.
+#
+# Installed by `make hooks`. To push anyway, in a genuine emergency:
+#   git push --no-verify
+
+if command -v rti-scrub >/dev/null 2>&1; then
+    SCRUB="rti-scrub"
+elif [ -x ".venv/bin/rti-scrub" ]; then
+    SCRUB=".venv/bin/rti-scrub"
+else
+    echo "pre-push: rti-scrub not found. Run 'make install'." >&2
+    exit 1
+fi
+
+if ! "$SCRUB" --check; then
+    echo "" >&2
+    echo "Push refused. Fix the findings above, or run 'git push --no-verify'" >&2
+    echo "if you are certain they are false positives." >&2
+    exit 1
+fi

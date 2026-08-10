@@ -1,0 +1,49 @@
+{
+  "batch_id": "b2026q3_01",
+  "seed": 20260809,
+  "frame_path": "data/frame.csv",
+  "frame_sha256": "fdfe6477647d70caef59d9dd880a1fa72c54b3918d5aa66444a076b26ad8c969",
+  "template_version": "v2",
+  "n_applications": 132,
+  "config": {
+    "batch_id": "b2026q3_01",
+    "seed": 20260809,
+    "frame_csv": "data/frame.csv",
+    "sampling": {
+      "relevant_only": true,
+      "n_per_state": 25,
+      "one_per_department": true
+    },
+    "topics": {
+      "strategy": "fixed",
+      "fixed_topic": "rti_meta",
+      "weights": {
+        "rti_meta": 0.4,
+        "attendance": 0.3,
+        "financial": 0.3
+      },
+      "category_map": {
+        "Health": "attendance",
+        "Education": "attendance",
+        "Finance": "financial"
+      }
+    },
+    "languages": {
+      "default": "en",
+      "by_state": {
+        "Delhi": "hi",
+        "Rajasthan": "hi",
+        "Uttar Pradesh": "hi",
+        "Bihar": "hi",
+        "Tamil Nadu": "ta",
+        "Telangana": "te",
+        "Karnataka": "kn",
+        "Maharashtra": "mr"
+      }
+    },
+    "filing": {
+      "reference_period_months": 12
+    }
+  },
+  "created_utc": "2026-08-10T07:28:08+00:00"
+}

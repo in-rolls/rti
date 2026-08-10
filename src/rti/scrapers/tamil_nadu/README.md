@@ -36,26 +36,26 @@ authorities by level with a **separate link per node**. This automates that.
 
 ## Usage
 
-Set up the environment once at the repo root, then run the scripts from this
-directory (each script resolves its own `data/`, so `cd` here first):
+Install once at the repo root. The commands find the repository themselves, so
+they run from anywhere inside it.
 
 ```bash
-# From the repo root:
-python3 -m venv .venv && . .venv/bin/activate
-pip install -r requirements.txt
-cd states/tamil_nadu
+make install          # or: pip install -e ".[scrapers]"
 
-# 1. Connect ProtonVPN (India), then crawl (resumable; rerun to continue):
-python scrape.py                 # full tree
-python scrape.py --max-depth 1   # just the departments (quick check)
-python scrape.py --limit 20      # stop after 20 new pages (dry run)
+# 1. Connect ProtonVPN (India), then crawl. Resumable; rerun to continue.
+rti-scrape-tn                    # full tree
+rti-scrape-tn --max-depth 1      # just the departments (quick check)
+rti-scrape-tn --limit 20         # stop after 20 new pages (dry run)
 
-# 2. Parse the saved pages into CSVs (no network needed):
-python parse.py
+# 2. Rebuild the tree from the saved pages. No network needed.
+rti-parse-tn
 
-# 3. Optional: flag reservation-relevant offices:
-python categorize.py
+# 3. Screen offices for reservation relevance.
+rti-categorize-tn
 ```
+
+Output lands in `data/scrapers/tamil_nadu/` at the repo root. Feed it into the
+sampling frame with `rti.frame.load_scraper_universe`.
 
 ### Crawler options
 
@@ -67,17 +67,17 @@ python categorize.py
 | `--timeout S` | 40 | per-request timeout |
 | `--retries N` | 4 | retries with exponential backoff |
 
-## Outputs (in `data/`)
+## Outputs (in `data/scrapers/tamil_nadu/`)
 
 - **`manifest.jsonl`** — crawl log: one record per office
   (`node_id, parent_id, depth, name, address, path, file, is_leaf, …`).
 - **`raw/<node_id>.html`** — saved pages (the authoritative source for re-parsing).
-- **`nodes.csv` / `universe.csv`** — one row per office: `node_id, level,
-  level_label, name, address, is_leaf, has_children, parent_id, parent_name,
-  department, path`. This is the RTI-target universe.
+- **`universe.csv`** — one row per office: `node_id, level, level_label, name,
+  address, is_leaf, has_children, parent_id, parent_name, department, path`.
+  This is the RTI-target universe.
 - **`edges.csv`** — `parent_id, parent_name, child_id, child_name`.
 - **`universe_categorized.csv`** (Stage 3) — adds `reservation_relevant` +
-  `matched_keywords`.
+  `matched_keywords`. The only one committed; the rest are regenerable.
 
 ## Notes
 

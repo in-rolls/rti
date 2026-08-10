@@ -1,0 +1,4 @@
+event_id,application_id,event_date,event_type,direction,medium,actor_authority,document_url,notes,recorded_by,recorded_at,source_row_id
+1,KA-001,2026-06-15,acknowledgment,inbound,email,,,[notes withheld],RA-01,,7f18849d5a59fd8b
+2,TG-001,2026-06-16,acknowledgment,inbound,email,,,[notes withheld],RA-01,,1379578402065fcf
+3,DL-001,2026-06-15,acknowledgment,inbound,email,,,[notes withheld],RA-01,,1f1e7e5f382ee2b8

@@ -1,12 +1,39 @@
 __pycache__/
 *.pyc
 .venv/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.DS_Store
 
-# Large / regenerable data artifacts — keep only the deliverable
+# ---------------------------------------------------------------------------
+# Never publishable. Real names, real addresses, evidence links, form exports.
+# data/tables/*.csv is the redacted copy derived from data/private/tables/ and
+# IS committed. See docs/privacy.md.
+# ---------------------------------------------------------------------------
+data/private/
+config/private/
+
+# Generated per-batch artifacts. assignments.csv and batch_meta.json are the
+# pre-registered record and ARE committed; the rendered letters are not.
+out/*/applications/
+out/*/filing_sheet.csv
+
+# Derived database — built from the REAL tables, so it holds real data
+rti.db
+
+# Large / regenerable scraper artifacts — keep only the deliverable
 states/*/data/raw/
 states/*/data/manifest.jsonl
 states/*/data/*.log
 states/*/data/nodes.csv
 states/*/data/universe.csv
 states/*/data/edges.csv
-# states/*/data/universe_categorized.csv IS committed (not ignored)
+data/scrapers/*/raw/
+data/scrapers/*/manifest.jsonl
+data/scrapers/*/*.log
+data/scrapers/*/nodes.csv
+data/scrapers/*/universe.csv
+data/scrapers/*/edges.csv
+# universe_categorized.csv IS committed (not ignored)

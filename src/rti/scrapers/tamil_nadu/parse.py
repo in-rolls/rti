@@ -9,12 +9,13 @@ same-named-but-distinct siblings (e.g. several TANGEDCO branch offices) apart
 while collapsing exact-duplicate rows.
 
 Outputs:
-  data/nodes.csv     one row per office: id, level, name, address, parent, path
+  data/universe.csv  one row per office: id, level, name, address, parent, path
   data/edges.csv     parent_id -> child_id
   data/universe.csv  denormalized RTI-target list (every office + department + path)
 
 No network access. Idempotent and re-runnable.
 """
+
 from __future__ import annotations
 
 import csv
@@ -22,7 +23,7 @@ import json
 import sys
 from collections import Counter, defaultdict
 
-from common import (
+from .common import (
     DATA,
     MANIFEST,
     RAW,
@@ -101,12 +102,17 @@ def validate(pages: dict[str, dict], nodes: dict[str, dict]) -> None:
             if norm(row["name"]) not in child_names.get(p["node_id"], set()):
                 link_missing += 1
     by_level = Counter(level_label(n["depth"]) for n in nodes.values())
-    print(f"Offices: {len(nodes)} | departments: "
-          f"{sum(1 for n in nodes.values() if n['depth'] == 1)} | "
-          f"leaves: {sum(1 for n in nodes.values() if n['is_leaf'])}")
+    print(
+        f"Offices: {len(nodes)} | departments: "
+        f"{sum(1 for n in nodes.values() if n['depth'] == 1)} | "
+        f"leaves: {sum(1 for n in nodes.values() if n['is_leaf'])}"
+    )
     print("By level:", dict(by_level))
-    verdict = "OK -- every clickable link resolved" if link_missing == 0 \
+    verdict = (
+        "OK -- every clickable link resolved"
+        if link_missing == 0
         else f"{link_missing}/{link_rows} links unresolved (crawl incomplete)"
+    )
     print(f"Completeness: {link_rows} internal links checked -> {verdict}")
 
 
@@ -138,22 +144,33 @@ def write_outputs(nodes: dict[str, dict]) -> None:
         )
     rows.sort(key=lambda r: (r["department"], r["level"], r["name"]))
 
-    cols = ["node_id", "level", "level_label", "name", "address", "is_leaf",
-            "has_children", "parent_id", "parent_name", "department", "path"]
-    DATA.mkdir(exist_ok=True)
-    for fname in ("nodes.csv", "universe.csv"):
-        with (DATA / fname).open("w", newline="", encoding="utf-8") as fh:
-            w = csv.DictWriter(fh, fieldnames=cols)
-            w.writeheader()
-            w.writerows(rows)
+    cols = [
+        "node_id",
+        "level",
+        "level_label",
+        "name",
+        "address",
+        "is_leaf",
+        "has_children",
+        "parent_id",
+        "parent_name",
+        "department",
+        "path",
+    ]
+    DATA.mkdir(parents=True, exist_ok=True)
+    with (DATA / "universe.csv").open("w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=cols)
+        w.writeheader()
+        w.writerows(rows)
     with (DATA / "edges.csv").open("w", newline="", encoding="utf-8") as fh:
         w = csv.writer(fh)
         w.writerow(["parent_id", "parent_name", "child_id", "child_name"])
         for nid, n in nodes.items():
             if n["parent_id"] and n["parent_id"] != ROOT_ID:
-                w.writerow([n["parent_id"], nodes.get(n["parent_id"], {}).get("name", ""),
-                            nid, n["name"]])
-    print(f"Wrote {len(rows)} offices to data/nodes.csv, data/universe.csv, data/edges.csv")
+                w.writerow(
+                    [n["parent_id"], nodes.get(n["parent_id"], {}).get("name", ""), nid, n["name"]]
+                )
+    print(f"Wrote {len(rows)} offices to {DATA}/universe.csv and edges.csv")
 
 
 def main() -> None:
