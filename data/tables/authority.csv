@@ -1,136 +1,136 @@
-authority_id,state,state_code,department,district,block,portal,relevant,category,first_sampled_batch
-02967c0d85a8,Maharashtra,MH,"District Collector Office, Gadchiroli",Gadchiroli,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-0327599ee993,Rajasthan,RJ,"Collectorate, Banswara",Banswara,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-0377a5b04157,Telangana,TG,"Panchayat Raj & Rural Development Department, Dharur",Vikarabad,Dharur,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-04ac6ace27a8,Telangana,TG,Panchayat Raj &Rural development dept(MPP) Mulakalapally,Bhadradri Kothagudem,Mulakalapally,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-0515858babbb,Maharashtra,MH,"Zilla Parishad, Beed",Beed,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-06080e540e29,Tamil Nadu,TN,NEYYOOR TOWN PANCHAYAT,,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-083e11568791,Rajasthan,RJ,Collectorate Kotputli-Behror,Kotputli-Behror,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-0957ff532f90,Karnataka,KA,Tumakuru-Urban Development Cell - DUDC,Tumakuru,Not Applicable,rti_karnataka,1,Nodal: Urban / Municipal Admin,b2026q3_01
-0bdfaa04b58b,Rajasthan,RJ,Nagar Nigam Bikaner,Bikaner,Not Applicable,rti_rajasthan,1,Urban body: Municipal Corporation,b2026q3_01
-13227ff8bcd2,Maharashtra,MH,"Zilla Parishad, Ratnagiri",Ratnagiri,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-14321d1e1dd8,Telangana,TG,"PANCHAYAT RAJ, Shayampet",Hanumakonda,Shayampet,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-16a5f393b4d9,Karnataka,KA,Tumakuru-Gubbi-Rural Development and Panchayat Raj-RDPR(T.P),Tumakuru,Gubbi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-18e768799ecc,Maharashtra,MH,"Zilla Parishad, Thane",Thane,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-1b25cf0b31ed,Karnataka,KA,Belagavi-Raybag-Rural Development and Panchayat Raj - RDPR(T.P),Belagavi,Raybag,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-1fe5c747494c,Karnataka,KA,Gadag-Gadag-Rural Development and Panchayat Raj - RDPR(T.P),Gadag,Gadag,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-21dfef1cca1c,Karnataka,KA,"Arbitration and Conciliation Centre-Bangalore, HCK",,,,,,legacy_2026q2
-24481c7e277f,Telangana,TG,Panchayat Raj & Rural Development(Mandal Praja Parishad )Lingampet,Kamareddy,Lingampet,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
-26f218ab4414,Rajasthan,RJ,"Collectorate, Salumbar",,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-278390677155,Karnataka,KA,Udupi-Kundapura-Rural Development and Panchayat Raj-RDPR(T.P),Udupi,Kundapura,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-294893a74262,Karnataka,KA,Chikkaballapura-Gauribidanur-Rural Development and Panchayat Raj - RDPR(T.P),Chikkaballapura,Gauribidanur,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-2ca8752f47c6,Telangana,TG,Mandal Praja Parishad Chevella,Ranga Reddy,Chevella,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
-2cd846967c7b,Karnataka,KA,Haveri-Byadgi-Rural Development and Panchayat Raj-RDPR(T.P),Haveri,Byadgi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-2e90d462e529,Maharashtra,MH,Parbhani Municipal Corporation,Parbhani,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
-2f6dac93a8d5,Maharashtra,MH,Yavatmal Municipal Council,Yavatmal,,rti_maharashtra,1,Urban body: Council/Nagar Palika/Panchayat,b2026q3_01
-2fe4161b61ed,Telangana,TG,Panchayat Raj&Rural Developmen(Mandal Praja Parishad) Kothapallygori,Jayashankar Bhupalpally,Kothapally Gori,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
-31aa9aae1dd9,Karnataka,KA,Chamarajanagar-Hanur-Rural Development and Panchayat Raj - RDPR(T.P),Chamarajanagar,Hanur,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-324537245be8,Rajasthan,RJ,Collectorate kekri,Kekri,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-3429b851c855,Tamil Nadu,TN,"REVENUE DIVISIONAL OFFICE, THOOTHUKUDI",Thoothukudi,,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-357a0cb0058a,Delhi,DL,South Delhi Municipal Corporation,,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
-400ca23c8cf0,Karnataka,KA,Davanagere-Davanagere-Rural Development and Panchayat Raj - RDPR(T.P),Davanagere,Davanagere,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-42c3c49e8643,Delhi,DL,Urban Development,,,rti_delhi,1,Nodal: Urban / Municipal Admin,b2026q3_01
-44653d8078e9,Telangana,TG,Panchayat Raj&Rural Development Department Jangaon,Jangaon,Jangaon,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-4777439ae58d,Rajasthan,RJ,Collectorate Barmer,Barmer,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-478d7295f50e,Tamil Nadu,TN,"TALUK OFFICE, NEMILI",Ranipet,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-479c8a22d622,Delhi,DL,North Delhi Municipal Corporation,,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
-47f7c95c5ae8,Tamil Nadu,TN,DISTRICT PANCHAYAT OFFICE (SALEM),Salem,,rti_tamil_nadu,1,Rural body: District (Zilla Parishad),b2026q3_01
-4b68b82805d9,Tamil Nadu,TN,TAHSILDAR KOTAGIRI,,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-5024ea580755,Telangana,TG,"Panchayat Raj&Rural Development,Jangaon",Mulugu,Jangaon,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-52243491b32e,Tamil Nadu,TN,ARUMUGANERI TOWN PANCHAYAT,Thoothukudi,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-53b858811d9f,Maharashtra,MH,"District Collector Office, Mumbai City",Mumbai City,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-569e44710553,Rajasthan,RJ,"Collectorate, Beawar",Beawar,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-57d05e4e119d,Karnataka,KA,Udupi-Rural Development and Panchayat Raj-RDPR(Z.P),Udupi,,rti_karnataka,1,Rural body: District (Zilla Parishad),b2026q3_01
-58203a86be67,Tamil Nadu,TN,"TALUK OFFICE, ANTHIYUR, ERODE DISTRICT",Erode,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-5a3a2d89b7b4,Karnataka,KA,Chitradurga-Hiriyur-Rural Development and Panchayat Raj - RDPR(T.P),Chitradurga,Hiriyur,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-5d861b6c3388,Tamil Nadu,TN,ODAIPATTI TOWN PANCHAYAT,Theni,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-5dff1a740243,Maharashtra,MH,"Zilla Parishad, Solapur",Solapur,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-5f3a2bab88f3,Maharashtra,MH,"Tehsil Office, Akola",Akola,Akola,rti_maharashtra,1,Field admin: Block/Tehsil,b2026q3_01
-623f6523caa6,Telangana,TG,Mandal Praja Parishad Ibrahimpatnam,Ranga Reddy,Ibrahimpatnam,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
-62b84ebee57d,Delhi,DL,Chief Electoral Office,,,rti_delhi,1,Election dept (quota data),b2026q3_01
-67c61ad45de9,Tamil Nadu,TN,"TALUK OFFICE, R K PET, TIRUVALLUR DISTRICT",Tiruvallur,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-6ad769d2c01b,Telangana,TG,"Panchayat Raj & Rural Development, Palwancha",Bhadradri Kothagudem,Palwancha,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-6b45bc9b8cbe,Telangana,TG,"Panchayat Raj & Rural Development(Mandal Praja Parishad,)Nasrullabad",Kamareddy,Nasrullabad,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
-6bee698a527a,Karnataka,KA,Ballari-Siruguppa-Rural Development and Panchayat Raj - RDPR(T.P),Ballari,Siruguppa,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-70c54ea20457,Karnataka,KA,Kalaburagi-Urban Development Cell - DUDC,Kalaburagi,Not Applicable,rti_karnataka,1,Nodal: Urban / Municipal Admin,b2026q3_01
-710429ee7e8b,Maharashtra,MH,Ahmednagar Municipal Corporation,Ahmednagar,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
-735522c457b4,Tamil Nadu,TN,"COLLECTOR, THIRUVANNAMALAI",,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01
-74ba916bbe70,Karnataka,KA,Kodagu-Rural Development and Panchayat Raj-RDPR(Z.P),Kodagu,,rti_karnataka,1,Rural body: District (Zilla Parishad),b2026q3_01
-77cfc3567eba,Tamil Nadu,TN,"KANNIVADI TOWN PANCHAYAT, TIRUPPUR DISTRCT",Erode,Taluk,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-7ad823468ce1,Karnataka,KA,Chitradurga-Molakalmuru-Rural Development and Panchayat Raj - RDPR(T.P),Chitradurga,Molakalmuru,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-7ae5896f74ae,Maharashtra,MH,"District Collector Office, Amravati",Amravati,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-7bada80b36da,Maharashtra,MH,"District Collector Office, Palghar",Palghar,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-7ea0ff6474bf,Maharashtra,MH,"District Collector Office, Raigad",Raigad,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-818c91afeaf0,Karnataka,KA,Kalaburagi-Kalagi-Rural Development and Panchayat Raj-RDPR(T.P),Kalaburagi,Kalagi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-8427abc9da6a,Maharashtra,MH,"Zilla Parishad, Osmanabad",Osmanabad,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-882c0988295c,Tamil Nadu,TN,VEDAPATTI TOWN PANCHAYAT,Coimbatore,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-8ba54dfee896,Telangana,TG,"Tahsildar Office, Regode",Medak,Regode,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
-8d7bdbaf6bba,Tamil Nadu,TN,"TALUK OFFICE, VILATHIKULAM",Thoothukudi,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-90a5af8f42ea,Maharashtra,MH,Nagpur Municipal Corporation,Nagpur,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
-943e22a6a838,Telangana,TG,Revenue Divisional Officer Huzurabad,,,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
-94c3d7dc67d0,Delhi,DL,East Delhi Municipal Corporation,East,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
-9571a0300b54,Maharashtra,MH,"District Collector Office, Akola",Akola,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-9742dc4130b7,Rajasthan,RJ,Zila Parishad Jalor,Jalor,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-98a1cf2ca917,Tamil Nadu,TN,"REGIONAL ASSISTANT DIRECTOR OF SMALL SAVINGS, SMALL SAVINGS WING, COLLECTORATE, VIRUDHUNAGAR",Chennai,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01
-9d851b3b6243,Rajasthan,RJ,Zila Parishad Sirohi,Sirohi,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-a1a9f2b34af0,Tamil Nadu,TN,ASSISTANT DIRECTOR OF TOWN PANCHAYATS THIRUCHIRAPPALLI ZONE,Tiruchirappalli,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-a34fa4d69dea,Telangana,TG,Panchayat Raj&Rural Development Department Gudur,Mahabubabad,Gudur,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-a5d61cf849a7,Rajasthan,RJ,Zila Parishad Karauli,Karauli,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-ab70a9b7072f,Maharashtra,MH,"District Collector Office, Osmanabad",Osmanabad,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-adb226276e45,Telangana,TG,"Panchayat Raj &Rural development dept,MPP Allapally",Bhadradri Kothagudem,Allapalli,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-b0e67b7c1a20,Karnataka,KA,Koppal-Kanakagiri-Rural Development and Panchayat Raj-RDPR(T.P),Koppal,Kanakagiri,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-b37fd345670b,Rajasthan,RJ,"Collectorate, Bhilwara",Bhilwara,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-b71b8a485e64,Tamil Nadu,TN,"TALUK OFFICE, KARAMBAKKUDI",Pudukkottai,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-b739d7b4bff9,Maharashtra,MH,"District Collector Office, Ratnagiri",Ratnagiri,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-b835a740bb1d,Rajasthan,RJ,"Collectorate, Dungarpur",Dungarpur,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-b9c60d3984f1,Telangana,TG,"Municipal Administration &Urban Development,Hyderabad",Hyderabad,,rti_telangana,1,Nodal: Urban / Municipal Admin,b2026q3_01
-b9c9f2ecd0eb,Telangana,TG,"Tahsildar Office, Manoharabad",Medak,Manoharabad,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
-bbd4d253ff20,Karnataka,KA,Mandya-Urban Development Cell - DUDC,Mandya,Not Applicable,rti_karnataka,1,Nodal: Urban / Municipal Admin,b2026q3_01
-bd8d71a7c78b,Rajasthan,RJ,"Collectorate, Bharatpur",Bharatpur,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-bebb50adfd2a,Tamil Nadu,TN,MUNICIPALITY VRIDHACHALAM,Cuddalore,Municipality,rti_tamil_nadu,1,Urban body: Council/Nagar Palika/Panchayat,b2026q3_01
-beeeac1a1c8f,Rajasthan,RJ,Collectorate Alwar,Alwar,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-c399cecbd489,Rajasthan,RJ,Zila Parishad JHUNJHUNU,Jhunjhunu,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-c444fd4a9e8b,Karnataka,KA,Dharwad-Hubballi-Rural Development and Panchayat Raj - RDPR(T.P),Dharwad,Hubballi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-c5701a234d0a,Delhi,DL,College of Art,,,,,,legacy_2026q2
-c70a4b7ec16a,Karnataka,KA,Bengaluru Urban-BengaluruNorth-Rural Development and Panchayat Raj - RDPR(T.P),Bengaluru Urban,BengaluruNorth,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-c775e7ed5f76,Maharashtra,MH,"District Collector Office, Nagpur",Nagpur,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-c7f0da7bb289,Maharashtra,MH,"Zilla Parishad, Washim",Washim,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-c83167309de9,Tamil Nadu,TN,GREATER CHENNAI CORPORATION STADIUIM DEPARTMENT,Chennai,,rti_tamil_nadu,1,Urban body: Municipal Corporation,b2026q3_01
-c8666b43ff73,Maharashtra,MH,"District Collector Office, Aurangabad",Aurangabad,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
-ca091e5b4194,Telangana,TG,Tahsildar Office Sonala,Adilabad,Sonala,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
-ca49f91513a6,Telangana,TG,"Panchayat Raj&Rural Development, Jagitial",Jagtial,Jayashankar Bhupalapally,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-caa045b4a5b6,Tamil Nadu,TN,VADAKARAI KEELPIDAGAI TOWN PANCHAYAT,Tenkasi,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-cad688be1d47,Rajasthan,RJ,Zila Parishad Alwar,Alwar,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-cc57cf153773,Rajasthan,RJ,Collectorate Bundi,Bundi,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-cd45def0ae34,Karnataka,KA,Kalaburagi-Shahbad-Rural Development and Panchayat Raj-RDPR(T.P),Kalaburagi,Shahbad,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-ce320cb9f539,Telangana,TG,"Panchayat Raj &Rural development dept,MPP PINAPAKA",Bhadradri Kothagudem,Pinapaka,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-d4ad95142e60,Telangana,TG,Panchayat Raj&Rural Developmen(Mandal Praja Parishad) Chityal,Jayashankar Bhupalpally,Chityal,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
-d619e965475c,Rajasthan,RJ,"Collectorate, Hanumangarh",Hanumangarh,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-d6a7540991b1,Rajasthan,RJ,NAGAR NIGAM UDAIPUR,Udaipur,Not Applicable,rti_rajasthan,1,Urban body: Municipal Corporation,b2026q3_01
-d7680d2b17e4,Tamil Nadu,TN,"REGIONAL ASSISTANT DIRECTOR OF SMALL SAVINGS, SMALL SAVINGS WING, COLLECTORATE, THOOTHUKUDI",Chennai,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01
-d8f578e387b1,Rajasthan,RJ,Collectorate Gangapur city,,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-dcbc7f3908a6,Rajasthan,RJ,"Collectorate, Rajasamand",,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
-de8875df329e,Telangana,TG,"PANCHAYAT RAJ, Elkathurthi",Hanumakonda,Elkathurthi,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-e0ac3ca20424,Maharashtra,MH,Solapur Municipal Corporation,Solapur,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
-e709647743fb,Rajasthan,RJ,Zila Parishad Dholpur,Dholpur,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-e86f55b3b27a,Telangana,TG,Mandal Praja Parishad Thoguta,Siddipet,Thoguta,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
-e9e824dec6f9,Maharashtra,MH,"Zilla Parishad, Nashik",Nashik,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-ea18f1ec9f0c,Telangana,TG,"Tahsildar Office, Mamada",Nirmal,Mamada,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
-ea2dac732e66,Tamil Nadu,TN,GANGUVARPATTI TOWN PANCHAYAT,Theni,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-ead4c1cc47eb,Maharashtra,MH,Chandrapur Municipal Corporation,Chandrapur,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
-ec3dc6bce1ff,Tamil Nadu,TN,AYYALUR TOWN PANCHAYAT,Dindigul,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-ede5d1bfae46,Karnataka,KA,Haveri-Rural Development and Panchayat Raj - RDPR(Z.P),Haveri,,rti_karnataka,1,Rural body: District (Zilla Parishad),b2026q3_01
-ee98364b85c5,Telangana,TG,(not shown on receipt - see application),,,,,,legacy_2026q2
-f1e442c60c41,Karnataka,KA,Chitradurga-Hosadurga-Rural Development and Panchayat Raj - RDPR(T.P),Chitradurga,Hosadurga,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-f2e53cb066df,Karnataka,KA,Chikkamagaluru-Narasimharajapura-Rural Development and Panchayat Raj - RDPR(T.P),Chikkamagaluru,Narasimharajapura,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-f492edb6b824,Maharashtra,MH,"Zilla Parishad, Nandurbar",Nandurbar,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
-f6e03e1c555a,Rajasthan,RJ,ZILA PARISHAD DUNGARPUR,Dungarpur,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-f9e229663995,Delhi,DL,Municipal Corporation of Delhi,,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
-fa395dba6e3c,Tamil Nadu,TN,TALUK OFFICE PARAMAKUDI,Ramanathapuram,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
-fa5e52971dac,Tamil Nadu,TN,KANNAMPALAYAM TOWN PANCHAYAT,Coimbatore,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
-fba3557c84aa,Karnataka,KA,Davanagere-Channagiri-Rural Development and Panchayat Raj - RDPR(T.P),Davanagere,Channagiri,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
-fbbbb884b40a,Rajasthan,RJ,Zila Parishad Chittorgarh,Chittorgarh,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
-fd7ff3377942,Delhi,DL,Delhi State Election Commission,,,rti_delhi,1,Election Commission (quota data),b2026q3_01
-fddc15be93fc,Telangana,TG,"Panchayat Raj&Rural Development,Nagarkurnool",Narayanpet,Nagarkurnool,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
-fe1520bd6725,Rajasthan,RJ,Election Department,,Not Applicable,rti_rajasthan,1,Election dept (quota data),b2026q3_01
-ffb3485b86c9,Tamil Nadu,TN,SUB COLLECTOR OFFICE HOSUR,Krishnagiri,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01
+authority_id,state,state_code,department,office_name,tree_department,node_id,parent_id,level,tier,path,district,block,portal,relevant,category,first_sampled_batch
+02967c0d85a8,Maharashtra,MH,"District Collector Office, Gadchiroli",,,,,,,,Gadchiroli,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+0327599ee993,Rajasthan,RJ,"Collectorate, Banswara",,,,,,,,Banswara,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+0377a5b04157,Telangana,TG,"Panchayat Raj & Rural Development Department, Dharur",,,,,,,,Vikarabad,Dharur,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+04ac6ace27a8,Telangana,TG,Panchayat Raj &Rural development dept(MPP) Mulakalapally,,,,,,,,Bhadradri Kothagudem,Mulakalapally,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+0515858babbb,Maharashtra,MH,"Zilla Parishad, Beed",,,,,,,,Beed,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+06080e540e29,Tamil Nadu,TN,NEYYOOR TOWN PANCHAYAT,,,,,,,,,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+083e11568791,Rajasthan,RJ,Collectorate Kotputli-Behror,,,,,,,,Kotputli-Behror,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+0957ff532f90,Karnataka,KA,Tumakuru-Urban Development Cell - DUDC,,,,,,,,Tumakuru,Not Applicable,rti_karnataka,1,Nodal: Urban / Municipal Admin,b2026q3_01
+0bdfaa04b58b,Rajasthan,RJ,Nagar Nigam Bikaner,,,,,,,,Bikaner,Not Applicable,rti_rajasthan,1,Urban body: Municipal Corporation,b2026q3_01
+13227ff8bcd2,Maharashtra,MH,"Zilla Parishad, Ratnagiri",,,,,,,,Ratnagiri,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+14321d1e1dd8,Telangana,TG,"PANCHAYAT RAJ, Shayampet",,,,,,,,Hanumakonda,Shayampet,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+16a5f393b4d9,Karnataka,KA,Tumakuru-Gubbi-Rural Development and Panchayat Raj-RDPR(T.P),,,,,,,,Tumakuru,Gubbi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+18e768799ecc,Maharashtra,MH,"Zilla Parishad, Thane",,,,,,,,Thane,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+1b25cf0b31ed,Karnataka,KA,Belagavi-Raybag-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Belagavi,Raybag,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+1fe5c747494c,Karnataka,KA,Gadag-Gadag-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Gadag,Gadag,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+21dfef1cca1c,Karnataka,KA,"Arbitration and Conciliation Centre-Bangalore, HCK",,,,,,,,,,,,,legacy_2026q2
+24481c7e277f,Telangana,TG,Panchayat Raj & Rural Development(Mandal Praja Parishad )Lingampet,,,,,,,,Kamareddy,Lingampet,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
+26f218ab4414,Rajasthan,RJ,"Collectorate, Salumbar",,,,,,,,,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+278390677155,Karnataka,KA,Udupi-Kundapura-Rural Development and Panchayat Raj-RDPR(T.P),,,,,,,,Udupi,Kundapura,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+294893a74262,Karnataka,KA,Chikkaballapura-Gauribidanur-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Chikkaballapura,Gauribidanur,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+2ca8752f47c6,Telangana,TG,Mandal Praja Parishad Chevella,,,,,,,,Ranga Reddy,Chevella,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
+2cd846967c7b,Karnataka,KA,Haveri-Byadgi-Rural Development and Panchayat Raj-RDPR(T.P),,,,,,,,Haveri,Byadgi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+2e90d462e529,Maharashtra,MH,Parbhani Municipal Corporation,,,,,,,,Parbhani,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
+2f6dac93a8d5,Maharashtra,MH,Yavatmal Municipal Council,,,,,,,,Yavatmal,,rti_maharashtra,1,Urban body: Council/Nagar Palika/Panchayat,b2026q3_01
+2fe4161b61ed,Telangana,TG,Panchayat Raj&Rural Developmen(Mandal Praja Parishad) Kothapallygori,,,,,,,,Jayashankar Bhupalpally,Kothapally Gori,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
+31aa9aae1dd9,Karnataka,KA,Chamarajanagar-Hanur-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Chamarajanagar,Hanur,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+324537245be8,Rajasthan,RJ,Collectorate kekri,,,,,,,,Kekri,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+3429b851c855,Tamil Nadu,TN,"REVENUE DIVISIONAL OFFICE, THOOTHUKUDI",,,,,,,,Thoothukudi,,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+357a0cb0058a,Delhi,DL,South Delhi Municipal Corporation,,,,,,,,,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
+400ca23c8cf0,Karnataka,KA,Davanagere-Davanagere-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Davanagere,Davanagere,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+42c3c49e8643,Delhi,DL,Urban Development,,,,,,,,,,rti_delhi,1,Nodal: Urban / Municipal Admin,b2026q3_01
+44653d8078e9,Telangana,TG,Panchayat Raj&Rural Development Department Jangaon,,,,,,,,Jangaon,Jangaon,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+4777439ae58d,Rajasthan,RJ,Collectorate Barmer,,,,,,,,Barmer,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+478d7295f50e,Tamil Nadu,TN,"TALUK OFFICE, NEMILI",,,,,,,,Ranipet,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+479c8a22d622,Delhi,DL,North Delhi Municipal Corporation,,,,,,,,,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
+47f7c95c5ae8,Tamil Nadu,TN,DISTRICT PANCHAYAT OFFICE (SALEM),,,,,,,,Salem,,rti_tamil_nadu,1,Rural body: District (Zilla Parishad),b2026q3_01
+4b68b82805d9,Tamil Nadu,TN,TAHSILDAR KOTAGIRI,,,,,,,,,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+5024ea580755,Telangana,TG,"Panchayat Raj&Rural Development,Jangaon",,,,,,,,Mulugu,Jangaon,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+52243491b32e,Tamil Nadu,TN,ARUMUGANERI TOWN PANCHAYAT,,,,,,,,Thoothukudi,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+53b858811d9f,Maharashtra,MH,"District Collector Office, Mumbai City",,,,,,,,Mumbai City,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+569e44710553,Rajasthan,RJ,"Collectorate, Beawar",,,,,,,,Beawar,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+57d05e4e119d,Karnataka,KA,Udupi-Rural Development and Panchayat Raj-RDPR(Z.P),,,,,,,,Udupi,,rti_karnataka,1,Rural body: District (Zilla Parishad),b2026q3_01
+58203a86be67,Tamil Nadu,TN,"TALUK OFFICE, ANTHIYUR, ERODE DISTRICT",,,,,,,,Erode,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+5a3a2d89b7b4,Karnataka,KA,Chitradurga-Hiriyur-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Chitradurga,Hiriyur,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+5d861b6c3388,Tamil Nadu,TN,ODAIPATTI TOWN PANCHAYAT,,,,,,,,Theni,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+5dff1a740243,Maharashtra,MH,"Zilla Parishad, Solapur",,,,,,,,Solapur,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+5f3a2bab88f3,Maharashtra,MH,"Tehsil Office, Akola",,,,,,,,Akola,Akola,rti_maharashtra,1,Field admin: Block/Tehsil,b2026q3_01
+623f6523caa6,Telangana,TG,Mandal Praja Parishad Ibrahimpatnam,,,,,,,,Ranga Reddy,Ibrahimpatnam,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
+62b84ebee57d,Delhi,DL,Chief Electoral Office,,,,,,,,,,rti_delhi,1,Election dept (quota data),b2026q3_01
+67c61ad45de9,Tamil Nadu,TN,"TALUK OFFICE, R K PET, TIRUVALLUR DISTRICT",,,,,,,,Tiruvallur,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+6ad769d2c01b,Telangana,TG,"Panchayat Raj & Rural Development, Palwancha",,,,,,,,Bhadradri Kothagudem,Palwancha,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+6b45bc9b8cbe,Telangana,TG,"Panchayat Raj & Rural Development(Mandal Praja Parishad,)Nasrullabad",,,,,,,,Kamareddy,Nasrullabad,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
+6bee698a527a,Karnataka,KA,Ballari-Siruguppa-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Ballari,Siruguppa,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+70c54ea20457,Karnataka,KA,Kalaburagi-Urban Development Cell - DUDC,,,,,,,,Kalaburagi,Not Applicable,rti_karnataka,1,Nodal: Urban / Municipal Admin,b2026q3_01
+710429ee7e8b,Maharashtra,MH,Ahmednagar Municipal Corporation,,,,,,,,Ahmednagar,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
+735522c457b4,Tamil Nadu,TN,"COLLECTOR, THIRUVANNAMALAI",,,,,,,,,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01
+74ba916bbe70,Karnataka,KA,Kodagu-Rural Development and Panchayat Raj-RDPR(Z.P),,,,,,,,Kodagu,,rti_karnataka,1,Rural body: District (Zilla Parishad),b2026q3_01
+77cfc3567eba,Tamil Nadu,TN,"KANNIVADI TOWN PANCHAYAT, TIRUPPUR DISTRCT",,,,,,,,Erode,Taluk,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+7ad823468ce1,Karnataka,KA,Chitradurga-Molakalmuru-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Chitradurga,Molakalmuru,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+7ae5896f74ae,Maharashtra,MH,"District Collector Office, Amravati",,,,,,,,Amravati,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+7bada80b36da,Maharashtra,MH,"District Collector Office, Palghar",,,,,,,,Palghar,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+7ea0ff6474bf,Maharashtra,MH,"District Collector Office, Raigad",,,,,,,,Raigad,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+818c91afeaf0,Karnataka,KA,Kalaburagi-Kalagi-Rural Development and Panchayat Raj-RDPR(T.P),,,,,,,,Kalaburagi,Kalagi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+8427abc9da6a,Maharashtra,MH,"Zilla Parishad, Osmanabad",,,,,,,,Osmanabad,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+882c0988295c,Tamil Nadu,TN,VEDAPATTI TOWN PANCHAYAT,,,,,,,,Coimbatore,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+8ba54dfee896,Telangana,TG,"Tahsildar Office, Regode",,,,,,,,Medak,Regode,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
+8d7bdbaf6bba,Tamil Nadu,TN,"TALUK OFFICE, VILATHIKULAM",,,,,,,,Thoothukudi,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+90a5af8f42ea,Maharashtra,MH,Nagpur Municipal Corporation,,,,,,,,Nagpur,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
+943e22a6a838,Telangana,TG,Revenue Divisional Officer Huzurabad,,,,,,,,,,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
+94c3d7dc67d0,Delhi,DL,East Delhi Municipal Corporation,,,,,,,,East,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
+9571a0300b54,Maharashtra,MH,"District Collector Office, Akola",,,,,,,,Akola,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+9742dc4130b7,Rajasthan,RJ,Zila Parishad Jalor,,,,,,,,Jalor,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+98a1cf2ca917,Tamil Nadu,TN,"REGIONAL ASSISTANT DIRECTOR OF SMALL SAVINGS, SMALL SAVINGS WING, COLLECTORATE, VIRUDHUNAGAR",,,,,,,,Chennai,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01
+9d851b3b6243,Rajasthan,RJ,Zila Parishad Sirohi,,,,,,,,Sirohi,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+a1a9f2b34af0,Tamil Nadu,TN,ASSISTANT DIRECTOR OF TOWN PANCHAYATS THIRUCHIRAPPALLI ZONE,,,,,,,,Tiruchirappalli,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+a34fa4d69dea,Telangana,TG,Panchayat Raj&Rural Development Department Gudur,,,,,,,,Mahabubabad,Gudur,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+a5d61cf849a7,Rajasthan,RJ,Zila Parishad Karauli,,,,,,,,Karauli,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+ab70a9b7072f,Maharashtra,MH,"District Collector Office, Osmanabad",,,,,,,,Osmanabad,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+adb226276e45,Telangana,TG,"Panchayat Raj &Rural development dept,MPP Allapally",,,,,,,,Bhadradri Kothagudem,Allapalli,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+b0e67b7c1a20,Karnataka,KA,Koppal-Kanakagiri-Rural Development and Panchayat Raj-RDPR(T.P),,,,,,,,Koppal,Kanakagiri,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+b37fd345670b,Rajasthan,RJ,"Collectorate, Bhilwara",,,,,,,,Bhilwara,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+b71b8a485e64,Tamil Nadu,TN,"TALUK OFFICE, KARAMBAKKUDI",,,,,,,,Pudukkottai,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+b739d7b4bff9,Maharashtra,MH,"District Collector Office, Ratnagiri",,,,,,,,Ratnagiri,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+b835a740bb1d,Rajasthan,RJ,"Collectorate, Dungarpur",,,,,,,,Dungarpur,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+b9c60d3984f1,Telangana,TG,"Municipal Administration &Urban Development,Hyderabad",,,,,,,,Hyderabad,,rti_telangana,1,Nodal: Urban / Municipal Admin,b2026q3_01
+b9c9f2ecd0eb,Telangana,TG,"Tahsildar Office, Manoharabad",,,,,,,,Medak,Manoharabad,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
+bbd4d253ff20,Karnataka,KA,Mandya-Urban Development Cell - DUDC,,,,,,,,Mandya,Not Applicable,rti_karnataka,1,Nodal: Urban / Municipal Admin,b2026q3_01
+bd8d71a7c78b,Rajasthan,RJ,"Collectorate, Bharatpur",,,,,,,,Bharatpur,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+bebb50adfd2a,Tamil Nadu,TN,MUNICIPALITY VRIDHACHALAM,,,,,,,,Cuddalore,Municipality,rti_tamil_nadu,1,Urban body: Council/Nagar Palika/Panchayat,b2026q3_01
+beeeac1a1c8f,Rajasthan,RJ,Collectorate Alwar,,,,,,,,Alwar,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+c399cecbd489,Rajasthan,RJ,Zila Parishad JHUNJHUNU,,,,,,,,Jhunjhunu,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+c444fd4a9e8b,Karnataka,KA,Dharwad-Hubballi-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Dharwad,Hubballi,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+c5701a234d0a,Delhi,DL,College of Art,,,,,,,,,,,,,legacy_2026q2
+c70a4b7ec16a,Karnataka,KA,Bengaluru Urban-BengaluruNorth-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Bengaluru Urban,BengaluruNorth,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+c775e7ed5f76,Maharashtra,MH,"District Collector Office, Nagpur",,,,,,,,Nagpur,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+c7f0da7bb289,Maharashtra,MH,"Zilla Parishad, Washim",,,,,,,,Washim,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+c83167309de9,Tamil Nadu,TN,GREATER CHENNAI CORPORATION STADIUIM DEPARTMENT,,,,,,,,Chennai,,rti_tamil_nadu,1,Urban body: Municipal Corporation,b2026q3_01
+c8666b43ff73,Maharashtra,MH,"District Collector Office, Aurangabad",,,,,,,,Aurangabad,,rti_maharashtra,1,Field admin: District (Collector),b2026q3_01
+ca091e5b4194,Telangana,TG,Tahsildar Office Sonala,,,,,,,,Adilabad,Sonala,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
+ca49f91513a6,Telangana,TG,"Panchayat Raj&Rural Development, Jagitial",,,,,,,,Jagtial,Jayashankar Bhupalapally,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+caa045b4a5b6,Tamil Nadu,TN,VADAKARAI KEELPIDAGAI TOWN PANCHAYAT,,,,,,,,Tenkasi,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+cad688be1d47,Rajasthan,RJ,Zila Parishad Alwar,,,,,,,,Alwar,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+cc57cf153773,Rajasthan,RJ,Collectorate Bundi,,,,,,,,Bundi,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+cd45def0ae34,Karnataka,KA,Kalaburagi-Shahbad-Rural Development and Panchayat Raj-RDPR(T.P),,,,,,,,Kalaburagi,Shahbad,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+ce320cb9f539,Telangana,TG,"Panchayat Raj &Rural development dept,MPP PINAPAKA",,,,,,,,Bhadradri Kothagudem,Pinapaka,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+d4ad95142e60,Telangana,TG,Panchayat Raj&Rural Developmen(Mandal Praja Parishad) Chityal,,,,,,,,Jayashankar Bhupalpally,Chityal,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
+d619e965475c,Rajasthan,RJ,"Collectorate, Hanumangarh",,,,,,,,Hanumangarh,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+d6a7540991b1,Rajasthan,RJ,NAGAR NIGAM UDAIPUR,,,,,,,,Udaipur,Not Applicable,rti_rajasthan,1,Urban body: Municipal Corporation,b2026q3_01
+d7680d2b17e4,Tamil Nadu,TN,"REGIONAL ASSISTANT DIRECTOR OF SMALL SAVINGS, SMALL SAVINGS WING, COLLECTORATE, THOOTHUKUDI",,,,,,,,Chennai,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01
+d8f578e387b1,Rajasthan,RJ,Collectorate Gangapur city,,,,,,,,,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+dcbc7f3908a6,Rajasthan,RJ,"Collectorate, Rajasamand",,,,,,,,,Not Applicable,rti_rajasthan,1,Field admin: District (Collector),b2026q3_01
+de8875df329e,Telangana,TG,"PANCHAYAT RAJ, Elkathurthi",,,,,,,,Hanumakonda,Elkathurthi,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+e0ac3ca20424,Maharashtra,MH,Solapur Municipal Corporation,,,,,,,,Solapur,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
+e709647743fb,Rajasthan,RJ,Zila Parishad Dholpur,,,,,,,,Dholpur,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+e86f55b3b27a,Telangana,TG,Mandal Praja Parishad Thoguta,,,,,,,,Siddipet,Thoguta,rti_telangana,1,Rural body: Block/Intermediate,b2026q3_01
+e9e824dec6f9,Maharashtra,MH,"Zilla Parishad, Nashik",,,,,,,,Nashik,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+ea18f1ec9f0c,Telangana,TG,"Tahsildar Office, Mamada",,,,,,,,Nirmal,Mamada,rti_telangana,1,Field admin: Block/Tehsil,b2026q3_01
+ea2dac732e66,Tamil Nadu,TN,GANGUVARPATTI TOWN PANCHAYAT,,,,,,,,Theni,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+ead4c1cc47eb,Maharashtra,MH,Chandrapur Municipal Corporation,,,,,,,,Chandrapur,,rti_maharashtra,1,Urban body: Municipal Corporation,b2026q3_01
+ec3dc6bce1ff,Tamil Nadu,TN,AYYALUR TOWN PANCHAYAT,,,,,,,,Dindigul,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+ede5d1bfae46,Karnataka,KA,Haveri-Rural Development and Panchayat Raj - RDPR(Z.P),,,,,,,,Haveri,,rti_karnataka,1,Rural body: District (Zilla Parishad),b2026q3_01
+ee98364b85c5,Telangana,TG,(not shown on receipt - see application),,,,,,,,,,,,,legacy_2026q2
+f1e442c60c41,Karnataka,KA,Chitradurga-Hosadurga-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Chitradurga,Hosadurga,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+f2e53cb066df,Karnataka,KA,Chikkamagaluru-Narasimharajapura-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Chikkamagaluru,Narasimharajapura,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+f492edb6b824,Maharashtra,MH,"Zilla Parishad, Nandurbar",,,,,,,,Nandurbar,,rti_maharashtra,1,Rural body: District (Zilla Parishad),b2026q3_01
+f6e03e1c555a,Rajasthan,RJ,ZILA PARISHAD DUNGARPUR,,,,,,,,Dungarpur,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+f9e229663995,Delhi,DL,Municipal Corporation of Delhi,,,,,,,,,,rti_delhi,1,Urban body: Municipal Corporation,b2026q3_01
+fa395dba6e3c,Tamil Nadu,TN,TALUK OFFICE PARAMAKUDI,,,,,,,,Ramanathapuram,Taluk,rti_tamil_nadu,1,Field admin: Block/Tehsil,b2026q3_01
+fa5e52971dac,Tamil Nadu,TN,KANNAMPALAYAM TOWN PANCHAYAT,,,,,,,,Coimbatore,Town Panchayat,rti_tamil_nadu,1,Urban body: Town Panchayat,b2026q3_01
+fba3557c84aa,Karnataka,KA,Davanagere-Channagiri-Rural Development and Panchayat Raj - RDPR(T.P),,,,,,,,Davanagere,Channagiri,rti_karnataka,1,Rural body: Block/Intermediate,b2026q3_01
+fbbbb884b40a,Rajasthan,RJ,Zila Parishad Chittorgarh,,,,,,,,Chittorgarh,Not Applicable,rti_rajasthan,1,Rural body: District (Zilla Parishad),b2026q3_01
+fd7ff3377942,Delhi,DL,Delhi State Election Commission,,,,,,,,,,rti_delhi,1,Election Commission (quota data),b2026q3_01
+fddc15be93fc,Telangana,TG,"Panchayat Raj&Rural Development,Nagarkurnool",,,,,,,,Narayanpet,Nagarkurnool,rti_telangana,1,Nodal: Panchayati Raj / Rural Dev,b2026q3_01
+fe1520bd6725,Rajasthan,RJ,Election Department,,,,,,,,,Not Applicable,rti_rajasthan,1,Election dept (quota data),b2026q3_01
+ffb3485b86c9,Tamil Nadu,TN,SUB COLLECTOR OFFICE HOSUR,,,,,,,,Krishnagiri,,rti_tamil_nadu,1,Field admin: District (Collector),b2026q3_01

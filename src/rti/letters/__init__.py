@@ -10,5 +10,15 @@ wording meant six edits. Now the furniture is written once per language in
 from .blocks import STRINGS, strings
 from .bodies import BODIES, body
 from .compose import render, render_bilingual
+from .wave1 import LEGAL_SALIENCE, render_wave1_information
 
-__all__ = ["STRINGS", "strings", "BODIES", "body", "render", "render_bilingual"]
+__all__ = [
+    "STRINGS",
+    "strings",
+    "BODIES",
+    "body",
+    "render",
+    "render_bilingual",
+    "LEGAL_SALIENCE",
+    "render_wave1_information",
+]

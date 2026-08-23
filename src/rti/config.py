@@ -155,6 +155,18 @@ def load_filer() -> dict:
     return load_yaml(config_dir() / "filer.example.yaml")
 
 
+def load_filers() -> dict[str, dict]:
+    """The four filer identities used by the initial-batch assignment.
+
+    Real identities live in gitignored ``config/private/filers.yaml``. The
+    committed fallback renders conspicuous placeholders while still allowing
+    the complete sample and letter bundle to be tested on a fresh clone.
+    """
+    real = private_config_dir() / "filers.yaml"
+    raw = load_yaml(real if real.is_file() else config_dir() / "filers.example.yaml")
+    return {str(key): dict(value) for key, value in (raw.get("filers") or {}).items()}
+
+
 def config_arg(parser: argparse.ArgumentParser) -> argparse.ArgumentParser:
     """The ``--config`` flag every command shares."""
     parser.add_argument(

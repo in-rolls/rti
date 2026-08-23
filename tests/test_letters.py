@@ -7,7 +7,7 @@ import re
 import pytest
 
 from rti.enums import LANGUAGES, REVIEWED_LANGUAGES, TOPICS
-from rti.letters import BODIES, render, render_bilingual
+from rti.letters import BODIES, LEGAL_SALIENCE, render, render_bilingual, render_wave1_information
 from rti.letters.blocks import STRINGS
 
 CONTEXT = {
@@ -102,3 +102,30 @@ def test_lines_stay_within_a_pasteable_width():
     for topic, language in COMBOS:
         for line in render(topic, language, CONTEXT).splitlines():
             assert len(line) <= 90, f"{topic}/{language}: {line!r}"
+
+
+def test_wave1_plain_and_legal_letters_differ_only_by_the_salience_insertion():
+    plain = render_wave1_information(CONTEXT, "plain")
+    legal = render_wave1_information(CONTEXT, "legal_salience")
+    assert LEGAL_SALIENCE not in plain
+    assert LEGAL_SALIENCE in legal
+    assert legal.replace(f"{LEGAL_SALIENCE}\n\n", "") == plain
+
+
+def test_wave1_letter_contains_the_manuscript_data_ladder():
+    text = render_wave1_information(CONTEXT, "plain")
+    for required in (
+        "Format A",
+        "Format B",
+        "Format C",
+        "Section 25",
+        "no new compilation is requested",
+        "details of applicants are NOT sought",
+        "Sections 2(j)(iv) and 7(9)",
+    ):
+        assert required in text
+
+
+def test_wave1_letter_rejects_an_unknown_treatment():
+    with pytest.raises(ValueError):
+        render_wave1_information(CONTEXT, "peer_information")

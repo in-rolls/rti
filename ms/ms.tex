@@ -1,0 +1,394 @@
+\documentclass[11pt]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{natbib}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{amsmath}
+\usepackage{setspace}
+\usepackage[colorlinks=true, citecolor=blue, linkcolor=black, urlcolor=blue]{hyperref}
+\usepackage[title]{appendix}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+
+\title{Measuring the Right to Know:\\ A Randomized Audit of India's RTI Regime\thanks{Design document, v0.1 (August 2026). Companion arm: collection of Gram Panchayat and urban local body seat-reservation histories and deliberation records. Comments welcome.}}
+\author{Priyadarshi Amar \and Gaurav Sood}
+\date{\today}
+
+\begin{document}
+\maketitle
+\onehalfspacing
+
+\begin{abstract}
+\noindent India's Right to Information Act processes an estimated four to six million requests a year, yet causal evidence on how the state responds rests on one field experiment with 86 participants in Delhi in 2007. We propose a pre-registered, large-scale, primarily \emph{descriptive} study of the RTI regime: standardized, benign requests filed entirely through online RTI portals across six to eight states and the Centre, five administrative tiers, and eight to ten government functions, producing the first at-scale applicant-side baseline of response incidence, speed, cost, and exemption use. Two light-touch randomized components are embedded without distorting the description: a legal-salience arm (citing statutory deadlines and penalties versus a plain request) and, in a second wave, a truthful peer-information arm. Requester identity is not manipulated. Primary outcomes are response incidence, speed, substantive compliance, and exemption use, including invocation of the amended Section 8(1)(j) personal-information exemption now under Supreme Court challenge. A companion arm collects seat-reservation histories and rotation-draw proceedings for local bodies, serving both as a substantive dataset and as a hard-retrieval benchmark for the audit.
+\end{abstract}
+
+\section{Motivation}
+\label{sec:motivation}
+
+Two facts motivate this study. First, the RTI Act is arguably the most heavily used freedom-of-information law in the world, and the front line of Indian state capacity for millions of citizens. Second, we know almost nothing causal about how it performs. The only randomized evidence is \citet{peisakhin2010} and \citet{peisakhin2012}: a Delhi experiment in which filing an RTI application was nearly as effective as paying a bribe in obtaining a ration card. Everything since is observational or non-randomized: national assessments built on real-application samples \citep{raag2009, raag2014, pria2008, pwc2009}, analyses of commission-reported statistics \citep{sns2025}, and implementation studies \citep{relly2020}. The closest antecedent to our design is the filing arm of the first People's RTI Assessment, in which the RaaG team itself filed over 800 applications and 213 first appeals across the Centre and ten states, finding a 55 percent success rate against the government's claimed 70, and first appellate authorities silent in over 80 percent of appeals \citep{raag2009}. But that arm was small per jurisdiction, drawn from fixed authority lists, and carried no randomized variation in content, framing, or timing. The literature documents delay, non-response, and a collapsed appellate tier; it cannot separate what the state does from who asks, what is asked, or how.
+
+Abroad, a mature audit-experiment literature does exactly that separation. Framing a request under the FOI law doubles response rates in England \citep{worthy2017}, replicates in the Netherlands \citep{grimmelikhuijsen2019}, and nearly doubles responsiveness in Slovakia, where a legal reference works and a moral appeal does not \citep{spac2018}. Requester identity matters: institutional requesters fare better in Brazil, where officials admit to ``Googling the requester'' \citep{michener2020}; men and higher-status requesters fare better in Uruguay \citep{pineiro2018}; requesters signaling membership in vulnerable groups fared worse across fourteen countries \citep{osji2006}. Peer information raises compliance in US counties \citep{benaaron2017}, and a litigation threat outperforms a friendly letter on speed and fees \citep{cuillier2010}. Repeated audits in Mexico show systems can gain responsiveness while losing speed and quality \citep{lagunes2019, berliner2018}. None of these designs has been run at scale in India.
+
+The study also lands at a consequential legal moment. Section 44(3) of the Digital Personal Data Protection Act, 2023 replaced RTI Section 8(1)(j) with a blanket personal-information exemption, deleting the public-interest override \citep{dpdp2023}. The amendment is in force, unstayed, and before a larger Supreme Court bench as of August 2026. An audit fielded now can measure, rather than merely assert, how the new exemption is being used.
+
+\section{Design}
+\label{sec:design}
+
+\paragraph{Primary aim: description at scale.} The primary contribution is descriptive. No at-scale, applicant-side measurement of how India's RTI regime actually responds exists: the large-$N$ evidence is commission self-reports \citep{sns2025} or convenience samples of real applications \citep{raag2009, raag2014, pria2008}, and the audit-style evidence is small or aimed at the commissions rather than front-line PIOs. The headline estimands are therefore unconditional: the distribution of response incidence, days to response, completeness, fees, transfers, and exemption use across states, tiers, and functions, from standardized benign requests filed by an ordinary online applicant. Randomized components are embedded only where they do not distort the description: the plain, low-salience request is the descriptive backbone and receives the larger allocation (roughly 70 percent), with treatment arms measured as deltas against it.
+
+
+\subsection{Sampling frame}
+\label{sec:sampling}
+
+The sampling unit is the tuple (state $\times$ function $\times$ office $\times$ request type). Four stratification dimensions define the frame.
+
+\paragraph{States.} Capacity and bureaucratic culture vary by an order of magnitude across states, so state selection drives external validity. Maharashtra anchors the design (mature online portal, functioning if backlogged commission). To it we add one southern high-capacity state (Kerala or Tamil Nadu), one middle-capacity state (Karnataka or Andhra Pradesh), one Hindi-belt low-capacity state (Uttar Pradesh or Bihar), one tribal-majority or tribal-heavy state (Jharkhand or Chhattisgarh), and one Northeastern state (Assam), plus the Centre. Six to eight states balance external validity against operational load. Because commission dysfunction is itself a treatment-relevant feature of the environment, at least one state should have a defunct or effectively defunct appellate tier \citep{sns2025}.
+
+\paragraph{Frame construction.} The frame for each state is the crawled census of public authorities registered on that state's RTI portal: every department, head of department, and sub-office down to each leaf node, enumerated by portal-specific scrapers.\footnote{Scrapers, per-state parsing, and keyword categorization at \url{https://github.com/in-rolls/rti}. Portals identify an office by its name and position in the authority tree; the crawl requires no CAPTCHA, which appears only at submission.} This is the exact population the online-only estimand refers to: the study samples from the registered universe an online filer can reach, not from a hand-assembled list, and an authority's absence from the portal registry is observed at the frame level rather than discovered at filing.
+
+\paragraph{Tier.} Administrative tier is measured directly from depth in the portal's authority tree: department, head of department, and sub-office levels down to leaf offices. Published work concentrates at the top of the tree because it is easy to reach; the frontier is the leaf set, which is where sampling weight is heaviest.
+
+\paragraph{Function.} Eight to ten functional categories: local government, school education, health, police, land and revenue, welfare schemes, public works, elections, audit and grievance, and regulatory licensing. Stratifying by function within state permits statements about the Indian RTI regime rather than about one department in one state.
+
+\paragraph{The request.} A single standardized instrument is fielded: a request for the authority's own RTI record over the preceding twelve months --- what was asked, by what kinds of requesters, and with what disposition. One instrument rather than a menu of topics holds request burden constant across every office, which keeps the descriptive comparisons clean, and the instrument doubles as data collection, returning the demand- and disposition-side statistics analyzed in Section~\ref{sec:analysis}. The letter carries its own codebook: indicative controlled vocabularies for requester type (individual; NGO, society or trust; company or firm; media; advocate; public servant; elected representative; other or not recorded) and for subject (service and personnel matters; welfare schemes and beneficiary lists; public works and procurement; finances and budgets; licenses, permits and certificates; land and property; law and order; file notings and correspondence; follow-up of an earlier grievance or application; other), plus the standard disposition and exemption-clause sets, so that even a coarse tabulation returned by a PIO lands in comparable categories across offices. The instrument requests records the authority is obliged to hold, phrased ``as per records held / in the form maintained,'' names no individual, and sits in the low-burden, low-sensitivity band; alternative benign instruments (attendance, budget-and-expenditure, multi-year Section 25 returns) are retained in the pipeline for robustness waves, and denial-margin measurement runs through the reservation-records arm (Section~\ref{sec:reservation}), whose records name individuals and therefore exercise the amended Section 8(1)(j) directly.
+
+\paragraph{Scale.} The initial batch is $N=1{,}000$ applications drawn from the current frame (Section~\ref{sec:wave1}); the design scales state by state as frames are crawled, toward roughly 1,000 per state and a multi-state total near 6,000. Because offices receive multiple requests and non-response is likely correlated within office, inference clusters at the office level; the effective sample is closer to the number of offices than the number of requests, and per-cell counts should be read as a budget ceiling rather than a power claim. A cap on requests per office per month, with filing staggered over time and surface wording paraphrase-varied across requests, limits both detection and within-office interference.
+
+\subsection{Treatments}
+\label{sec:treatments}
+
+\begin{table}[htbp]
+\centering
+\caption{Randomized treatment dimensions}
+\label{tab:treatments}
+\small
+\begin{tabularx}{\textwidth}{lLL}
+\toprule
+Dimension & Arms & Precedent \\
+\midrule
+Legal salience & Plain request (70\%) vs.\ request citing Section 7(1) deadlines and Section 20 penalties (30\%) & \citet{spac2018, cuillier2010} \\
+Peer information (wave 2 only) & One truthful sentence reporting measured wave-1 compliance by peer departments in the same state vs.\ no such sentence & \citet{benaaron2017} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Four notes on Table~\ref{tab:treatments}. First, the FOI-versus-informal contrast that anchors the European studies \citep{worthy2017, grimmelikhuijsen2019} is omitted: an ``informal request'' is not a meaningful channel for an Indian citizen approaching a PIO, so the Indian analogue is the legal-salience arm, which varies formality within the statutory channel. Second, the peer-information arm is fielded only in wave 2, because its treatment sentence must be true: wave 1 produces measured compliance by department and state, and the wave-2 application then states, accurately and verifiably, that a given number of departments of the same state government provided similar information within the statutory period. The arm involves no deception; it tests whether truthful social information about peers moves PIO behavior, a lever an information commission could pull at zero cost \citep{benaaron2017}. Third, requester identity, the headline treatment in the international literature \citep{osji2006, michener2020, pineiro2018}, is not manipulated in this study. Filers are project research assistants, men and women, using their real names, and the assignment of filer to office is randomized, so filer gender enters the data as a recorded covariate, orthogonal by construction to state, tier, function, and treatment; any gender contrasts are reported as exploratory and non-causal, since filers differ in more than gender. Fourth, an arm signaling political-party affiliation is set aside permanently: no field on an RTI application calls for it, so the signal would be unnatural, and it raises the retaliation and IRB stakes without a clean estimand.
+
+\paragraph{Scope: online filing only.} All applications are filed through online RTI portals; there is no postal filing arm. This is a deliberate restriction of the estimand, and it should be read as one: the study measures the RTI regime as experienced by an online filer, and the frame is limited to portal-covered authorities. Because portal coverage correlates with state capacity and administrative tier, and is thinnest below the district, the sub-district reach of the study extends only as far as portals do; an authority in the frame with no portal route is recorded as such and excluded from filing, making portal absence a frame-level descriptive finding rather than a sampling loss. Two things do not change. Responses to online applications still arrive substantially by post, so the postal-receiving infrastructure in Section~\ref{sec:operations} remains. And within online filing, the portal itself generates outcomes: downtime, registration and OTP barriers, and demands to pay supplementary fees through offline instruments are all recorded.
+
+\subsection{The request instrument}
+\label{sec:instruments}
+
+The letter is a study instrument, engineered so that a lawful refusal is hard to construct and the response is codeable on a known ladder. Four design elements. First, a \emph{preferred data model with graceful degradation}: the letter specifies Format A, an application-level register extract with nine named fields (date and mode of receipt; requester category; subject as recorded; BPL fee-exemption claim; disposal date and whether within 30 days; disposition; exemption clauses where rejected; transferee authority where transferred), states that category counts (Format B) or period totals (Format C) are acceptable, and closes the compilation door: ``information as available in the form actually maintained is acceptable; no new compilation is requested.'' The PIO thus sees exactly what a complete answer looks like while retaining a compliant path from whatever records exist, and the granularity actually supplied is itself an outcome, a record-keeping capacity measure that also determines which offices can enter the office-paired misreporting analysis. Second, an \emph{embedded codebook}: the indicative requester-type and subject vocabularies of Section~\ref{sec:sampling} appear in the letter itself, so tabulations return in comparable categories; each is hedged ``as identifiable from the records,'' and the share of offices unable to supply a field is itself data. Third, an explicit \emph{personal-data disclaimer}: applicants' names and addresses are stated to be not sought and freely redactable, which strips the request of any Section 8(1)(j) surface. Fourth, \emph{electronic supply first}: the letter requests scanned-PDF supply by email under Sections 2(j)(iv) and 7(9), with post as fallback; whether the email request is honored is a costless compliance outcome, and the request also reduces copying-fee demands, a known soft-denial channel. A final item requests the most recent annual Section 25 return, if held, a single existing document that cross-validates the register-derived counts. Letters are rendered by a deterministic pipeline from the sampled assignments and are mail-merge-ready over filer name, address, and email. Wave 1 files in English only: holding the instrument to one language removes a nuisance dimension while baseline rates are established, and the state portals accept English applications. A Hindi instrument is already built, and state-language versions (Tamil first) are a planned refinement whose response-rate effect can then be measured rather than assumed. The full instrument text appears in SI~A.
+
+\subsection{Outcomes}
+\label{sec:outcomes}
+
+\begin{table}[htbp]
+\centering
+\caption{Outcome families}
+\label{tab:outcomes}
+\small
+\begin{tabularx}{\textwidth}{lL}
+\toprule
+Family & Measures \\
+\midrule
+Access costs & Portal availability, uptime, and registration/OTP barriers; supported languages; fees demanded, legal (Rs.\ 10 application, per-page copying) versus extra-legal; demands to pay supplementary fees through offline instruments (IPO, court-fee stamp, DD) despite online filing; total filer cost including RA time \\
+\addlinespace
+Process & Days to first acknowledgment; days to substantive response; days to final closure; number of Section 6(3) transfers (measured from mandatory intimations to the applicant, hence a lower bound); demands for personal appearance or identification beyond what the Act permits \\
+\addlinespace
+Disposition & Full / partial / denied / transferred / abandoned / silent; exemption clause invoked (Section 8 or 9) and stated justification, with Section 8(1)(j)-cum-DPDP invocations flagged; response format (electronic, paper, inspection-only); pages provided; presence of structured data; internal inconsistency \\
+\addlinespace
+Appeals & First appeal filed and days to disposition; second appeal to SIC/CIC and days to hearing \\
+\addlinespace
+Contact & Whether the filer was ever called or contacted personally, and what was asked \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Front-line PIO response is the primary outcome family. Appellate outcomes are secondary: with over four lakh appeals pending nationally and estimated disposal times exceeding a decade in several states \citep{sns2025}, second-appeal outcomes are unobservable within the study window in part of the sample, and their absence is itself a finding.
+
+\subsection{Appeals rule}
+\label{sec:appeals}
+
+Roughly 30--40 percent of substantive RTIs require a first appeal, and case-by-case decisions consume RA energy and introduce discretion. The design therefore fixes a mechanical, pre-registered rule: within a random 50 percent subsample of silent and denied requests, a first appeal is filed on day 40; within a random subsample of unsuccessful first appeals, a second appeal follows. The rule converts the appellate stage into a second experiment and carries its own budget line from day one.
+
+\subsection{The initial batch}
+\label{sec:wave1}
+
+The population frame is the union of crawled portal universes; the crawler exists to create it, and states enter as their universes are crawled. The canonical staging file retains flat portal-derived lists for five future-wave states, but at the time of the first draw the eligible crawled frame comprises Tamil Nadu: 17,417 registered offices in 40 departments (40 department-HQ nodes, 321 Head-of-Department offices, and roughly 17,000 sub-offices, of which 16,505 are leaves). The initial batch draws $N=1{,}000$ from this frame by department-stratified tier quotas: within each department, the department-HQ node enters deterministically, 4 Head-of-Department offices and 20 sub-offices are drawn by seeded random sampling, and quota shortfalls in small departments are refilled by a seeded draw from the pooled unsampled sub-offices, so the batch total is exact. The realized batch comprises 40 department nodes, 136 Head-of-Department offices, and 824 sub-offices, covering all 40 departments; every office receives the same instrument, and the department-by-tier-blocked 70/30 salience randomization realized as exactly 700 plain and 300 legal-salience letters. Four research assistants (RA1--RA4) each file exactly 250 applications (175 plain and 75 legal-salience), with assignment randomized within department $\times$ tier $\times$ salience strata, which operationalizes the filer-to-office randomization of Section~\ref{sec:treatments}: RA identity is orthogonal to department, tier, and salience by construction. The batch is fully reproducible from its frozen configuration: seed 20260817, batch \texttt{b2026q3\_02}, and hashes of both the canonical and eligible frames recorded in the batch metadata; the assignments file is written before any filing occurs and constitutes the pre-registered sampling object. Frame extensions and later waves take new batch identifiers and seeds.
+
+\section{Operations}
+\label{sec:operations}
+
+The operational principle: every identifier on every application routes to a researcher-controlled channel.
+
+\paragraph{Correspondence.} A project-owned domain supplies per-batch email addresses that auto-forward to a central inbox readable by the PI and one named backup. Although all filing is online, substantive replies still arrive largely by Speed Post and Registered Post, since portals require a postal address and PIOs default to it for photocopied records; an institutional P.O.\ Box (or the registered address of a partner non-profit) therefore receives all mail, with a weekly scan-and-upload routine. Phone contact runs through virtual numbers or dedicated project SIMs; research assistants never expose personal details. One caveat interacts with the design: portals that verify applicants by SMS one-time password will reject virtual numbers, so the identity stable needs real SIMs, one per filer identity.
+
+\paragraph{Filer identities.} The Act requires a citizen and a signature, which forces a choice between one stable identity, which PIOs will eventually flag as a frequent filer, and a rotating stable of consenting RAs with centralized contact details. The study uses a small rotating stable, the project RAs themselves, both to spread filing volume below the frequent-filer threshold and to seed the filer-to-office randomization described in Section~\ref{sec:treatments}. One constraint: the same P.O.\ Box should not serve two filers filing to the same office in the same window, since a shared address across differently named applications is the easiest way for an office to detect the audit. Addresses are therefore assigned to filers, not to batches.
+
+\paragraph{Workflow.} RAs submit through a web form (Django with Postgres, or Airtable as the MVP) that generates the application text from a paraphrase-varied template with contact details auto-filled. Filing happens on the portal, with the portal registration number logged. Incoming mail is scanned, then coded by RAs paid per coded response rather than per filed request. A named institutional backup can operate the inbox and the P.O.\ Box during any two-week absence of the PI.
+
+\section{Empirical strategy}
+\label{sec:analysis}
+
+\paragraph{Descriptive estimation.} The headline objects are distributions, not coefficients: response incidence at 30 days, time to substantive response, completeness, fees, transfers, and exemption use, by state, tier, and function, weighted to the portal-universe frame. Time to response is analyzed as survival data, with silent non-response treated as right-censoring at pre-registered horizons (90 and 180 days) rather than as missingness; Kaplan--Meier curves by stratum are the primary display, and ``never responds'' is itself an estimand via the survival function at the horizon. Standard errors cluster at the office throughout. For office- and department-level league tables, raw rates over small request counts produce noisy rankings, so reported rankings use empirical-Bayes shrinkage toward stratum means, with raw counts in an appendix.
+
+\paragraph{Treatment estimation.} The embedded arms are analyzed with pre-registered linear probability models with randomization-stratum fixed effects and office-clustered standard errors: the legal-salience contrast in wave 1, and the peer-information contrast in wave 2, whose treatment sentence is constructed mechanically from measured wave-1 compliance under a rule fixed in the pre-analysis plan. Heterogeneity is pre-specified sparingly: by tier and by the state's commission functionality, with everything else labeled exploratory.
+
+\paragraph{Using the collected statistics: auditing the auditors.} The instrument returns each authority's self-reported performance, the register counts and the latest Section 25 annual return, for the same offices whose behavior the audit measures directly. The comparison of the two is a contribution in itself: the gap between an office's reported share of applications disposed within 30 days and its measured probability of answering a standardized benign request within 30 days is an office-level index of statistical misreporting and selection, estimable with a simple paired design. This converts the standing critique that commissions merely tabulate self-reports \citep{sns2025} into a quantitative correction factor for two decades of official statistics. The 2008 People's Assessment prefigured the comparison at the aggregate level, triangulating a government-claimed 70 percent success rate against applicants' reported 60 and its own filings' 55, and a claimed 90 percent timeliness against a measured 40 \citep{raag2009}; the present design pairs the two measurements within the same office, which is what turns a discrepancy into an office-level estimate.
+
+\paragraph{Using the register data.} The twelve-month register data support five analyses. First, demand composition: the joint distribution of subject and requester type across offices and functions, the first applicant-side map of what India asks its government and who does the asking, the Indian counterpart to the Mexican demand analysis of \citet{berliner2018}. Second, disposition composition: rejection rates by exemption clause, with the share invoking the amended Section 8(1)(j) as the DPDP-era outcome of record. Third, self-reported timeliness, the share of register entries disposed within 30 days, feeds the office-paired misreporting index above. Fourth, the BPL fee-exemption share measures who reaches the regime. Fifth, current request volume enters as an authority-level covariate: whether busy offices respond differently from idle ones, and the inability to produce one's own register or latest Section 25 return is coded as a record-keeping capacity index. A year-wise series back to 2005--06, enabling an event-study around the 2019 amendment and the DPDP milestones, remains available by follow-on request to responsive offices and is an extension, not a wave-1 claim. One selection problem is owned explicitly: register data arrive only from authorities that answer, so register-conditional analyses are reported alongside bounds, and the frame-weighted audit outcomes, which do not condition on response, carry the headline claims.
+
+\paragraph{Appeals and inference discipline.} The mechanical appeals rule yields experimental estimates of the appellate stage: the effect of appealing on eventual information receipt, and applicant-level expected time to information through the full pipeline, estimated as a multi-state survival model and reported per state. Silent commissions are reported as such rather than dropped. All primary outcomes, horizons, strata, and heterogeneity cuts are fixed in the pre-analysis plan; the descriptive tables are themselves pre-registered as the primary output, which is the discipline that keeps a descriptive-first study from becoming a garden of forking paths.
+
+\section{Ethics}
+\label{sec:ethics}
+
+Four issues go to the IRB with the protocol rather than as afterthoughts. First, audit burden: requests are small, concern records the office is legally obliged to hold, and require no justification from the applicant under the Act, which keeps the audit lawful and the marginal burden on PIOs minimal. Second, the design involves no deception about identity: filers are project research assistants using their real names; the randomization is in which filer is assigned to which office. Third, retaliation against RTI users is documented, and filers' names and addresses appear on applications; questions are therefore kept innocuous, filers are screened for informed comfort with the risk, and any request touching individual misconduct is excluded. Fourth, the appeals rule means some meritorious appeals are, by randomization, not pursued; the protocol should state why measurement justifies this and provide for filing forgone appeals after endline where the filer wishes.
+
+\section{The reservation-records arm}
+\label{sec:reservation}
+
+The companion arm collects seat-reservation histories and the deliberation trail behind them, the rotation charts, draw proceedings, objections, and disposal orders held by District Panchayat Raj Officers and Collectorates, for Gram Panchayats and urban local bodies. The precedent is \citet{dunning2013}, who obtained Karnataka's full 1994--2009 reservation history through the State Election Commission's requisition of district Deputy Commissioners' records, extending the datasets built by \citet{chattopadhyay2004} and \citet{besley2004}.
+
+Two design decisions keep the arms from contaminating each other. The reservation requests are heterogeneous, hard-retrieval requests whose difficulty varies with district record-keeping, so they enter the audit analysis only as a separately coded observational benchmark, never pooled with the experimental arms. And because reservation proceedings name individuals, the arm doubles as the sharpest available instrument for the amended Section 8(1)(j): the rate at which PIOs deny records of a plainly public function on personal-information grounds is a headline outcome, timestamped against the Supreme Court litigation calendar so that a stay or striking-down of Section 44(3) mid-study becomes a usable pre-post contrast rather than a broken design.
+
+\section{Timeline}
+\label{sec:timeline}
+
+Months 1--2: frame construction, pre-registration (EGAP/OSF), IRB. Months 3--4: pilot in two states plus the Centre to calibrate base rates, portal behavior, and coding rubrics; per-cell targets are revised on pilot evidence. Months 5--10: wave-1 filing, staggered, beginning with Tamil Nadu (the first crawled universe) and adding states as their frames are crawled. Months 11--14: wave-2 filing, carrying the peer-information arm built from measured wave-1 compliance. Months 8--20: appeals pipeline under the mechanical rule. Reservation-records collection runs in parallel from month 1, beginning with Karnataka, Bihar, and Uttar Pradesh.
+
+\bibliographystyle{plainnat}
+\bibliography{rti}
+
+\appendix
+\clearpage
+\renewcommand{\thesection}{SI~\Alph{section}}
+\renewcommand{\thesubsection}{SI~\Alph{section}.\arabic{subsection}}
+\renewcommand{\thetable}{SI\arabic{table}}
+\setcounter{table}{0}
+
+\section{Prior literature: annotated summary}
+\label{app:lit}
+
+\begin{table}[htbp]
+\centering
+\caption{India: RTI compliance and audit evidence}
+\label{tab:lit_india}
+\scriptsize
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}LLL}
+\toprule
+Study & Design and sample & Key findings & Limitations for our purposes \\
+\midrule
+\citet{peisakhin2010, peisakhin2012} & Field experiment, New Delhi slums, 2007; $N=86$; ration-card access; arms: bribe, RTI, NGO letter, control & RTI nearly as effective as bribery; RTI users $\sim$16$\times$ more likely than control to receive card within a year; RTI closed most of the slum--middle-class processing-time gap & Single city, single service, tiny $N$, two decades old; no variation in identity, framing, or channel \\
+\addlinespace
+\citet{raag2009} & Mixed-methods national assessment: Centre + 10 states + Delhi; 515 public authorities from fixed lists; 37,704 people interviewed (incl.\ 1,415 PIOs/office heads); 1,027 office inspections; 800+ own-filed RTIs and 213 first appeals; 25,000+ applications analyzed & Own filings succeeded 55\% vs.\ government-claimed 70\%; timeliness 40\% vs.\ claimed 90\%; first appellate silent in $>$80\% of appeals; awareness low and rural applicants $>$90\% male; Section 4 compliance weak; penalties in $\sim$2\% of imposable cases & Filing arm small per jurisdiction, from fixed lists, non-randomized; official-vs-measured comparison aggregate, not office-paired \\
+\addlinespace
+\citet{raag2014} & Follow-up national assessment (with Samya--CES), same design family, covering 2011--13 & Documented persistence of delay and denial; many requests chased information that should already have been proactively disclosed under Section 4 & Observational; convenience-weighted samples of real applications; no randomization \\
+\addlinespace
+\citet{pria2008} & CSO-facilitated tracking of citizen requests across ten states & $\sim$68\% of tracked requesters obtained information; success markedly lower in Bihar, Jharkhand, UP & CSO-mediated (not blind); variable sampling across states \\
+\addlinespace
+\citet{pwc2009} & Government-commissioned national implementation study & Identified constraints: awareness, PIO capacity, record management, infrastructure & Implementation diagnosis, not measurement of response behavior \\
+\addlinespace
+\citet{sns2025} & Annual report cards on all 29 information commissions, built from RTIs to the commissions and their reports & $>$4 lakh appeals pending mid-2025; estimated disposal $>$1 year at 18 of 29 commissions and $>$a decade in several; penalties waived in $\sim$98\% of eligible cases; multiple commissions defunct or headless & Covers the appellate tier, not front-line PIO response; relies on commission self-reports \\
+\addlinespace
+\citet{relly2020} & Multi-method implementation study of the RTI regime & Documents institutionalization and backsliding over the Act's first decade & Observational; national-level synthesis \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{Global FOI audit and field-experiment literature}
+\label{tab:lit_global}
+\scriptsize
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.6cm}LLL}
+\toprule
+Study & Treatments & Key results & Design lesson imported here \\
+\midrule
+\citet{osji2006} & Requester identity (journalist, NGO, ordinary, vulnerable-group member); 14 countries, $\sim$1{,}900 requests & Only $\sim$35\% of monitored requests fulfilled; ``mute refusal'' pervasive; vulnerable-group requesters fared worse & Identity discrimination and silent non-response as first-class outcomes \\
+\addlinespace
+\citet{worthy2017} & FOI-framed vs.\ informal request; English parish councils & FOI framing doubled success (5\% to 10\%); no correlation with council size or prior transparency & Legal framing is a powerful, cheap treatment; low base rates at the lowest tier \\
+\addlinespace
+\citet{grimmelikhuijsen2019} & Pre-registered replication, 390 requests, Dutch local bodies & Effect replicated and larger; overall response 76\%; strongest effect on proactive disclosure & Pre-registration and replication template \\
+\addlinespace
+\citet{spac2018} & FOI-law reference vs.\ moral appeal vs.\ neutral; all 2{,}928 Slovak municipalities & Legal reference nearly doubled responsiveness; moral appeal did nothing; effects moderated by municipality size & Legal salience beats moral suasion; motivates our salience arm \\
+\addlinespace
+\citet{michener2020} & Institutional vs.\ non-institutional requester; request burden; $\sim$700 Brazilian municipalities & Institutional requesters received about one-fifth more responses; officials admit to ``Googling the requester'' & Identity effects documented; identity manipulation is outside this study's scope \\
+\addlinespace
+\citet{pineiro2018} & Requester gender and status; Uruguay & Preferential treatment toward male and higher-status requesters & Documented elsewhere; not manipulated here \\
+\addlinespace
+\citet{benaaron2017} & Peer-compliance information; US county governments & Compliance rose when counties were told peers had complied & Implemented truthfully in wave 2, using measured wave-1 compliance \\
+\addlinespace
+\citet{cuillier2010} & Friendly vs.\ neutral vs.\ threatening request letters; US police agencies and school districts & Threatening letters: higher response, lower fees, faster; friendly letters: more helpful behavior & Tone and legal threat trade off speed against cooperation \\
+\addlinespace
+\citet{lagunes2019} & Repeated audits of Mexico's FOI system, 2007/2013/2015; 307 requests & More responses over time but slower, more fees, weaker quality & Speed, fees, and quality can move in opposite directions; measure all three \\
+\addlinespace
+\citet{berliner2018} & Observational: one million Mexican FOI requests & Mapped what citizens actually ask for across agencies & Demand composition informs our function strata and the instrument's codebook \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Request instrument}
+\label{si:instruments}
+
+Wave 1 fields a single instrument: the RTI-information letter below, filed in English through state RTI portals. One instrument, rather than a menu of topics, holds request burden constant across every office. Placeholders in brackets are filled by the rendering pipeline (dates, authority) or by mail merge (filer name, postal address, email). A Hindi version is built and included in the replication repository; state-language versions (Tamil first) are planned refinements. The legal-salience arm (30 percent of letters) inserts the paragraph in Section~\ref{si:salience} immediately before the mode-of-supply paragraph; the plain arm (70 percent) omits it and is otherwise identical.
+
+\subsection{The RTI-information letter}
+\begin{footnotesize}
+\begin{verbatim}
+To: The Public Information Officer,
+[Public Authority], [State]
+
+Subject: Application under Section 6(1) of the Right to Information Act, 2005
+
+Sir/Madam,
+
+Under Section 6(1) of the RTI Act, 2005, kindly provide the following
+information, as per records held by your public authority:
+
+For the period [DD-MM-YYYY] to [DD-MM-YYYY]:
+
+1. An extract of the register/records of RTI applications received by
+   your public authority, preferably giving, for each application
+   (Format A):
+
+   (a) date of receipt;
+   (b) mode of receipt (online portal / post / in person), as recorded;
+   (c) category of requester, as identifiable from the records, per the
+       indicative list: individual; NGO/society/trust; company or firm;
+       media; advocate; public servant; elected representative; other /
+       not recorded;
+   (d) broad subject of the information sought, as recorded, per the
+       indicative list: service and personnel matters; welfare schemes
+       and beneficiary lists; public works and procurement; finances
+       and budgets; licenses, permits and certificates; land and
+       property records; law and order; file notings and
+       correspondence; follow-up of an earlier grievance or
+       application; other;
+   (e) whether the applicant claimed below-poverty-line (BPL) fee
+       exemption under Section 7(5);
+   (f) date of final reply/disposal, and whether the reply was made
+       within 30 days of receipt;
+   (g) disposition (information provided in full / in part / rejected /
+       transferred / pending);
+   (h) where rejected, the exemption clause(s) invoked (Sections
+       8(1)(a) to 8(1)(j), 9, 11, 24, or other); and
+   (i) where transferred under Section 6(3), the authority to which
+       transferred.
+
+2. If the register is not maintained at the application level, counts
+   for the period by the categories above (Format B) are acceptable:
+   applications received by month; by category of requester; by broad
+   subject; disposed within 30 days; rejected, by exemption clause;
+   and transferred.
+
+3. Failing which, totals for the period as a whole (Format C) are
+   acceptable: applications received; disposed within 30 days;
+   rejected, by clause; transferred; pending.
+
+4. A copy (scanned copy is acceptable) of the most recent annual RTI
+   statement/return furnished by your public authority under Section 25
+   of the Act, if held.
+
+Information as available in the form actually maintained is acceptable;
+no new compilation is requested. Names, addresses, and other personal
+details of applicants are NOT sought and may be omitted or redacted.
+
+Mode of supply: I request that the information be provided in electronic
+form, as scanned PDF documents sent by email to [Filer email], in terms
+of Sections 2(j)(iv) and 7(9) of the Act; this avoids photocopying and
+postage costs on both sides. If supply by email is not feasible, kindly
+send the information by post to my address below.
+
+I am a citizen of India. The application fee of Rs. 10 has been paid;
+proof is enclosed/submitted with this application. If this application
+pertains to another public authority in whole or part, kindly transfer
+it under Section 6(3) and inform me.
+
+Name: [Filer name]
+Address: [Filer postal address]
+Email: [Filer email]
+Date: [Date of filing]
+\end{verbatim}
+\end{footnotesize}
+
+\subsection{Legal-salience insertion (treatment arm only)}
+\label{si:salience}
+\begin{footnotesize}
+\begin{verbatim}
+Time limit: I request that the information be furnished within the
+time limit prescribed under Section 7(1) of the Act. I may respectfully
+point out that under Section 20, failure without reasonable cause to
+furnish information within the prescribed time renders the Public
+Information Officer liable to a penalty of Rs. 250 per day of delay,
+up to Rs. 25,000.
+\end{verbatim}
+\end{footnotesize}
+
+\section{Requested data model and response coding}
+\label{si:datamodel}
+
+The instrument specifies a preferred structure with graceful degradation and carries its own codebook, so the public information officer can comply from whatever records exist and every response lands in comparable categories across offices.
+
+\paragraph{Format A (preferred): application-level register extract.} One row per RTI application received in the twelve-month reference period, with nine fields: (a) date of receipt; (b) mode of receipt (online portal, post, in person); (c) category of requester per the letter's indicative list (individual; NGO/society/trust; company or firm; media; advocate; public servant; elected representative; other/not recorded); (d) broad subject per the indicative list (service and personnel; welfare schemes and beneficiary lists; public works and procurement; finances and budgets; licenses, permits and certificates; land and property; law and order; file notings and correspondence; follow-up of an earlier grievance or application; other); (e) BPL fee-exemption claim under Section 7(5); (f) disposal date and whether within 30 days; (g) disposition (full, part, rejected, transferred, pending); (h) exemption clauses where rejected (8(1)(a)--(j), 9, 11, 24, other); (i) transferee authority where transferred under Section 6(3). Applicant names and addresses are explicitly not sought and may be redacted. The embedded category lists are the ``dictionary'' of the design: because registers rarely record requester type as such, the letter hedges each with ``as identifiable from the records,'' and the share of offices that cannot supply a field is itself data.
+
+\paragraph{Format B (acceptable): category counts.} Period counts by the same dictionaries: applications by month, by requester category, by subject; disposed within 30 days; rejected by clause; transferred.
+
+\paragraph{Format C (acceptable): period totals.} Received; disposed within 30 days; rejected by clause; transferred; pending.
+
+\paragraph{Companion document.} The letter's final item requests the most recent annual Section 25 return, if held: a single existing document that cross-validates the register-derived counts and measures whether the authority can produce its own statutory statistics.
+
+\begin{table}[htbp]
+\centering
+\caption{Coding of supplied granularity (\texttt{response\_coding.data\_granularity})}
+\begin{tabularx}{\textwidth}{lL}
+\toprule
+Code & Meaning \\
+\midrule
+\texttt{format\_a\_application\_level} & Row-level register extract supplied \\
+\texttt{format\_b\_monthly} & Category counts supplied \\
+\texttt{format\_c\_period\_totals} & Period totals only \\
+\texttt{narrative\_only} & Prose response without tabulation \\
+\texttt{none} & Nothing usable supplied \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Granularity supplied is itself an outcome: a record-keeping capacity measure that also determines which offices enter the office-paired misreporting analysis (Formats A/B permit aligned comparison; Format C supports the annual gap). A companion outcome, \texttt{supplied\_by\_email}, records whether the Section 7(9) electronic-supply request was honored.
+
+\section{Sampling protocol for the initial batch}
+\label{si:sampling}
+
+\paragraph{Population frame.} The frame is the union of crawled portal universes: for each state, the census of public authorities registered on its RTI portal, enumerated to every leaf office. The canonical staging file also retains flat portal-derived lists for five future-wave states, but at the time of the initial draw the eligible crawled frame comprises Tamil Nadu: 17,417 offices in 40 departments (40 department-HQ nodes; 321 Head-of-Department offices; $\sim$17,000 sub-offices, 16,505 of them leaf nodes; 985 offices keyword-flagged as reservation-relevant, a flag the audit sampling ignores). Scrapers, parsing, and categorization: \url{https://github.com/in-rolls/rti}. States enter the eligible frame as their universes are crawled; each extension is a new batch under a new seed.
+
+\paragraph{Algorithm.} (1) Within each department, the department-HQ node enters deterministically; 4 Head-of-Department offices and 20 sub-offices are drawn by seeded sampling. (2) Departments smaller than their quota create a deficit, refilled by one seeded draw from the pooled unsampled sub-offices, making the total exactly $N=1{,}000$. (3) Salience is a seeded 70/30 draw (plain/legal) blocked by department $\times$ tier, with integer treatment counts assigned by largest remainder so the global total is exactly 300 legal-salience letters. (4) RA assignment shuffles offices within department $\times$ tier $\times$ salience strata and assigns RA1--RA4 round-robin with a separate pointer per salience arm, yielding exactly 250 per RA (175 plain and 75 legal-salience) and within-stratum balance up to the integer remainder. Every office receives the same single instrument, so request content is constant across the batch.
+
+\begin{table}[htbp]
+\centering
+\caption{Realized initial batch ($N=1{,}000$; batch \texttt{b2026q3\_02}, seed 20260817)}
+\begin{tabularx}{\textwidth}{lL}
+\toprule
+Margin & Realized counts \\
+\midrule
+Tier & Department HQ 40; Head of Department 136; Sub-office 824 \\
+Salience & Plain 700; Legal 300 \\
+Research assistant & RA1--RA4 each 250 (175 plain; 75 legal-salience) \\
+Departments covered & 40 of 40 (per-department $n$ ranges 1--98 after deficit reallocation) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{Reproducibility.} The batch metadata freezes the seed (20260817), the full configuration, the SHA-256 of the canonical frame (\texttt{c5614a10c30d83d1\ldots}), and the hash of the eligible Tamil Nadu projection (\texttt{8b73b0e7cd2a36e7\ldots}); identical inputs reproduce the assignments byte-for-byte. The assignments file is written before any filing and constitutes the pre-registered sampling object. All randomness flows through a single seeded generator over stably sorted inputs. New states and waves take new batch identifiers and seeds; no seed is reused.
+
+\section{Monitoring data model}
+\label{si:monitoring}
+
+Filing and response tracking uses an append-only event log rather than a mutable status column: every dated fact (filed, acknowledgment, Section 6(3) transfer, fee demand, response, appeal events, personal contact) is a row with document date and evidence link, and current status plus all days-to-event durations are derived views. One row per planned application is written at sampling time (the assignment), one at filing time (the application, holding portal registration number, fees, and payment reference), and coding of responses (disposition, exemption clauses including flagged Section 8(1)(j)/DPDP invocations, completeness, granularity per SI~C) is double-entered by coders paid per coded response. The full schema ships in the replication repository.
+
+\end{document}

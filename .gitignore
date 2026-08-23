@@ -19,6 +19,7 @@ config/private/
 # pre-registered record and ARE committed; the rendered letters are not.
 out/*/applications/
 out/*/filing_sheet.csv
+out/*/worklists/
 
 # Derived database — built from the REAL tables, so it holds real data
 rti.db

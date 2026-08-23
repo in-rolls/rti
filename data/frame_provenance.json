@@ -1,46 +1,54 @@
 {
-  "built_utc": "2026-08-10T07:32:11+00:00",
+  "built_utc": "2026-08-23T06:51:18+00:00",
   "sources": [
     {
       "path": "data/raw/state_department_classified_FINAL.csv",
       "sha256": "a20d012cf6e24b381d112b58af469b07d36b326eeed3b9fa852a7ad4f4f7a2d4"
+    },
+    {
+      "path": "data/scrapers/tamil_nadu/universe_categorized.csv",
+      "sha256": "e5b2447c7c9906a9042693b1385bfb50f1e215450cd430f9af50574feb9bb28a"
     }
   ],
   "output": {
     "path": "data/frame.csv",
-    "sha256": "fdfe6477647d70caef59d9dd880a1fa72c54b3918d5aa66444a076b26ad8c969"
+    "sha256": "c5614a10c30d83d1f56a9e4509353d333d04cd6554e8c983d34e75b42db41364"
   },
   "summary": {
-    "n_rows": 23140,
+    "n_rows": 23167,
     "n_states": 6,
     "by_state": {
       "Delhi": 221,
       "Karnataka": 1699,
       "Maharashtra": 215,
       "Rajasthan": 290,
-      "Tamil Nadu": 17401,
-      "Telangana": 3314
+      "Tamil Nadu": 17417,
+      "Telangana": 3325
     },
     "relevant_by_state": {
       "Delhi": 7,
       "Karnataka": 309,
       "Maharashtra": 114,
       "Rajasthan": 95,
-      "Tamil Nadu": 1393,
-      "Telangana": 562
+      "Tamil Nadu": 985,
+      "Telangana": 564
     },
-    "n_relevant": 2480
+    "n_relevant": 2074
   },
   "changes": {
-    "department:quote_as_apostrophe": 2,
+    "department:quote_as_apostrophe": 4,
     "department:whitespace": 1,
-    "department:wrapping_quotes": 1,
+    "department:wrapping_quotes": 2,
+    "path:quote_as_apostrophe": 2,
     "portal:slug": 23167,
-    "row:duplicate_dropped": 27,
+    "row:flat_key_disambiguated": 27,
+    "row:state_replaced_by_scraper": 1,
     "state:alias": 1699
   },
   "examples": {
     "department:quote_as_apostrophe": [
+      "'ST PAUL\"S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET' -> \"ST PAUL'S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET\"",
+      "'ST.JOSEPH\"S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM' -> \"ST.JOSEPH'S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM\"",
       "'ST PAUL\"S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET' -> \"ST PAUL'S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET\"",
       "'ST.JOSEPH\"S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM' -> \"ST.JOSEPH'S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM\""
     ],
@@ -48,7 +56,12 @@
       "'Department of Animal Husbandry and Dairying\\r\\nGovernment of Maharashtra' -> 'Department of Animal Husbandry and Dairying Government of Maharashtra'"
     ],
     "department:wrapping_quotes": [
+      "'\"CHIEF EDUCATIONAL OFFICE, SAMAGRA SHIKSHA, RAMANATHAPURAM DISTRICT.\"' -> 'CHIEF EDUCATIONAL OFFICE, SAMAGRA SHIKSHA, RAMANATHAPURAM DISTRICT.'",
       "'\"CHIEF EDUCATIONAL OFFICE, SAMAGRA SHIKSHA, RAMANATHAPURAM DISTRICT.\"' -> 'CHIEF EDUCATIONAL OFFICE, SAMAGRA SHIKSHA, RAMANATHAPURAM DISTRICT.'"
+    ],
+    "path:quote_as_apostrophe": [
+      "'SCHOOL EDUCATION DEPARTMENT > DIRECTOR OF SCHOOL EDUCATION > CHIEF EDUCATIONAL OFFICE, EGMORE, CHENNAI > ST PAUL\"S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET' -> \"SCHOOL EDUCATION DEPARTMENT > DIRECTOR OF SCHOOL EDUCATION > CHIEF EDUCATIONAL OFFICE, EGMORE, CHENNAI > ST PAUL'S MAHAJANA. HIGHER SECONDARY SCHOOL, KALADIPET\"",
+      "'SCHOOL EDUCATION DEPARTMENT > DIRECTOR OF SCHOOL EDUCATION > CHIEF EDUCATIONAL OFFICE, THENI-625531 > ST.JOSEPH\"S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM' -> \"SCHOOL EDUCATION DEPARTMENT > DIRECTOR OF SCHOOL EDUCATION > CHIEF EDUCATIONAL OFFICE, THENI-625531 > ST.JOSEPH'S R.C.HIGH SCHOOL,WATER TANK STREET, UTHAMAPALAYAM\""
     ],
     "portal:slug": [
       "'RTI_Online_Delhi' -> 'rti_delhi'",
@@ -57,12 +70,15 @@
       "'RTI_Online_Delhi' -> 'rti_delhi'",
       "'RTI_Online_Delhi' -> 'rti_delhi'"
     ],
-    "row:duplicate_dropped": [
-      "'Telangana | Animal Husbadry & Veterinary Department(PVC) ALOOR' -> ''",
-      "'Telangana | Animal Husbadry & Veterinary Department(PVC) Dharoor' -> ''",
-      "'Telangana | Department of Co-operation' -> ''",
-      "'Telangana | Ground Water Department,Bhadradri Kothagudem' -> ''",
-      "'Telangana | Labour employment Training &Factories Department, Kothagudem' -> ''"
+    "row:flat_key_disambiguated": [
+      "'Telangana | Animal Husbadry & Veterinary Department(PVC) ALOOR | source row 2742' -> 'occurrence 2'",
+      "'Telangana | Animal Husbadry & Veterinary Department(PVC) Dharoor | source row 2820' -> 'occurrence 2'",
+      "'Telangana | Department of Co-operation | source row 3675' -> 'occurrence 2'",
+      "'Telangana | Ground Water Department,Bhadradri Kothagudem | source row 3951' -> 'occurrence 2'",
+      "'Telangana | Labour employment Training &Factories Department, Kothagudem | source row 4252' -> 'occurrence 2'"
+    ],
+    "row:state_replaced_by_scraper": [
+      "'Tamil Nadu: 17417 flat rows' -> '17417 portal nodes'"
     ],
     "state:alias": [
       "'Kanataka' -> 'Karnataka'",

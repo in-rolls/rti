@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import csv
+from collections import Counter, defaultdict
+from pathlib import Path
 
 from rti import sample
 from rti.config import load_batch
@@ -104,3 +106,59 @@ def test_a_second_batch_does_not_reuse_identifiers(sampled):
     assert len({r["application_id"] for r in rows}) == len(rows), "identifiers collided"
     second = {r["application_id"] for r in rows if r["batch_id"] == "test_batch_2"}
     assert not (first & second)
+
+
+def test_committed_initial_batch_matches_the_manuscript():
+    import yaml
+
+    root = Path(__file__).resolve().parents[1]
+    cfg = yaml.safe_load((root / "config" / "batch.yaml").read_text(encoding="utf-8"))
+    frame = sample.load_frame(root / "data" / "frame.csv")
+    rows = sample.draw_initial_batch(cfg, frame)
+
+    assert len(rows) == 1000
+    assert len({row["authority_id"] for row in rows}) == 1000
+    assert {row["state"] for row in rows} == {"Tamil Nadu"}
+    assert Counter(row["tier"] for row in rows) == {
+        "Department": 40,
+        "Head of Department": 136,
+        "Sub Office": 824,
+    }
+    assert Counter(row["treatment"] for row in rows) == {
+        "plain": 700,
+        "legal_salience": 300,
+    }
+    assert Counter(row["assigned_ra"] for row in rows) == {
+        "RA1": 250,
+        "RA2": 250,
+        "RA3": 250,
+        "RA4": 250,
+    }
+    assert len({row["tree_department"] for row in rows}) == 40
+    assert rows[0]["application_id"] == "TN-026"
+    assert rows[-1]["application_id"] == "TN-1025"
+
+    for ra in cfg["research_assistants"]:
+        ra_rows = [row for row in rows if row["assigned_ra"] == ra]
+        assert Counter(row["treatment"] for row in ra_rows) == {
+            "plain": 175,
+            "legal_salience": 75,
+        }
+
+    by_stratum = defaultdict(Counter)
+    for row in rows:
+        by_stratum[(row["tree_department"], row["tier"], row["treatment"])][row["assigned_ra"]] += 1
+    for counts in by_stratum.values():
+        all_ra_counts = [counts[ra] for ra in cfg["research_assistants"]]
+        assert max(all_ra_counts) - min(all_ra_counts) <= 1
+
+
+def test_initial_batch_is_independent_of_frame_row_order():
+    import yaml
+
+    root = Path(__file__).resolve().parents[1]
+    cfg = yaml.safe_load((root / "config" / "batch.yaml").read_text(encoding="utf-8"))
+    frame = sample.load_frame(root / "data" / "frame.csv")
+    forward = sample.draw_initial_batch(cfg, frame)
+    reversed_rows = sample.draw_initial_batch(cfg, list(reversed(frame)))
+    assert forward == reversed_rows

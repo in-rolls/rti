@@ -20,7 +20,7 @@ someone sorts a column and quietly destroys the row alignment.
 
 It also removes typing. Both forms open with a dropdown of that batch's
 application ids, so nobody transcribes an identifier. The filer's name, address,
-and email are never asked for; they come from `config/filer.yaml`. Due dates are
+and email are never asked for; they come from `config/private/filers.yaml`. Due dates are
 never asked for; they are computed from the filing date and the state's rules.
 
 ## Form 1 — File an application

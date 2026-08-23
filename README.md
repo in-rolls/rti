@@ -1,13 +1,13 @@
 # RTI audit pipeline
 
-Sample public authorities from a 23,140-office frame, generate a courteous RTI
+Sample public authorities from a 23,167-office frame, generate a courteous RTI
 application for each in English and the local language, file it, and track what
 comes back — reproducibly, and in a form a research assistant can keep current
 from a phone.
 
 ```
 scrape ──► frame ──► sample ──► render ──► file ──► monitor
-portal     23,140    seeded     bilingual   RA on   two Google
+portal     23,167    seeded     assigned    RA on   two Google
 by state   offices   draw       letters     portal  Forms
                         │                              │
                         └──────────► 3 tables ◄─────────┘
@@ -48,7 +48,10 @@ record, phrased "as recorded", so refusing it as a demand to create or collate
 new information under s.2(f) or s.2(j) does not work. None names an individual,
 which keeps the amended s.8(1)(j) out of play.
 
-**Languages.** English, Hindi, Tamil, Telugu, Kannada, and Marathi. Each
+Wave 1 uses the single English instrument frozen in `ms/ms.tex`. Its legal-
+salience treatment inserts only the pre-specified Section 7(1)/20 paragraph;
+the remaining text is byte-for-byte identical to the plain arm. The older
+robustness-wave templates support English, Hindi, Tamil, Telugu, Kannada, and Marathi. Each
 application renders as one file: the local-language letter first, because that
 is what gets pasted into the portal, with an English copy below it so anyone
 reviewing the batch can read what was sent.
@@ -130,7 +133,7 @@ sequence is the data.
 Nobody types an identifier: `application_id` is short and readable (`KA-014`,
 matching the convention already in the evidence log) and is always picked from a
 list. Nobody types the filer's name or address either; those come from
-`config/private/filer.yaml`. Due dates are computed, never entered.
+`config/private/filers.yaml`. Due dates are computed, never entered.
 
 `docs/ra_handbook.md` is the page to hand an RA.
 
@@ -152,15 +155,24 @@ list. Nobody types the filer's name or address either; those come from
 
 `rti-build-frame` turns the raw sources into `data/frame.csv` and writes every
 change it made to `data/frame_provenance.json`. Raw files are never modified.
-The current run corrects 1,699 rows misspelling Karnataka as `Kanataka` (which
-had been silently sending Karnataka English letters), repairs three damaged
-department names, normalises six portal identifiers, and drops 27 exact
-duplicates.
+The current run corrects 1,699 rows misspelling Karnataka as `Kanataka`, repairs
+damaged text, and normalises six portal identifiers. It preserves all 23,167
+source rows. Tamil Nadu is keyed by its 17,417 portal `node_id` values; the 27
+collisions in the flat fields (16 Tamil Nadu and 11 Telangana) are no longer
+collapsed.
 
 Scrapers are stage zero of this same pipeline: a state's portal becomes a
-universe of offices, which becomes part of the frame. Tamil Nadu's 17,401 rows
-come from `src/rti/scrapers/tamil_nadu/`; the other five states were assembled
-by hand.
+universe of offices, which becomes part of the frame. Tamil Nadu's 17,417-row
+tree comes from `src/rti/scrapers/tamil_nadu/`; the other five states remain
+flat portal-derived lists until their crawls are added. See
+[`docs/frame.md`](docs/frame.md) for the frame dictionary and join contract.
+
+The frozen initial draw is batch `b2026q3_02` with seed `20260817`. It uses only
+the crawled Tamil Nadu universe, takes every department node, samples up to four
+Head-of-Department and twenty sub-office nodes per department, refills quota
+shortfalls from pooled unsampled sub-offices, assigns exactly 700 plain and 300
+legal-salience letters within department-by-tier blocks, and gives RA1--RA4
+exactly 250 applications each (175 plain and 75 legal-salience).
 
 `topics.strategy: by_category` does not currently work. `Category` is empty on
 88.6% of the frame and the values it does carry are administrative types
@@ -195,7 +207,7 @@ capture. The pipeline ends at text to paste and a sheet to work through.
 
 ```
 config/          batch.yaml, state_rules.yaml, filer.example.yaml
-  private/       filer.yaml, pseudonyms.yaml          GITIGNORED
+  private/       filers.yaml, pseudonyms.yaml         GITIGNORED
 data/
   raw/           sources, never modified
   frame.csv      generated, with frame_provenance.json

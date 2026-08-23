@@ -1,0 +1,22 @@
+# Copy to config/private/filers.yaml and replace every placeholder before filing.
+filers:
+  RA1:
+    name: "[RA1 NAME]"
+    address: "[RA1 POSTAL ADDRESS]"
+    phone: "[RA1 PHONE]"
+    email: "[RA1 EMAIL]"
+  RA2:
+    name: "[RA2 NAME]"
+    address: "[RA2 POSTAL ADDRESS]"
+    phone: "[RA2 PHONE]"
+    email: "[RA2 EMAIL]"
+  RA3:
+    name: "[RA3 NAME]"
+    address: "[RA3 POSTAL ADDRESS]"
+    phone: "[RA3 PHONE]"
+    email: "[RA3 EMAIL]"
+  RA4:
+    name: "[RA4 NAME]"
+    address: "[RA4 POSTAL ADDRESS]"
+    phone: "[RA4 PHONE]"
+    email: "[RA4 EMAIL]"

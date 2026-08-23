@@ -25,6 +25,13 @@ AUTHORITY_COLUMNS = (
     "state",
     "state_code",
     "department",
+    "office_name",
+    "tree_department",
+    "node_id",
+    "parent_id",
+    "level",
+    "tier",
+    "path",
     "district",
     "block",
     "portal",
@@ -44,6 +51,9 @@ APPLICATION_COLUMNS = (
     "language",
     "channel",
     "template_version",
+    "treatment",
+    "assigned_ra",
+    "randomization_stratum",
     # Filled by `rti-load` from the filing form. Blank means nobody has
     # reported on this application yet, which is itself a state worth seeing.
     "filing_outcome",
@@ -116,7 +126,12 @@ def read_table(name: str) -> list[dict]:
 def _write_csv(path: Path, columns: tuple[str, ...], rows: list[dict]) -> Path:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(columns), extrasaction="ignore")
+        w = csv.DictWriter(
+            f,
+            fieldnames=list(columns),
+            extrasaction="ignore",
+            lineterminator="\n",
+        )
         w.writeheader()
         for row in rows:
             w.writerow({c: row.get(c, "") for c in columns})

@@ -5,7 +5,16 @@ from __future__ import annotations
 import csv
 import json
 
-from rti.frame import Provenance, build, canonical_portal, canonical_state, clean_text
+from rti.frame import (
+    Provenance,
+    build,
+    canonical_portal,
+    canonical_state,
+    clean_text,
+    load_classified,
+    load_scraper_universe,
+    replace_state_with_scraper,
+)
 
 RAW_HEADER = [
     "State",
@@ -113,7 +122,7 @@ def test_text_defects_are_repaired_and_logged():
     assert prov.counts["department:wrapping_quotes"] == 1
 
 
-def test_build_repairs_deduplicates_and_reports(tmp_path, monkeypatch):
+def test_build_repairs_and_preserves_colliding_flat_rows(tmp_path, monkeypatch):
     monkeypatch.setenv("RTI_ROOT", str(tmp_path))
     raw = _write_raw(tmp_path)
     out = tmp_path / "frame.csv"
@@ -123,9 +132,10 @@ def test_build_repairs_deduplicates_and_reports(tmp_path, monkeypatch):
     assert "Kanataka" not in states
     assert "Karnataka" in states
 
-    assert len(rows) == 3, "the duplicated row should have been dropped"
-    assert provenance["changes"]["row:duplicate_dropped"] == 1
-    assert provenance["summary"]["n_relevant"] == 1
+    assert len(rows) == 4, "a flat list cannot prove that identical labels are one office"
+    assert len({row["authority_id"] for row in rows}) == 4
+    assert provenance["changes"]["row:flat_key_disambiguated"] == 1
+    assert provenance["summary"]["n_relevant"] == 2
 
     # Provenance must be serialisable; it is committed alongside the frame.
     json.dumps(provenance)
@@ -137,3 +147,65 @@ def test_raw_file_is_never_modified(tmp_path, monkeypatch):
     before = raw.read_bytes()
     build([raw], tmp_path / "frame.csv")
     assert raw.read_bytes() == before
+
+
+def test_scraper_tree_replaces_flat_state_and_uses_node_ids(tmp_path, monkeypatch):
+    monkeypatch.setenv("RTI_ROOT", str(tmp_path))
+    raw = tmp_path / "raw.csv"
+    with open(raw, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(RAW_HEADER)
+        w.writerow(
+            ["Tamil Nadu", "Same office", "TN portal", "Chennai", "", 1, "School", "", "", "", ""]
+        )
+        w.writerow(
+            ["Tamil Nadu", "Same office", "TN portal", "Chennai", "", 1, "School", "", "", "", ""]
+        )
+        w.writerow(RAW_ROWS[0])
+
+    universe = tmp_path / "universe.csv"
+    fields = [
+        "node_id",
+        "level",
+        "level_label",
+        "name",
+        "address",
+        "is_leaf",
+        "has_children",
+        "parent_id",
+        "parent_name",
+        "department",
+        "path",
+        "reservation_relevant",
+    ]
+    with open(universe, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        for node_id in ("node-a", "node-b"):
+            w.writerow(
+                {
+                    "node_id": node_id,
+                    "level": 3,
+                    "level_label": "Sub Office",
+                    "name": "Same office",
+                    "address": f"Address {node_id}",
+                    "is_leaf": "True",
+                    "has_children": 0,
+                    "parent_id": "parent",
+                    "parent_name": "Parent office",
+                    "department": "Top department",
+                    "path": f"Top department > Parent office > {node_id}",
+                    "reservation_relevant": "True",
+                }
+            )
+
+    prov = Provenance()
+    flat = load_classified(raw, prov)
+    tree = load_scraper_universe(universe, "Tamil Nadu", "rti_tamil_nadu", prov)
+    rows = replace_state_with_scraper(flat, tree, "Tamil Nadu", prov)
+
+    tn = [row for row in rows if row["state"] == "Tamil Nadu"]
+    assert {row["authority_id"] for row in tn} == {"TN-node-a", "TN-node-b"}
+    assert {row["node_id"] for row in tn} == {"node-a", "node-b"}
+    assert all(row["tree_department"] == "Top department" for row in tn)
+    assert all(row["category"] == "School" for row in tn)

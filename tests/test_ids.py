@@ -5,6 +5,7 @@ from __future__ import annotations
 from rti.ids import (
     application_id,
     authority_id,
+    crawled_authority_id,
     next_sequence,
     norm,
     parse_application_id,
@@ -22,6 +23,18 @@ def test_authority_id_separates_different_offices():
     belagavi = authority_id("Karnataka", "Zilla Panchayat", "Belagavi", "")
     bidar = authority_id("Karnataka", "Zilla Panchayat", "Bidar", "")
     assert belagavi != bidar
+
+
+def test_flat_collisions_are_disambiguated_without_changing_the_first_id():
+    first = authority_id("Telangana", "Same office", "Same district", "")
+    explicit_first = authority_id("Telangana", "Same office", "Same district", "", occurrence=1)
+    second = authority_id("Telangana", "Same office", "Same district", "", occurrence=2)
+    assert first == explicit_first
+    assert second != first
+
+
+def test_crawled_authority_id_is_the_namespaced_node_id():
+    assert crawled_authority_id("Tamil Nadu", "ABC123") == "TN-abc123"
 
 
 def test_state_codes_match_the_existing_log():

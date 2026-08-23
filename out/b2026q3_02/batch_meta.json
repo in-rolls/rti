@@ -1,0 +1,88 @@
+{
+  "batch_id": "b2026q3_02",
+  "seed": 20260817,
+  "frame_path": "data/frame.csv",
+  "frame_sha256": "c5614a10c30d83d1f56a9e4509353d333d04cd6554e8c983d34e75b42db41364",
+  "eligible_frame_n": 17417,
+  "eligible_frame_sha256": "8b73b0e7cd2a36e796a7b9047fde0fb9c6565d67cbbdffc37d4b92b1ccda6c3b",
+  "assignments_sha256": "78365cc10cb48f57dd434f72095773ff829eab2f4ca4d4edd2e4a5dc1537c7d9",
+  "template_version": "wave1-rti-information-v1",
+  "n_applications": 1000,
+  "realized": {
+    "by_tier": {
+      "Department": 40,
+      "Head of Department": 136,
+      "Sub Office": 824
+    },
+    "by_treatment": {
+      "legal_salience": 300,
+      "plain": 700
+    },
+    "by_research_assistant": {
+      "RA1": 250,
+      "RA2": 250,
+      "RA3": 250,
+      "RA4": 250
+    },
+    "by_research_assistant_and_treatment": {
+      "RA1": {
+        "legal_salience": 75,
+        "plain": 175
+      },
+      "RA2": {
+        "legal_salience": 75,
+        "plain": 175
+      },
+      "RA3": {
+        "legal_salience": 75,
+        "plain": 175
+      },
+      "RA4": {
+        "legal_salience": 75,
+        "plain": 175
+      }
+    },
+    "n_departments": 40
+  },
+  "config": {
+    "batch_id": "b2026q3_02",
+    "seed": 20260817,
+    "frame_csv": "data/frame.csv",
+    "application_sequence_start": 26,
+    "sampling": {
+      "strategy": "department_tier_quotas",
+      "state": "Tamil Nadu",
+      "n": 1000,
+      "department_hq_per_department": 1,
+      "head_of_department_per_department": 4,
+      "sub_office_per_department": 20
+    },
+    "treatments": {
+      "legal_salience": {
+        "n_legal": 300,
+        "n_plain": 700
+      }
+    },
+    "research_assistants": [
+      "RA1",
+      "RA2",
+      "RA3",
+      "RA4"
+    ],
+    "topics": {
+      "strategy": "fixed",
+      "fixed_topic": "rti_meta"
+    },
+    "languages": {
+      "default": "en",
+      "by_state": {
+        "Tamil Nadu": "en"
+      }
+    },
+    "filing": {
+      "reference_period_months": 12,
+      "as_of": "2026-08-22"
+    }
+  },
+  "created_utc": "2026-08-23T06:52:43+00:00"
+}

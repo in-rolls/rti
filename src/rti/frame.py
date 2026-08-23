@@ -16,12 +16,12 @@ import hashlib
 import json
 import re
 import sys
-from collections import Counter
+from collections import Counter, defaultdict, deque
 from datetime import datetime, timezone
 from pathlib import Path
 
 from .config import data_dir, raw_dir, repo_root, scraper_data_dir
-from .ids import authority_id, norm, state_code
+from .ids import authority_id, crawled_authority_id, norm, norm_key, state_code
 
 FRAME_COLUMNS = (
     "authority_id",
@@ -36,6 +36,15 @@ FRAME_COLUMNS = (
     "quota_source",
     "quota_role",
     "confidence",
+    "node_id",
+    "parent_id",
+    "parent_name",
+    "tree_department",
+    "level",
+    "level_label",
+    "path",
+    "is_leaf",
+    "has_children",
     "source",
 )
 
@@ -144,7 +153,8 @@ def load_classified(path: Path, prov: Provenance) -> list[dict]:
     with open(path, newline="", encoding="utf-8-sig") as f:
         raw = list(csv.DictReader(f))
     rows = []
-    for r in raw:
+    occurrences: Counter[tuple[str, str, str, str]] = Counter()
+    for source_row, r in enumerate(raw, start=2):
         state = canonical_state(r.get("State", ""), prov)
         department = clean_text(r.get("Department"), prov, "department")
         district = _blankish(clean_text(r.get("District"), prov, "district"))
@@ -152,9 +162,20 @@ def load_classified(path: Path, prov: Provenance) -> list[dict]:
         if not state or not department:
             prov.record("row:dropped_missing_key", str(r)[:120], "")
             continue
+        flat_key = tuple(norm_key(v) for v in (state, department, district, block))
+        occurrences[flat_key] += 1
+        occurrence = occurrences[flat_key]
+        if occurrence > 1:
+            prov.record(
+                "row:flat_key_disambiguated",
+                f"{state} | {department} | source row {source_row}",
+                f"occurrence {occurrence}",
+            )
         rows.append(
             {
-                "authority_id": authority_id(state, department, district, block),
+                "authority_id": authority_id(
+                    state, department, district, block, occurrence=occurrence
+                ),
                 "state": state,
                 "state_code": state_code(state),
                 "department": department,
@@ -166,6 +187,15 @@ def load_classified(path: Path, prov: Provenance) -> list[dict]:
                 "quota_source": norm(r.get("Quota_Source", "")),
                 "quota_role": norm(r.get("Quota_Role", "")),
                 "confidence": norm(r.get("Confidence", "")),
+                "node_id": "",
+                "parent_id": "",
+                "parent_name": "",
+                "tree_department": "",
+                "level": "",
+                "level_label": "",
+                "path": "",
+                "is_leaf": "",
+                "has_children": "",
                 "source": path.name,
             }
         )
@@ -182,51 +212,110 @@ def load_scraper_universe(path: Path, state: str, portal: str, prov: Provenance)
         raw = list(csv.DictReader(f))
     rows = []
     for r in raw:
-        department = clean_text(r.get("name"), prov, "department")
-        if not department:
+        office_name = clean_text(r.get("name"), prov, "department")
+        node_id = norm(r.get("node_id", ""))
+        if not office_name or not node_id:
             continue
-        district = _blankish(clean_text(r.get("parent_name"), prov, "district"))
         rows.append(
             {
-                "authority_id": authority_id(state, department, district, ""),
+                "authority_id": crawled_authority_id(state, node_id),
                 "state": state,
                 "state_code": state_code(state),
-                "department": department,
-                "district": district,
+                "department": office_name,
+                "district": "",
                 "block": "",
                 "portal": portal,
                 "relevant": 1 if norm(r.get("reservation_relevant", "")).lower() == "true" else 0,
-                "category": clean_text(r.get("level_label"), prov, "category"),
+                "category": "",
                 "quota_source": "",
                 "quota_role": "",
                 "confidence": "",
+                "node_id": node_id,
+                "parent_id": norm(r.get("parent_id", "")),
+                "parent_name": clean_text(r.get("parent_name"), prov, "parent_name"),
+                "tree_department": clean_text(r.get("department"), prov, "tree_department"),
+                "level": norm(r.get("level", "")),
+                "level_label": clean_text(r.get("level_label"), prov, "level_label"),
+                "path": clean_text(r.get("path"), prov, "path"),
+                "is_leaf": norm(r.get("is_leaf", "")),
+                "has_children": norm(r.get("has_children", "")),
                 "source": path.name,
             }
         )
     return rows
 
 
+def replace_state_with_scraper(
+    rows: list[dict], scraper_rows: list[dict], state: str, prov: Provenance
+) -> list[dict]:
+    """Replace a flat state slice with its portal crawl without losing coding.
+
+    The classified national file is a flattened export of the same Tamil Nadu
+    crawl. Office names have the same multiset but not the same row order, so
+    classification fields are joined by normalized name and occurrence. The
+    tree remains the left table: every portal node survives exactly once.
+    """
+    flat = [row for row in rows if row["state"] == state]
+    rest = [row for row in rows if row["state"] != state]
+    by_name: dict[str, deque[dict]] = defaultdict(deque)
+    for row in flat:
+        by_name[norm_key(row["department"])].append(row)
+
+    unmatched = []
+    for row in scraper_rows:
+        candidates = by_name[norm_key(row["department"])]
+        if not candidates:
+            unmatched.append(row["department"])
+            continue
+        classified = candidates.popleft()
+        for field in ("district", "block", "category", "quota_source", "quota_role", "confidence"):
+            row[field] = classified[field]
+
+    unused = [row["department"] for candidates in by_name.values() for row in candidates]
+    if unmatched or unused:
+        raise ValueError(
+            f"{state} scraper/classified join is not 1:1: "
+            f"{len(unmatched)} unmatched scraper rows, {len(unused)} unused classified rows"
+        )
+    prov.record(
+        "row:state_replaced_by_scraper",
+        f"{state}: {len(flat)} flat rows",
+        f"{len(scraper_rows)} portal nodes",
+    )
+    return rest + scraper_rows
+
+
 def dedupe(rows: list[dict], prov: Provenance) -> list[dict]:
-    """One row per office. Later sources win, so a re-scrape replaces a state."""
+    """Assert the declared office identifiers are unique; never collapse rows."""
     by_id: dict[str, dict] = {}
     for row in rows:
         key = row["authority_id"]
-        if key in by_id and by_id[key]["source"] == row["source"]:
-            prov.record("row:duplicate_dropped", f'{row["state"]} | {row["department"]}', "")
-            continue
         if key in by_id:
-            prov.record("row:replaced_by_later_source", by_id[key]["source"], row["source"])
+            raise ValueError(
+                f"authority_id collision {key}: "
+                f"{by_id[key]['state']} | {by_id[key]['department']} and "
+                f"{row['state']} | {row['department']}"
+            )
         by_id[key] = row
     return sorted(
         by_id.values(),
-        key=lambda r: (r["state"], r["department"], r["district"], r["block"]),
+        key=lambda r: (
+            r["state"],
+            r["tree_department"],
+            int(r["level"] or 999),
+            r["department"],
+            r["node_id"],
+            r["district"],
+            r["block"],
+            r["authority_id"],
+        ),
     )
 
 
 def write_frame(rows: list[dict], path: Path) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(FRAME_COLUMNS))
+        w = csv.DictWriter(f, fieldnames=list(FRAME_COLUMNS), lineterminator="\n")
         w.writeheader()
         w.writerows(rows)
 
@@ -243,7 +332,11 @@ def summarise(rows: list[dict]) -> dict:
     }
 
 
-def build(sources: list[Path], out_path: Path) -> tuple[list[dict], dict]:
+def build(
+    sources: list[Path],
+    out_path: Path,
+    scraper_sources: list[tuple[Path, str, str]] | None = None,
+) -> tuple[list[dict], dict]:
     prov = Provenance()
     rows: list[dict] = []
     source_records = []
@@ -251,6 +344,14 @@ def build(sources: list[Path], out_path: Path) -> tuple[list[dict], dict]:
         if not path.is_file():
             sys.exit(f"source not found: {path}")
         rows.extend(load_classified(path, prov))
+        source_records.append(
+            {"path": str(path.relative_to(repo_root())), "sha256": sha256_file(path)}
+        )
+    for path, state, portal in scraper_sources or []:
+        if not path.is_file():
+            sys.exit(f"source not found: {path}")
+        scraper_rows = load_scraper_universe(path, state, portal, prov)
+        rows = replace_state_with_scraper(rows, scraper_rows, state, prov)
         source_records.append(
             {"path": str(path.relative_to(repo_root())), "sha256": sha256_file(path)}
         )
@@ -278,11 +379,20 @@ def main(argv: list[str] | None = None) -> None:
         help="raw classified CSV; repeatable (default: the national classified frame)",
     )
     ap.add_argument("--out", type=Path, default=None, help="default: data/frame.csv")
+    ap.add_argument(
+        "--without-tamil-nadu-tree",
+        action="store_true",
+        help="do not replace the flat Tamil Nadu slice with its committed crawl",
+    )
     args = ap.parse_args(argv)
 
     sources = args.source or [raw_dir() / "state_department_classified_FINAL.csv"]
     out_path = args.out or data_dir() / "frame.csv"
-    rows, provenance = build(sources, out_path)
+    scraper_sources = []
+    tn_tree = scraper_data_dir("tamil_nadu") / "universe_categorized.csv"
+    if not args.without_tamil_nadu_tree and tn_tree.is_file():
+        scraper_sources.append((tn_tree, "Tamil Nadu", "rti_tamil_nadu"))
+    rows, provenance = build(sources, out_path, scraper_sources)
 
     prov_path = data_dir() / "frame_provenance.json"
     with open(prov_path, "w", encoding="utf-8") as f:
@@ -298,7 +408,14 @@ def main(argv: list[str] | None = None) -> None:
 
 
 # Referenced by the docs so a re-scraped state can be merged back in.
-__all__ = ["build", "load_classified", "load_scraper_universe", "scraper_data_dir", "FRAME_COLUMNS"]
+__all__ = [
+    "build",
+    "load_classified",
+    "load_scraper_universe",
+    "replace_state_with_scraper",
+    "scraper_data_dir",
+    "FRAME_COLUMNS",
+]
 
 if __name__ == "__main__":
     main()

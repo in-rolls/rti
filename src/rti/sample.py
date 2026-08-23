@@ -15,9 +15,11 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import random
 import sys
+from collections import Counter, defaultdict
 from datetime import datetime, timezone
 
 from .config import config_arg, load_batch, out_dir, repo_root
@@ -27,6 +29,14 @@ from .ids import application_id, next_sequence, norm, state_code
 from .tables import blank_row, read_table, write_table
 
 TEMPLATE_VERSION = "v2"
+INITIAL_BATCH_TEMPLATE_VERSION = "wave1-rti-information-v1"
+
+
+def hash_frame_rows(rows: list[dict]) -> str:
+    """Hash a canonical projection of frame rows, independent of CSV order."""
+    projected = [{column: row.get(column, "") for column in FRAME_COLUMNS} for row in rows]
+    payload = json.dumps(projected, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
 
 def load_frame(path) -> list[dict]:
@@ -40,6 +50,231 @@ def load_frame(path) -> list[dict]:
     for r in rows:
         r["relevant"] = int(norm(r["relevant"]) or 0)
     return rows
+
+
+def stable_office_key(row: dict) -> tuple:
+    """Stable order for all sampling and assignment operations."""
+    try:
+        level = int(norm(row.get("level", "")) or 999)
+    except ValueError:
+        level = 999
+    return (
+        norm(row.get("tree_department", "")),
+        level,
+        norm(row.get("department", "")),
+        norm(row.get("node_id", "")),
+        row["authority_id"],
+    )
+
+
+def eligible_initial_frame(cfg: dict, frame: list[dict]) -> list[dict]:
+    """The crawled state universe eligible for the manuscript's first draw."""
+    state = cfg["sampling"]["state"]
+    rows = [row for row in frame if row["state"] == state and norm(row.get("node_id", ""))]
+    if not rows:
+        sys.exit(f"no crawled portal nodes for {state!r} in the frame")
+    required = ("tree_department", "level", "level_label", "path")
+    incomplete = [
+        row["authority_id"] for row in rows if any(not norm(row.get(k, "")) for k in required)
+    ]
+    if incomplete:
+        sys.exit(
+            f"{len(incomplete)} eligible rows lack tree columns; rebuild the frame "
+            "from the portal universe"
+        )
+    return sorted(rows, key=stable_office_key)
+
+
+def _sample_up_to(rng: random.Random, rows: list[dict], n: int) -> list[dict]:
+    rows = sorted(rows, key=stable_office_key)
+    if len(rows) <= n:
+        return rows
+    return rng.sample(rows, n)
+
+
+def _assign_research_assistants(
+    rng: random.Random,
+    rows: list[dict],
+    treatment_by_authority: dict[str, str],
+    research_assistants: list[str],
+) -> dict[str, str]:
+    """Shuffle within department x tier x treatment and assign round-robin.
+
+    A separate pointer per treatment gives every RA the same treatment totals
+    when each arm is divisible by the number of RAs. Within every operational
+    stratum, RA counts differ by at most one.
+    """
+    if not research_assistants:
+        raise ValueError("at least one research assistant is required")
+    strata: dict[tuple[str, str, str], list[dict]] = defaultdict(list)
+    for row in rows:
+        treatment = treatment_by_authority[row["authority_id"]]
+        strata[(row["tree_department"], row["level_label"], treatment)].append(row)
+
+    assigned: dict[str, str] = {}
+    pointers: Counter[str] = Counter()
+    for stratum in sorted(strata):
+        group = sorted(strata[stratum], key=stable_office_key)
+        rng.shuffle(group)
+        treatment = stratum[2]
+        for row in group:
+            pointer = pointers[treatment]
+            assigned[row["authority_id"]] = research_assistants[pointer % len(research_assistants)]
+            pointers[treatment] += 1
+    return assigned
+
+
+def _assign_treatment(rng: random.Random, rows: list[dict], legal_n: int) -> dict[str, str]:
+    """Block the exact legal allocation by department x tier.
+
+    Integer arm counts use Hamilton allocation: floor each stratum's share,
+    then give the remaining slots to the largest fractional remainders. The
+    offices receiving those slots are sampled within stratum.
+    """
+    strata: dict[tuple[str, str], list[dict]] = defaultdict(list)
+    for row in rows:
+        strata[(row["tree_department"], row["level_label"])].append(row)
+
+    total = len(rows)
+    legal_by_stratum = {stratum: len(group) * legal_n // total for stratum, group in strata.items()}
+    remaining = legal_n - sum(legal_by_stratum.values())
+    remainder_order = sorted(
+        strata,
+        key=lambda stratum: (-(len(strata[stratum]) * legal_n % total), stratum),
+    )
+    for stratum in remainder_order[:remaining]:
+        legal_by_stratum[stratum] += 1
+
+    treatment = {row["authority_id"]: "plain" for row in rows}
+    for stratum in sorted(strata):
+        group = sorted(strata[stratum], key=stable_office_key)
+        for row in rng.sample(group, legal_by_stratum[stratum]):
+            treatment[row["authority_id"]] = "legal_salience"
+    return treatment
+
+
+def _initial_batch_record(
+    cfg: dict,
+    row: dict,
+    sequence: int,
+    treatment: str,
+    research_assistant: str,
+) -> dict:
+    record = blank_row("application")
+    record.update(
+        {
+            "application_id": application_id(row["state_code"], sequence),
+            "batch_id": cfg["batch_id"],
+            "authority_id": row["authority_id"],
+            "state": row["state"],
+            "department": row["department"],
+            "office_name": row["department"],
+            "tree_department": row["tree_department"],
+            "node_id": row["node_id"],
+            "parent_id": row["parent_id"],
+            "level": row["level"],
+            "tier": row["level_label"],
+            "path": row["path"],
+            "portal": row["portal"],
+            "topic": cfg["topics"]["fixed_topic"],
+            "language": cfg["languages"]["by_state"].get(row["state"], cfg["languages"]["default"]),
+            "channel": "portal",
+            "template_version": INITIAL_BATCH_TEMPLATE_VERSION,
+            "treatment": treatment,
+            "assigned_ra": research_assistant,
+            "randomization_stratum": f"{row['tree_department']} | {row['level_label']}",
+        }
+    )
+    return record
+
+
+def draw_initial_batch(
+    cfg: dict, frame: list[dict], existing_ids: set[str] | None = None
+) -> list[dict]:
+    """Implement the manuscript's department-stratified initial-batch draw."""
+    sampling = cfg["sampling"]
+    rng = random.Random(cfg["seed"])
+    eligible = eligible_initial_frame(cfg, frame)
+    departments = sorted({row["tree_department"] for row in eligible})
+    by_department: dict[str, list[dict]] = defaultdict(list)
+    for row in eligible:
+        by_department[row["tree_department"]].append(row)
+
+    selected: list[dict] = []
+    hq_n = int(sampling["department_hq_per_department"])
+    hod_n = int(sampling["head_of_department_per_department"])
+    sub_n = int(sampling["sub_office_per_department"])
+    for department in departments:
+        rows = by_department[department]
+        hq = [row for row in rows if row["level_label"] == "Department"]
+        if len(hq) != hq_n:
+            raise ValueError(
+                f"{department!r} has {len(hq)} Department nodes; expected exactly {hq_n}"
+            )
+        selected.extend(sorted(hq, key=stable_office_key))
+        selected.extend(
+            _sample_up_to(
+                rng,
+                [row for row in rows if row["level_label"] == "Head of Department"],
+                hod_n,
+            )
+        )
+        selected.extend(
+            _sample_up_to(
+                rng,
+                [row for row in rows if row["level_label"] == "Sub Office"],
+                sub_n,
+            )
+        )
+
+    target_n = int(sampling["n"])
+    if len(selected) > target_n:
+        raise ValueError(f"tier quotas select {len(selected)} offices, above target N={target_n}")
+    selected_ids = {row["authority_id"] for row in selected}
+    refill_pool = sorted(
+        (
+            row
+            for row in eligible
+            if row["level_label"] == "Sub Office" and row["authority_id"] not in selected_ids
+        ),
+        key=stable_office_key,
+    )
+    deficit = target_n - len(selected)
+    if deficit > len(refill_pool):
+        raise ValueError(f"cannot refill deficit of {deficit} from {len(refill_pool)} sub-offices")
+    selected.extend(rng.sample(refill_pool, deficit))
+    selected = sorted(selected, key=stable_office_key)
+
+    treatment_cfg = cfg["treatments"]["legal_salience"]
+    legal_n = int(treatment_cfg["n_legal"])
+    plain_n = int(treatment_cfg["n_plain"])
+    if legal_n + plain_n != len(selected):
+        raise ValueError(
+            f"treatment allocation is {plain_n} plain + {legal_n} legal, " f"but N={len(selected)}"
+        )
+    if legal_n > len(selected):
+        raise ValueError(f"legal-salience allocation {legal_n} exceeds N={len(selected)}")
+    treatment_by_authority = _assign_treatment(rng, selected, legal_n)
+    ra_by_authority = _assign_research_assistants(
+        rng, selected, treatment_by_authority, cfg["research_assistants"]
+    )
+
+    start = int(cfg["application_sequence_start"])
+    sequences = range(start, start + len(selected))
+    issued = existing_ids or set()
+    records = []
+    for row, sequence in zip(selected, sequences, strict=True):
+        treatment = treatment_by_authority[row["authority_id"]]
+        record = _initial_batch_record(
+            cfg, row, sequence, treatment, ra_by_authority[row["authority_id"]]
+        )
+        if record["application_id"] in issued:
+            raise ValueError(
+                f"configured application sequence collides with existing id "
+                f"{record['application_id']}"
+            )
+        records.append(record)
+    return records
 
 
 def dedupe_one_per_department(rows: list[dict]) -> list[dict]:
@@ -107,6 +342,9 @@ def draw(
     office to the identifier THIS batch previously gave it, so re-running the
     sampler for a batch reproduces it rather than renumbering it.
     """
+    if cfg["sampling"].get("strategy") == "department_tier_quotas":
+        return draw_initial_batch(cfg, frame, existing_ids)
+
     existing_ids = existing_ids or set()
     already_in_batch = already_in_batch or {}
     rng = random.Random(cfg["seed"])
@@ -163,7 +401,7 @@ def draw(
 def authority_rows(applications: list[dict], frame: list[dict], batch_id: str) -> list[dict]:
     """The offices this batch touched, copied out of the frame.
 
-    The frame has 23,140 rows and most will never be written to. The authority
+    The frame has 23,167 rows and most will never be written to. The authority
     table holds only what a batch actually drew, so it stays small enough to read.
     """
     by_id = {r["authority_id"]: r for r in frame}
@@ -174,6 +412,8 @@ def authority_rows(applications: list[dict], frame: list[dict], batch_id: str) -
             continue
         row = blank_row("authority")
         row.update({k: src.get(k, "") for k in row if k in src})
+        row["office_name"] = src.get("department", "")
+        row["tree_department"] = src.get("tree_department", "")
         row["first_sampled_batch"] = batch_id
         rows.append(row)
     return rows
@@ -202,7 +442,7 @@ def main(argv: list[str] | None = None) -> None:
     args = ap.parse_args(argv)
 
     cfg = load_batch(args.config)
-    for topic in cfg["topics"]["weights"]:
+    for topic in cfg["topics"].get("weights", {}):
         if topic not in TOPICS:
             sys.exit(f"unknown topic {topic!r} in config; expected one of {list(TOPICS)}")
 
@@ -231,7 +471,7 @@ def main(argv: list[str] | None = None) -> None:
     outdir.mkdir(parents=True, exist_ok=True)
     assignments = outdir / "assignments.csv"
     with open(assignments, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=list(applications[0].keys()))
+        w = csv.DictWriter(f, fieldnames=list(applications[0].keys()), lineterminator="\n")
         w.writeheader()
         w.writerows(applications)
 
@@ -241,8 +481,41 @@ def main(argv: list[str] | None = None) -> None:
         "seed": cfg["seed"],
         "frame_path": str(frame_path.relative_to(repo_root())),
         "frame_sha256": sha256_file(frame_path),
-        "template_version": TEMPLATE_VERSION,
+        "eligible_frame_n": (
+            len(eligible_initial_frame(cfg, frame))
+            if cfg["sampling"].get("strategy") == "department_tier_quotas"
+            else len(frame)
+        ),
+        "eligible_frame_sha256": (
+            hash_frame_rows(eligible_initial_frame(cfg, frame))
+            if cfg["sampling"].get("strategy") == "department_tier_quotas"
+            else hash_frame_rows(sorted(frame, key=lambda row: row["authority_id"]))
+        ),
+        "assignments_sha256": sha256_file(assignments),
+        "template_version": applications[0]["template_version"],
         "n_applications": len(applications),
+        "realized": {
+            "by_tier": dict(sorted(Counter(row.get("tier", "") for row in applications).items())),
+            "by_treatment": dict(
+                sorted(Counter(row.get("treatment", "") for row in applications).items())
+            ),
+            "by_research_assistant": dict(
+                sorted(Counter(row.get("assigned_ra", "") for row in applications).items())
+            ),
+            "by_research_assistant_and_treatment": {
+                ra: dict(
+                    sorted(
+                        Counter(
+                            row.get("treatment", "")
+                            for row in applications
+                            if row.get("assigned_ra", "") == ra
+                        ).items()
+                    )
+                )
+                for ra in sorted({row.get("assigned_ra", "") for row in applications})
+            },
+            "n_departments": len({row.get("tree_department", "") for row in applications}),
+        },
         "config": frozen,
         "created_utc": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }
@@ -269,6 +542,10 @@ def main(argv: list[str] | None = None) -> None:
         by_topic[r["topic"]] = by_topic.get(r["topic"], 0) + 1
     print("by state:", dict(sorted(by_state.items())))
     print("by topic:", dict(sorted(by_topic.items())))
+    if cfg["sampling"].get("strategy") == "department_tier_quotas":
+        print("by tier:", meta["realized"]["by_tier"])
+        print("by treatment:", meta["realized"]["by_treatment"])
+        print("by research assistant:", meta["realized"]["by_research_assistant"])
     if args.dry_run:
         print("dry run: data/tables/ not written")
 

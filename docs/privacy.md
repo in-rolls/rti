@@ -9,12 +9,12 @@ data/private/                    real. gitignored.
   rti_filing_evidence_log.csv      the original hand-kept log
   intake_raw/                      Google Form exports
 config/private/                  real. gitignored.
-  filer.yaml                       the filer's name, address, phone, email
+  filers.yaml                      four filers' names, addresses, phones, emails
   pseudonyms.yaml                  real name -> RA-01, and the redact list
 rti.db                           built from the real rows. gitignored.
 
 data/tables/*.csv                redacted. committed.
-config/filer.example.yaml        placeholders. committed.
+config/filers.example.yaml       placeholders. committed.
 ```
 
 ## The boundary is one function
@@ -103,7 +103,7 @@ To push past the hook in a genuine emergency: `git push --no-verify`.
 ```bash
 make install                                   # installs the hook
 mkdir -p config/private data/private/tables
-cp config/filer.example.yaml config/private/filer.yaml   # then fill it in
+cp config/filers.example.yaml config/private/filers.yaml
 ```
 
 Copy `data/private/` and `config/private/pseudonyms.yaml` from the machine that

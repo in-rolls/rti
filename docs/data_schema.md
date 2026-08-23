@@ -40,9 +40,11 @@ One row per office that could be written to. Populated by `rti-sample` from
 `data/frame.csv`, which is itself built from the scrapers and the classified
 state lists.
 
-`authority_id` is a content hash of state, department, district, and block. It
-is stable across rebuilds and independent of row order, and it is never read by
-a person.
+For a crawled state, `authority_id` is the state code plus the portal
+`node_id`; this is the office identity exposed by the portal tree. For an
+uncrawled flat list it is a content hash of state, office name, district, and
+block, with an occurrence discriminator when those fields collide. No source
+row is discarded merely because its display fields match another row.
 
 ## `application`
 
@@ -101,7 +103,8 @@ the standing cost is that somebody has to fill each one, and every enum in it
 needs a coding protocol behind it.
 
 **Config files instead of tables.** `state_rules` is six rows, so it is
-`config/state_rules.yaml`. `filer` is one row, so it is `config/filer.yaml`.
+`config/state_rules.yaml`. The four private filer profiles are in
+`config/private/filers.yaml`.
 Batch metadata is `out/<batch>/batch_meta.json`, and the drawn sample is
 `out/<batch>/assignments.csv`, both committed — which is why folding `assignment`
 into `application` costs nothing.

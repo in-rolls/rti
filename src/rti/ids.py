@@ -50,10 +50,33 @@ def norm_key(s: str | None) -> str:
     return norm(s).lower()
 
 
-def authority_id(state: str, department: str, district: str = "", block: str = "") -> str:
-    """Stable content hash for an office, independent of row order in the frame."""
-    key = "|".join(norm_key(v) for v in (state, department, district, block))
+def authority_id(
+    state: str,
+    department: str,
+    district: str = "",
+    block: str = "",
+    occurrence: int = 1,
+) -> str:
+    """Stable key for an office from a flat source.
+
+    Flat authority lists do not contain a source identifier. ``occurrence``
+    keeps distinct rows when the displayed fields collide; it is intentionally
+    omitted for the first occurrence so identifiers already issued from unique
+    rows remain stable.
+    """
+    fields = [norm_key(v) for v in (state, department, district, block)]
+    if occurrence > 1:
+        fields.append(f"occurrence:{occurrence}")
+    key = "|".join(fields)
     return hashlib.sha256(key.encode("utf-8")).hexdigest()[:12]
+
+
+def crawled_authority_id(state: str, node_id: str) -> str:
+    """Namespaced portal-node key for an authority from a crawled tree."""
+    node_id = norm_key(node_id)
+    if not node_id:
+        raise ValueError("node_id is required for a crawled authority")
+    return f"{state_code(state)}-{node_id}"
 
 
 def state_code(state: str) -> str:
