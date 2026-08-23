@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RTI initial batch · b2026q3_02</title>
+  <style>
+    :root { color-scheme: light; --ink:#17202a; --muted:#5d6b78; --line:#dce3e8; --blue:#1261a0; --bg:#f5f7f9; --card:#fff; }
+    * { box-sizing: border-box; }
+    body { margin:0; color:var(--ink); background:var(--bg); font:15px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    main { max-width:1500px; margin:0 auto; padding:28px 20px 60px; }
+    h1 { margin:0 0 4px; font-size:clamp(1.55rem,3vw,2.35rem); letter-spacing:-.025em; }
+    h2 { margin:0; font-size:1.05rem; }
+    p { margin:.35rem 0; }
+    a { color:var(--blue); }
+    .subtitle { color:var(--muted); margin-bottom:22px; }
+    .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:10px; margin:20px 0; }
+    .card, .panel { background:var(--card); border:1px solid var(--line); border-radius:10px; box-shadow:0 1px 2px #15202b0b; }
+    .card { padding:14px 16px; }
+    .card strong { display:block; font-size:1.5rem; }
+    .card span { color:var(--muted); font-size:.82rem; }
+    .panel { padding:16px; margin-top:16px; }
+    .toolbar { display:flex; flex-wrap:wrap; gap:9px; align-items:end; }
+    label { display:grid; gap:4px; color:var(--muted); font-size:.8rem; font-weight:600; }
+    input, select, button { min-height:38px; border:1px solid #b8c5cf; border-radius:6px; background:#fff; color:var(--ink); padding:7px 10px; font:inherit; }
+    input { min-width:min(360px,80vw); }
+    button, .button { cursor:pointer; color:#fff; background:var(--blue); border-color:var(--blue); text-decoration:none; display:inline-flex; align-items:center; }
+    button.secondary, .button.secondary { background:#fff; color:var(--blue); }
+    .links { display:flex; flex-wrap:wrap; gap:8px; margin-top:13px; }
+    .status { color:var(--muted); margin:14px 0 8px; }
+    .table-wrap { overflow:auto; border:1px solid var(--line); border-radius:8px; }
+    table { width:100%; min-width:1050px; border-collapse:collapse; background:#fff; }
+    th, td { padding:9px 10px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+    th { position:sticky; top:0; z-index:1; background:#eef3f7; font-size:.8rem; white-space:nowrap; }
+    th button { min-height:0; padding:0; border:0; background:none; color:var(--ink); font-weight:700; }
+    td { font-size:.86rem; }
+    tr:last-child td { border-bottom:0; }
+    .pill { display:inline-block; border-radius:999px; padding:2px 8px; font-size:.76rem; white-space:nowrap; }
+    .legal { background:#fff0d8; color:#814b00; }
+    .plain { background:#e8f1fb; color:#164f7f; }
+    .pager { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:12px; }
+    .pager button:disabled { opacity:.45; cursor:not-allowed; }
+    .error { color:#a51d2d; background:#fff0f1; border:1px solid #e6aab0; padding:12px; border-radius:7px; }
+    code { background:#edf1f4; border-radius:4px; padding:1px 4px; }
+    @media (max-width:650px) { main { padding:20px 12px 40px; } .panel { padding:12px; } input { min-width:100%; } .toolbar label:first-child { width:100%; } }
+  </style>
+</head>
+<body>
+<main>
+  <h1>RTI initial batch</h1>
+  <p class="subtitle">Tamil Nadu · batch <code>b2026q3_02</code> · reproducible department × tier draw</p>
+
+  <section class="cards" aria-label="Batch summary">
+    <div class="card"><strong id="n">—</strong><span>assignments</span></div>
+    <div class="card"><strong id="departments">—</strong><span>departments</span></div>
+    <div class="card"><strong id="plain">—</strong><span>plain letters</span></div>
+    <div class="card"><strong id="legal">—</strong><span>legal-salience letters</span></div>
+    <div class="card"><strong id="ras">—</strong><span>research assistants</span></div>
+  </section>
+
+  <section class="panel">
+    <h2>Downloads</h2>
+    <div class="links">
+      <a class="button" href="data/assignments.csv" download>Download master assignments CSV</a>
+      <a class="button secondary" href="data/batch_meta.json" download>Download batch metadata</a>
+      <a class="button secondary" href="data/worklists/RA1.csv" download>RA1 worklist</a>
+      <a class="button secondary" href="data/worklists/RA2.csv" download>RA2 worklist</a>
+      <a class="button secondary" href="data/worklists/RA3.csv" download>RA3 worklist</a>
+      <a class="button secondary" href="data/worklists/RA4.csv" download>RA4 worklist</a>
+      <a class="button secondary" href="data/templates/plain.txt" download>Plain letter template</a>
+      <a class="button secondary" href="data/templates/legal_salience.txt" download>Legal-salience template</a>
+    </div>
+    <p class="subtitle">The individual letters below are generated copies of the two templates. They contain filer placeholders until private RA details are supplied.</p>
+  </section>
+
+  <section class="panel">
+    <div class="toolbar">
+      <label>Search offices, departments, IDs
+        <input id="search" type="search" placeholder="e.g. school, Chennai, TN-026">
+      </label>
+      <label>Treatment
+        <select id="treatment"><option value="">All treatments</option></select>
+      </label>
+      <label>Tier
+        <select id="tier"><option value="">All tiers</option></select>
+      </label>
+      <label>Research assistant
+        <select id="ra"><option value="">All RAs</option></select>
+      </label>
+      <button class="secondary" id="reset" type="button">Reset filters</button>
+    </div>
+    <div id="status" class="status">Loading assignments…</div>
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th><button data-sort="application_id">Application ↕</button></th>
+          <th><button data-sort="office_name">Office ↕</button></th>
+          <th><button data-sort="tree_department">Department ↕</button></th>
+          <th><button data-sort="tier">Tier ↕</button></th>
+          <th><button data-sort="treatment">Treatment ↕</button></th>
+          <th><button data-sort="assigned_ra">RA ↕</button></th>
+          <th>Letter</th>
+        </tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="pager"><button class="secondary" id="prev" type="button">Previous</button><span id="page">—</span><button class="secondary" id="next" type="button">Next</button></div>
+  </section>
+</main>
+<script>
+  const state = { rows: [], filtered: [], page: 1, pageSize: 50, sort: 'application_id', direction: 1 };
+  const $ = (id) => document.getElementById(id);
+  function parseCSV(text) {
+    const out = [], row = []; let field = '', quoted = false;
+    for (let i=0; i<text.length; i++) { const c=text[i], n=text[i+1];
+      if (quoted && c === '"' && n === '"') { field += '"'; i++; }
+      else if (c === '"') quoted = !quoted;
+      else if (c === ',' && !quoted) { row.push(field); field=''; }
+      else if ((c === '\n' || c === '\r') && !quoted) { if (c==='\r' && n==='\n') i++; row.push(field); if (row.some(Boolean)) out.push(row.splice(0)); field=''; }
+      else field += c;
+    }
+    if (field || row.length) { row.push(field); out.push(row); }
+    const headers=out.shift(); return out.map(values => Object.fromEntries(headers.map((h,i)=>[h, values[i] ?? ''])));
+  }
+  function esc(value) { return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+  function choices(id, key) { const values=[...new Set(state.rows.map(r=>r[key]).filter(Boolean))].sort(); $(id).insertAdjacentHTML('beforeend', values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('')); }
+  function refresh() {
+    const q=$('search').value.toLowerCase().trim(), treatment=$('treatment').value, tier=$('tier').value, ra=$('ra').value;
+    state.filtered=state.rows.filter(r => (!q || Object.values(r).some(v=>String(v).toLowerCase().includes(q))) && (!treatment||r.treatment===treatment) && (!tier||r.tier===tier) && (!ra||r.assigned_ra===ra));
+    state.filtered.sort((a,b)=>String(a[state.sort]).localeCompare(String(b[state.sort]),undefined,{numeric:true})*state.direction); state.page=1; render();
+  }
+  function render() {
+    const pages=Math.max(1,Math.ceil(state.filtered.length/state.pageSize)); state.page=Math.min(state.page,pages); const start=(state.page-1)*state.pageSize;
+    $('rows').innerHTML=state.filtered.slice(start,start+state.pageSize).map(r=>`<tr><td><code>${esc(r.application_id)}</code></td><td>${esc(r.office_name)}</td><td>${esc(r.tree_department)}</td><td>${esc(r.tier)}</td><td><span class="pill ${r.treatment==='legal_salience'?'legal':'plain'}">${esc(r.treatment==='legal_salience'?'Legal salience':'Plain')}</span></td><td>${esc(r.assigned_ra)}</td><td><a href="letters/${encodeURIComponent(r.assigned_ra)}/${encodeURIComponent(r.application_id)}.txt" target="_blank" rel="noopener">View letter</a></td></tr>`).join('') || '<tr><td colspan="7">No assignments match these filters.</td></tr>';
+    $('status').textContent=`Showing ${state.filtered.length ? start+1 : 0}–${Math.min(start+state.pageSize,state.filtered.length)} of ${state.filtered.length} matching ${state.rows.length} assignments`;
+    $('page').textContent=`Page ${state.page} of ${pages}`; $('prev').disabled=state.page<=1; $('next').disabled=state.page>=pages;
+  }
+  async function init() {
+    try { const response=await fetch('data/assignments.csv'); if(!response.ok) throw new Error(`HTTP ${response.status}`); state.rows=parseCSV(await response.text());
+      $('n').textContent=state.rows.length.toLocaleString(); $('departments').textContent=new Set(state.rows.map(r=>r.tree_department)).size; $('plain').textContent=state.rows.filter(r=>r.treatment==='plain').length; $('legal').textContent=state.rows.filter(r=>r.treatment==='legal_salience').length; $('ras').textContent=new Set(state.rows.map(r=>r.assigned_ra)).size;
+      choices('treatment','treatment'); choices('tier','tier'); choices('ra','assigned_ra'); ['search','treatment','tier','ra'].forEach(id=>$(id).addEventListener('input',refresh)); $('reset').onclick=()=>{ ['search','treatment','tier','ra'].forEach(id=>$(id).value=''); refresh(); }; document.querySelectorAll('[data-sort]').forEach(button=>button.onclick=()=>{ const key=button.dataset.sort; state.direction=state.sort===key?-state.direction:1; state.sort=key; refresh(); }); $('prev').onclick=()=>{state.page--;render();}; $('next').onclick=()=>{state.page++;render();}; refresh();
+    } catch (error) { $('status').innerHTML=`<div class="error">Could not load the assignment CSV: ${esc(error.message)}</div>`; }
+  }
+  init();
+</script>
+</body>
+</html>

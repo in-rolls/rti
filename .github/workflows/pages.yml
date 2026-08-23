@@ -1,0 +1,47 @@
+name: Deploy batch viewer to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+      - name: Assemble viewer artifact
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf _site
+          mkdir -p _site/data/worklists _site/data/templates _site/letters
+          cp site/index.html _site/index.html
+          cp out/b2026q3_02/assignments.csv _site/data/assignments.csv
+          cp out/b2026q3_02/batch_meta.json _site/data/batch_meta.json
+          cp out/b2026q3_02/worklists/*.csv _site/data/worklists/
+          cp out/b2026q3_02/templates/*.txt _site/data/templates/
+          cp -R out/b2026q3_02/applications/. _site/letters/
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -34,6 +34,15 @@ make db               # rebuild schema.sql and rti.db
 Every step is a console script too (`rti-sample`, `rti-render`, …). `--help` on
 any of them.
 
+## Batch viewer
+
+The reproducible initial batch has a filterable GitHub Pages viewer at
+[`https://in-rolls.github.io/rti/`](https://in-rolls.github.io/rti/) once the
+`main` branch is published. It includes the 1,000-row assignment table,
+per-RA worklists, downloadable CSVs, and links to each generated letter. The
+site is assembled by [`.github/workflows/pages.yml`](.github/workflows/pages.yml)
+from the committed `out/b2026q3_02/` artifacts.
+
 ## What the letters ask for
 
 The primary request is the authority's **own RTI register** for the last twelve
