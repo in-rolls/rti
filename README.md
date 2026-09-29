@@ -54,6 +54,18 @@ Within the draw:
 Re-running `python3 scripts/sample.py` reproduces the batch byte-for-byte.
 A new wave means a new `batch_id` **and** a new seed.
 
+## Supplementary batch tg2026q3_03 (2026-09-29)
+
+Batch `tg2026q3_03`, seed `20260929`, adds **125** offices (87 plain /
+38 legal-salience; IDs TG-251…TG-375), bringing Telangana to 375 of
+3,401 (11%). Drawn by `scripts/sample_supplement.py` from the same
+frozen frame, excluding wave-1 offices, with top-up allocation so the
+375-office union matches proportional targets (union cap 23; the pooled
+OTHER stratum is uncapped). Rationale and the pre-stated rule are in
+[docs/design_notes/2026-09-29_supplementary_batches.md](docs/design_notes/2026-09-29_supplementary_batches.md).
+The dashboard and worklists show both batches; `batch_id` distinguishes
+them, and analyses should include a batch indicator.
+
 An earlier batch `tg2026q3_01` (seed 20260902) was drawn from the older
 classification file before the portal scrape existed. No application from
 it was ever filed; it is superseded by `tg2026q3_02` and survives only in
