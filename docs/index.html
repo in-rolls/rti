@@ -79,6 +79,10 @@
       <a class="button secondary" href="data/worklists/RA2.csv" download>RA2 worklist</a>
       <a class="button secondary" href="data/worklists/RA3.csv" download>RA3 worklist</a>
       <a class="button secondary" href="data/worklists/RA4.csv" download>RA4 worklist</a>
+      <a class="button secondary" href="data/worklists_new/RA1.csv" download>RA1 — NEW rows only (tg2026q3_03)</a>
+      <a class="button secondary" href="data/worklists_new/RA2.csv" download>RA2 — NEW rows only (tg2026q3_03)</a>
+      <a class="button secondary" href="data/worklists_new/RA3.csv" download>RA3 — NEW rows only (tg2026q3_03)</a>
+      <a class="button secondary" href="data/worklists_new/RA4.csv" download>RA4 — NEW rows only (tg2026q3_03)</a>
       <a class="button secondary" href="data/templates/plain_v3.txt" download>Plain letter (v3)</a>
       <a class="button secondary" href="data/templates/legal_salience_v3.txt" download>Legal-salience letter (v3)</a>
     </div>
@@ -88,6 +92,9 @@
     <div class="toolbar">
       <label>Search offices, groups, districts, IDs
         <input id="search" type="search" placeholder="e.g. Revenue, Hyderabad, TG-042">
+      </label>
+      <label>Batch
+        <select id="f-batch"><option value="">All</option></select>
       </label>
       <label>RA
         <select id="f-ra"><option value="">All</option></select>
@@ -107,7 +114,7 @@
     <div class="table-wrap">
       <table>
         <thead><tr>
-          <th>ID</th><th>Office</th><th>Department group</th><th>District</th><th>Treatment</th><th>RA</th>
+          <th>ID</th><th>Batch</th><th>Office</th><th>Department group</th><th>District</th><th>Treatment</th><th>RA</th>
         </tr></thead>
         <tbody id="tbody"></tbody>
       </table>
@@ -163,11 +170,13 @@
 
   function apply() {
     var qy = document.getElementById("search").value.toLowerCase(),
+        bt = document.getElementById("f-batch").value,
         ra = document.getElementById("f-ra").value,
         tr = document.getElementById("f-treatment").value,
         gp = document.getElementById("f-group").value,
         di = document.getElementById("f-district").value;
     view = rows.filter(function (r) {
+      if (bt && r.batch_id !== bt) return false;
       if (ra && r.assigned_ra !== ra) return false;
       if (tr && r.treatment !== tr) return false;
       if (gp && r.dept_group !== gp) return false;
@@ -186,7 +195,7 @@
         slice = view.slice(start, start + PAGE);
     tb.innerHTML = slice.map(function (r) {
       var pill = r.treatment === "legal_salience" ? "legal" : "plain";
-      return "<tr><td><code>" + esc(r.application_id) + "</code></td><td>" + esc(r.office_name) +
+      return "<tr><td><code>" + esc(r.application_id) + "</code></td><td><span class='pill " + (r.batch_id === "tg2026q3_03" ? "legal" : "plain") + "'>" + (r.batch_id === "tg2026q3_03" ? "NEW" : "wave 1") + "</span></td><td>" + esc(r.office_name) +
         "</td><td>" + esc(r.dept_group) + "</td><td>" + esc(r.district) +
         "</td><td><span class='pill " + pill + "'>" + esc(r.treatment) +
         "</span></td><td><span class='pill ra'>" + esc(r.assigned_ra) + "</span></td></tr>";
@@ -209,15 +218,16 @@
     document.getElementById("plain").textContent = rows.filter(function (r) { return r.treatment === "plain"; }).length;
     document.getElementById("legal").textContent = rows.filter(function (r) { return r.treatment === "legal_salience"; }).length;
     document.getElementById("ras").textContent = uniq("assigned_ra").length;
+    fillSelect("f-batch", uniq("batch_id"));
     fillSelect("f-ra", uniq("assigned_ra"));
     fillSelect("f-treatment", uniq("treatment"));
     fillSelect("f-group", uniq("dept_group"));
     fillSelect("f-district", uniq("district"));
-    ["search","f-ra","f-treatment","f-group","f-district"].forEach(function (id) {
+    ["search","f-batch","f-ra","f-treatment","f-group","f-district"].forEach(function (id) {
       document.getElementById(id).addEventListener("input", apply);
     });
     document.getElementById("reset").addEventListener("click", function () {
-      ["search","f-ra","f-treatment","f-group","f-district"].forEach(function (id) {
+      ["search","f-batch","f-ra","f-treatment","f-group","f-district"].forEach(function (id) {
         document.getElementById(id).value = "";
       });
       apply();
