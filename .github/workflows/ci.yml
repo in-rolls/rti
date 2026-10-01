@@ -4,6 +4,7 @@ on:
   # Every branch, not just main. A feature branch is exactly where an
   # accidentally committed name would arrive, and it used to run nothing.
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
