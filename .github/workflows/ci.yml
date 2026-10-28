@@ -1,8 +1,6 @@
 name: CI
 
 on:
-  # Every branch, not just main. A feature branch is exactly where an
-  # accidentally committed name would arrive, and it used to run nothing.
   push:
     branches: [main]
   pull_request:
@@ -21,46 +19,44 @@ jobs:
         python-version: ["3.12", "3.13", "3.14"]
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: actions/setup-python@v6
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
         with:
           python-version: ${{ matrix.python-version }}
-          cache: pip
+          enable-cache: true
 
       - name: Install
-        run: |
-          python -m pip install --upgrade pip
-          pip install -e ".[dev,scrapers]"
+        run: uv sync --locked --all-extras
 
       - name: Lint
         run: |
-          black --check src tests
-          isort --check-only src tests
-          flake8 src tests
+          uv run --frozen black --check src tests
+          uv run --frozen isort --check-only src tests
+          uv run --frozen flake8 src tests
 
       - name: Test
-        run: pytest
+        run: uv run --frozen pytest
 
       # The committed tables are edited by hand. This is what turns a bad edit
       # into a failed pull request.
       - name: Validate the committed tables
-        run: rti-check
+        run: uv run --frozen rti-check
 
       # A backstop, not the defence. The pre-push hook is what runs before data
       # leaves a machine; by the time this fires, a push has already happened.
       - name: Confirm no personal data is tracked
-        run: rti-scrub --check
+        run: uv run --frozen rti-scrub --check
 
       # The schema is generated. A drift here means someone edited schema.sql
       # instead of src/rti/enums.py.
       - name: Confirm schema.sql matches the enums
         run: |
-          rti-build-db --schema-only
+          uv run --frozen rti-build-db --schema-only
           git diff --exit-code -- schema.sql
 
       - name: Confirm the frame builder is reproducible
         run: |
           cp data/frame.csv /tmp/frame_before.csv
-          rti-build-frame
+          uv run --frozen rti-build-frame
           diff /tmp/frame_before.csv data/frame.csv
