@@ -3,8 +3,8 @@
 Reproducible sampling, RA assignments, and a tracking dashboard for filing
 RTI applications to Delhi and Maharashtra public authorities — one
 combined batch, sampled at 10% within each state. Sibling of
-[rti-telangana](https://github.com/priyadarshiamar/rti-telangana) and
-[rti-karnataka](https://github.com/priyadarshiamar/rti-karnataka), and
+[rti-telangana](https://github.com/in-rolls/rti-telangana) and
+[rti-karnataka](https://github.com/in-rolls/rti-karnataka), and
 like them an extension of the Tamil Nadu pipeline in
 [in-rolls/rti](https://github.com/in-rolls/rti).
 
