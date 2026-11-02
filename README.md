@@ -8,7 +8,7 @@ combined batch, sampled at 10% within each state. Sibling of
 like them an extension of the Tamil Nadu pipeline in
 [in-rolls/rti](https://github.com/in-rolls/rti).
 
-**Dashboard:** https://priyadarshiamar.github.io/rti-delhi-maharashtra/
+**Dashboard:** https://in-rolls.github.io/rti-delhi-maharashtra/
 
 ## The universe
 
