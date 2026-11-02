@@ -1,0 +1,23 @@
+Package: rtifieldwork
+Type: Project
+Title: Fieldwork for the Right to Information Audit
+Version: 0.2.0
+Authors@R: c(person("Gaurav", "Sood", role = c("aut", "cre")), person("Priyadarshi", "Amar", role = "aut"))
+Description: Reproducible public authority frames, frozen assignments, prospective sampling,
+    letter generation, intake, and de-identified data releases for the RTI audit.
+Encoding: UTF-8
+Imports:
+    digest,
+    dplyr,
+    httr2,
+    jsonlite,
+    readr,
+    stringr,
+    xml2,
+    yaml
+Suggests:
+    lintr,
+    renv,
+    styler,
+    testthat
+Config/testthat/edition: 3

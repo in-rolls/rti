@@ -1,0 +1,25 @@
+{
+  "batch_id": "tg2026q3_02",
+  "seed": 20260903,
+  "state": "Telangana",
+  "n": 250,
+  "n_legal": 75,
+  "n_plain": 175,
+  "ras": [
+    "RA1",
+    "RA2",
+    "RA3",
+    "RA4"
+  ],
+  "cap_per_stratum": 15,
+  "min_stratum_size": 5,
+  "frame_csv": "data/frame_telangana.csv",
+  "frame_sha256": "9d22df8159cf527e96d81eab3ef710862620107b2ce107cb090ef4296a2e5218",
+  "frame_rows": 3401,
+  "strata": 57,
+  "source": "portal scrape 2026-09-02 via scripts/build_frame.py (see data/frame_provenance.json)",
+  "templates": {
+    "plain": "plain_v3.txt",
+    "legal_salience": "legal_salience_v3.txt"
+  }
+}

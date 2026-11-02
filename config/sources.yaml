@@ -1,0 +1,26 @@
+TN:
+  frozen: data/reference/frames/tn_frame.csv
+TG:
+  state: Telangana
+  portal: RTI_telangana
+  frozen: data/reference/frames/tg_frame.csv
+  raw: data/raw/tg/portal_scrape_2026-09-02
+  legacy: data/raw/tg/state_department_telangana_legacy.csv
+KA:
+  state: Karnataka
+  portal: RTI_Online_Karnataka
+  frozen: data/reference/frames/ka_frame.csv
+  raw: data/raw/ka/portal_scrape_2026-09-07/NodalOfficerDetails.html
+  legacy: data/raw/ka/state_department_karnataka_legacy.csv
+DL:
+  state: Delhi
+  portal: RTI_Online_Delhi
+  frozen: data/reference/frames/dm_frame.csv
+  raw: data/raw/dm/portal_scrape_2026-09-07/delhi_pio_app_details.html
+  legacy: data/raw/dm/state_department_dl_mh_legacy.csv
+MH:
+  state: Maharashtra
+  portal: RTI_Online_Maharashtra
+  frozen: data/reference/frames/dm_frame.csv
+  raw: data/raw/dm/portal_scrape_2026-09-07/maharashtra_pio_app_details.html
+  legacy: data/raw/dm/state_department_dl_mh_legacy.csv

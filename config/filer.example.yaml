@@ -1,14 +1,4 @@
-# Who files. Stamped into every letter by `rti-render`, so no research
-# assistant ever types a name or an address into a portal form and no typo can
-# split one filer into two.
-#
-# `email` should be the address the portal account uses, because that is what
-# acknowledgements and replies arrive at.
-
-name: "[FILER NAME]"
-address: "[FILER ADDRESS]"
-phone: "[FILER PHONE]"
-email: "[FILER EMAIL]"
-place: "[PLACE]"
-citizen_of_india: true
-bpl: false
+filer_name: '[FILER NAME]'
+filer_address: '[FILER ADDRESS]'
+filer_email: '[FILER EMAIL]'
+filing_date: '2026-11-02'

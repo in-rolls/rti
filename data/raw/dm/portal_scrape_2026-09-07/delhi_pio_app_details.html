@@ -1,0 +1,394 @@
+ 
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>RTI Online :: Online RTI Information System</title><meta name="description" content="Online RTI Information Systems, Government of India RTI Request &#38; Appeal Management Information System (RTI-MIS) (Based on Right to Information Act 2005) RTI Online Request ,RTI Online First Appeal, Online View Status." /><meta name="keywords" content="RTI, RTI Online, RTIMIS, RTI-information, RTI Request, RTI First Appeal, RTI Appeal,RTI Status, RTI View Status, RTI Login, RTI Registration"/><meta name="author" content="http://www.rtionline.delhi.gov.in" /><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+            <link rel="SHORTCUT ICON" href="https://rtionline.delhi.gov.in/images/rti-header.png" />
+            <link rel="stylesheet" type="text/css" href="https://rtionline.delhi.gov.in/style/style.css" />
+            <!--jquery Validation-->
+            <link rel="stylesheet" type="text/css" href="https://rtionline.delhi.gov.in/style/jquery.validate.css" />
+            <link rel="stylesheet" type="text/css" href="https://rtionline.delhi.gov.in/style/jquery.datepick.css"/>
+
+            <script src="https://rtionline.delhi.gov.in/jquery/jquery.js" type="text/javascript"></script>
+            <script src="https://rtionline.delhi.gov.in/jquery/jquery.datepick.js" type="text/javascript"></script>
+
+            <script src="https://rtionline.delhi.gov.in/javascripts/comman.js" type="text/javascript"></script>
+            <script src="https://rtionline.delhi.gov.in/javascripts/jquery.validate.js" type="text/javascript"></script>
+            <script src="https://rtionline.delhi.gov.in/javascripts/md5.js" type="text/javascript"></script>
+            <script src="https://rtionline.delhi.gov.in/javascripts/tool-tip.js" type="text/javascript"></script>
+            <script src="https://rtionline.delhi.gov.in/javascripts/validate_characters.js" type="text/javascript"></script>
+
+
+<!--End jquery Validation--><!--Start Google Analytics Code -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39220736-1']);
+  _gaq.push(['_setDomainName', 'rtionline.karnataka.gov.in']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!--End  Google Analytics Code --><script type="text/javascript">
+	function disableBackButton()
+	{
+		window.history.forward(1);
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
+
+<!--javascript is off-->
+
+<noscript>
+<meta http-equiv="refresh" content="0; URL=https://rtionline.delhi.gov.in/error.php"/>
+</noscript>
+
+<!--end javascript is off-->
+</head>
+<body onload="disableBackButton();" onunload="disableBackButton();">
+
+
+<div id="wrapper">
+	<div id="header">
+	 <div id="emblem">
+	<img src="https://rtionline.delhi.gov.in/images/logo/logoEnglish.png" alt="national-emblem" />
+	 </div>
+		<div id="logo">
+			<h1>RTI Online<br></h1>
+		</div>
+		<div id="slogan">An initiative by Govt. of NCT of Delhi
+		</div>
+	</div>
+	
+<!-- Start Validation Script-->
+<script type="text/javascript">
+    /* <![CDATA[ */
+    jQuery(function () {
+        jQuery("#MinistryId").validate({
+            expression: "if (VAL) return true; else return false;",
+            message: "Please Select Public Authority."
+        });
+
+
+        jQuery("#6_letters_code").validate({
+            expression: "if (VAL) return true; else return false;",
+            message: "Please Enter Security Code"
+        });
+
+    });
+    /* ]]> */
+</script>			
+
+<!--<script type="text/javascript">
+    function stopRKey(evt)
+    {
+        var evt = (evt) ? evt : ((event) ? event : null);
+        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+        if ((evt.keyCode == 13) && (node.type == "text"))
+        {
+            return false;
+        } else if ((evt.keyCode == 13) && (node.type == "password"))
+        {
+            return false;
+        }
+    }
+    document.onkeypress = stopRKey;
+</script>-->
+
+<!-- End Validation Script-->
+
+<!-- captcha code Script-->
+<script language='JavaScript' type='text/javascript'>
+
+    /*....................................New numeric  captacha code .............................................*/
+
+    function getXMLHTTP() { //fuction to return the xml http object
+        var xmlhttp = false;
+        try {
+            xmlhttp = new XMLHttpRequest();
+        } catch (e) {
+            try {
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (e) {
+                try {
+                    xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+                } catch (e1) {
+                    xmlhttp = false;
+                }
+            }
+        }
+
+        return xmlhttp;
+    }
+
+
+
+    function refreshCaptcha()
+
+    {
+
+        var URL = "captcha.php";
+        //alert('@@@'+URL);return false;
+        var req = getXMLHTTP();
+
+        if (req) {
+
+            req.onreadystatechange = function () {
+                if (req.readyState == 4) {
+                    // only if "OK"
+                    if (req.status == 200) {
+
+                        document.getElementById('captcha').innerHTML = req.responseText;
+                    } else {
+                        alert("There was a problem while using XMLHTTP:\n" + req.statusText);
+                    }
+                }
+            }
+            req.open("GET", URL, true);
+            req.send(null);
+
+        }
+
+    }
+
+
+    function chcekCapVal() {
+        //alert(document.getElementById('6_letters_code').value);die;
+        if (document.getElementById('6_letters_code').value != '') {
+
+            if (document.getElementById('capVal').value != document.getElementById('6_letters_code').value) {
+                alert("Captcha code does not match");
+                //document.getElementById('6_letters_code').focus();
+                return false;
+            }
+        }
+    }
+
+
+    /*....................................New Numeric  captacha code end here .............................................*/
+</script>
+<!-- End captcha code Script-->
+<link rel="stylesheet" href="RTIMIS/style/bootstrap.min.css" /> 
+
+<!-----------------------Calendar Code------------------>
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" /> 
+
+<!--Font Awesome (added because you use icons in your prepend/append)-->
+<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>
+    .bootstrap-iso .formden_header h2, 
+    .bootstrap-iso .formden_header p, 
+    .bootstrap-iso form{font-family: Arial, Helvetica, sans-serif; color: black}
+    .bootstrap-iso form button, 
+    .bootstrap-iso form button:hover{color: white !important;} 
+    .asteriskField{color: red;}
+</style>
+<!-----------------------End Calendar Code------------------>
+
+
+<style>
+
+    #content-frm .tbl-border td {
+        padding: 2px 0px 3px 0px;
+    }
+    #header {
+        height: 145px;
+        width: 980px;
+    }
+    #menu {
+        width: 980px;
+    }
+    body{
+        background: #ebe7e7;
+        font-family: Georgia, serif;
+    }
+    #page-bottom {
+        width: 980px;
+    }
+    #menu ul li a, #menu ul li span {
+        font-size: 1.30em;
+    }
+
+    #slogan {
+        padding: 40px 12px 0px 0px;
+    }
+</style>
+
+<div id="menu">
+		<ul><li><a href="https://rtionline.delhi.gov.in/index.php">Home</a></li><li><a href="https://rtionline.delhi.gov.in/guidelines.php?request">Submit Request</a></li><li><a href="https://rtionline.delhi.gov.in/guidelines.php?appeal">Submit First Appeal</a></li><li><a href="https://rtionline.delhi.gov.in/request/status.php?lan=E">View Status</a></li><li><a href="https://rtionline.delhi.gov.in/request/status_history.php">View History</a></li><li><a href="https://rtionline.delhi.gov.in/webservice/DateSelectWebservice.php"  target="_blank">RTI Previous Reply</a></li><li><a href="https://rtionline.delhi.gov.in/FAQ-RTI-DL-Eng.pdf" target="_blank">FAQ</a></li><li><a href="https://rtionline.delhi.gov.in/request/contact.php" target="_blank">Contact Us</a></li><li class="link"><a href="https://rtionline.delhi.gov.in/UMcitizen_Eng.pdf" target="_blank">User Manual</a></li></ul><br class="clearfix" />
+	</div>
+<!-- Start Language changer selection box-->
+<span style="float:right; width:130px; margin:0px 1px 0px 22px; position:relative; top:-182px;">
+    <select name="language" onchange="location = this.options[this.selectedIndex].value;">
+        <option value="index.php">English</option>
+        <option value="index-h.php">हिन�?दी</option>
+    </select>
+</span>
+<!-- Start Language changer selection box-->
+
+
+<div id="slider-From"><h4 style="margin: 15px 0px 26px -1px;">PIO and their Appellate Details</h4>
+    <p>Note: Fields marked with <samp style="color:#FF0000"><b>*</b></samp> are Mandatory. </p>
+</div>
+<div id="page">
+    <!--Start Left SideBar-->
+    <div id="content-frm">
+        <!--<form name="FrmLogin" action="ui.recordDetails.php" method="post" autocomplete="off">-->
+        <form name="FrmLogin" action="list_of_pio_and_appellate.php" method="post" autocomplete="off">
+            <div class="LoginTabBody">		<!--Main body-->
+                <div id="errorDiv"></div>
+
+                <table width="100%" border="0" class="tbl-border" cellpadding="0" cellspacing="0">
+
+                    <!--Error Printing Block-->
+                    <tr>
+                        <th class="THfirst" style="height: 27px;">
+                                                    </th>
+                        <td class="TDfirst">&nbsp;</td>
+                    </tr>
+                    <!--End Error Printing Block-->
+
+                    <tr><th><samp style="color:#FF0000"><b>*</b></samp> Select Department/Public Authority </th>
+                        <td><select name="MinistryId" id="MinistryId"  class="selectXLLong" >
+
+                                <option value="">--Select--</option>
+
+                                <option value="198">Acharya  Narendra Dev College</option><option value="45">Acharya Shree Bhikshu Hospital</option><option value="199">Aditi Mahavidyalaya</option><option value="4">Administrative Reforms Department</option><option value="132">Ambedkar Institute of Advance Communication Technologies and Research</option><option value="83">Ambedkar Institute of Technology</option><option value="251">Ambedkar Nagar Hospital</option><option value="8">Archaeological Department</option><option value="9">Archives Department</option><option value="5">Art, Culture and Language Department</option><option value="7">Aruna Asaf Ali Hospital </option><option value="84">Aryabhat Institute of Technology</option><option value="34">Attar Sain Jain Eye Hospital</option><option value="6">A.U.Tibbia College and allied units</option><option value="35">Babu Jagjivan Ram Memorial Hospital</option><option value="201">Bhagini Nivedita College</option><option value="36">Bhagwan Mahavir Hospital</option><option value="85">Bhai Parmanand Institute of Business Studies</option><option value="86">Bhaskaracharya College of Applied Sciences</option><option value="87">Board of Homeopathic System of Medicines</option><option value="88">Board of Technical Education</option><option value="200">B.R. Ambedkar College</option><option value="221">Centralised Accident and Trauma Services</option><option value="15">Central Jail</option><option value="89">Chacha Nehru Super Speciality Children Hospital</option><option value="90">Chaudhary Brahm Prakash Ayurved Charak Sansthan</option><option value="193">Chaudhary Brahm Prakash Engineering College</option><option value="17">Chief Electoral Office</option><option value="12">Chief Ministers Office</option><option value="14">Chief Secretary Office</option><option value="16">Chit Fund</option><option value="18">College of Art </option><option value="93">Commission for OBC</option><option value="19">Conservator of Forest Department </option><option value="94">DCC Wholesale Stores Ltd</option><option value="22">DDU Hospital</option><option value="95">Deen Dayal Upadhyaya College</option><option value="211">Deep Chand Bandhu  Hospital</option><option value="96">Delhi Agriculture Marketing. Board</option><option value="97">Delhi Bhartiya Chikitsa Parishad</option><option value="250">Delhi Building and Other Construction Workers Welfare Board</option><option value="192">Delhi Cantonment Board</option><option value="214">Delhi Commission for Protection of Child Rights</option><option value="98">Delhi Commission for Safai Karamcharis</option><option value="99">Delhi Commission for Women</option><option value="100">Delhi Co-operative Housing Finance Corporation. Ltd.</option><option value="191">Delhi Dental Council</option><option value="101">Delhi Dialogue &amp; Development Commission</option><option value="102">Delhi Electricity Regulatory Commission</option><option value="24">Delhi Fire Service</option><option value="103">Delhi Homeopathic Anusandhan Parishad</option><option value="104">Delhi Institute of Hotel Management and Catering Technology</option><option value="91">Delhi Institute of Pharmaceutical Sciences &amp; Research</option><option value="105">Delhi Jal Board</option><option value="106">Delhi Khadi and Village Industries Board</option><option value="107">Delhi Labour Welfare Board</option><option value="108">Delhi Legal Services Authority</option><option value="109">Delhi Legislative Assembly Secretariat</option><option value="224">Delhi Medical Council</option><option value="110">Delhi Minority Commission</option><option value="111">Delhi Nursing Council</option><option value="112">Delhi Pharmacy Council</option><option value="113">Delhi Pollution Control Committee</option><option value="114">Delhi Power Con. Ltd. (Transco)</option><option value="115">Delhi SC/ST/OBC/Min. &amp; Handicapped Finance &amp; Development Corp. Ltd</option><option value="219">Delhi Skill and Entrepreneurship University</option><option value="220">Delhi State Cancer Institute</option><option value="116">Delhi State Civil Supplies Corporation Ltd (DSCSC)</option><option value="118">Delhi State Election Commission</option><option value="119">Delhi State Hajj Committee</option><option value="216">Delhi State Health Mission</option><option value="120">Delhi State Industrial and Infrastructure Development Corporation Ltd.(DSIIDC)</option><option value="121">Delhi States Aids Control Society</option><option value="122">Delhi Subordinate Services Selection Board (DSSSB)</option><option value="23">Delhi Technological University</option><option value="123">Delhi Tourism and Transportation Development Corporation (DT&amp;TDC)</option><option value="124">Delhi Transport Corporation</option><option value="194">Delhi Urban Shelter Improvement Board</option><option value="125">Delhi Wakf Board</option><option value="126">Department for Welfare of SC/ST/OBC/Minorities</option><option value="66">Department of Food, Supplies &amp; Consumer Affairs</option><option value="127">Deputy Apprenticeship Advisor</option><option value="25">Development Department</option><option value="128">DFC (New Delhi &amp; Chandigarh)</option><option value="27">Directorate of Agricultural Marketing</option><option value="11">Directorate of Audit</option><option value="29">Directorate of Economics &amp; Statistics</option><option value="61">Directorate of Employment</option><option value="30">Directorate of Family Welfare</option><option value="32">Directorate of Health Services (DHS)</option><option value="75">Directorate of ISMH</option><option value="217">Directorate of Prosecution</option><option value="58">Directorate of Small Savings</option><option value="152">Directorate of Training and Technical Education</option><option value="28">Directorate  of Training, UTCS</option><option value="129">Directorate of Vigilance</option><option value="50">Dispensaries - Central District</option><option value="51">Dispensaries - East District</option><option value="52">Dispensaries - North District</option><option value="53">Dispensaries - North East District</option><option value="54">Dispensaries - North West District</option><option value="55">Dispensaries - South District</option><option value="56">Dispensaries - South-West District</option><option value="57">Dispensaries - West District</option><option value="130">Dr Baba Saheb Ambedkar Hospital</option><option value="254">Dr. Baba Saheb Ambedkar Medical College</option><option value="131">Dr. B.R.Ambedkar University</option><option value="133">Dr. B.R.Sur Homeopathy Medical College &amp; Hospital</option><option value="37">Dr. Hedgewar Arogya Sansthan Hospital</option><option value="38">Dr. N C Joshi Memorail Hospital</option><option value="26">Drug Control</option><option value="186">East Delhi Municipal Corporation</option><option value="60">Education Department</option><option value="62">Environment  Department</option><option value="63">Excise  Department</option><option value="64">Finance Department</option><option value="134">Food Safety Department</option><option value="67">Forensic Science Laboratory</option><option value="208">G. B. Pant Government Engineering College</option><option value="68">G.B.Pant Hospital</option><option value="135">G B Pant Institute of Technology</option><option value="2">General Administration Department</option><option value="70">Gurudwara Election</option><option value="136">Guru Gobind Singh Indraprastha University</option><option value="39">Guru Govind Singh Govt. Hospital</option><option value="137">Guru Nanak Dev Institute of Technology</option><option value="69">Guru Nanak Eye Hospital</option><option value="71">Guru Teg Bahadur (GTB) Hospital</option><option value="72">Health &amp; Family Welfare Department</option><option value="73">Higher Education Department</option><option value="138">Hindi Academy</option><option value="3">Home Department</option><option value="74">Home Guard &amp; Civil Defence</option><option value="139">Indira Gandhi Delhi Technical University for Women (IGDTUW)</option><option value="223">Indira Gandhi Hospital</option><option value="202">Indira Gandhi Institute of Physical Education &amp; Sports Science</option><option value="140">Indraprastha Power Generation Co. Ltd. (GENCO)</option><option value="76">Industries Department</option><option value="77">Information &amp; Publicity Department (DIP)</option><option value="1">Information Technology Department</option><option value="141">Institute of Human Behaviour and Allied Sciences (IHBAS)</option><option value="215">Institute of Liver and Biliary Sciences</option><option value="78">Irrigation &amp; Flood Control Department</option><option value="48">Jag Pravesh Chandra Hospital</option><option value="213">Janakpuri Super Speciality Hospital</option><option value="142">Kasturba Institute of Technology For Woman</option><option value="203">Keshav Mahavidyalaya</option><option value="79">Labour Department</option><option value="40">Lal Bahadur Shastri Hospital</option><option value="80">Land &amp; Building  Department</option><option value="41">Law Department</option><option value="143">Lok  Nayak Hospital</option><option value="144">Lt. Governors Secretariat</option><option value="204">Maharaja Agrasen College</option><option value="42">Maharishi Balmiki Hospital</option><option value="205">Maharshi Valimiki College of Education</option><option value="145">Maulana Azad Institute of Dental Sciences</option><option value="146">Maulana Azad Medical College (MAMC)</option><option value="147">Meera Bai Institute of Technology</option><option value="241">Municipal Corporation of Delhi</option><option value="148">National Cadet Corps</option><option value="196">National Law University</option><option value="149">Nehru Homoeopathy Medical College &amp; Hospital (NHMC&amp;H)</option><option value="150">Netaji Subhas Institute of Technology (NSIT)</option><option value="187">North Delhi Municipal Corporation</option><option value="238">Office Of Electricity Ombudsman, GNCTD</option><option value="190">Office of Lokayukta</option><option value="253">OFFICE OF MINISTER, PUBLIC WORKS DEPARTMENT, WATER, IRRIGATION AND FLOOD CONTROL, LEGISLATIVE AFFAIRS, GURUDWARA ELECTION</option><option value="248">Office of the Minister Health &amp; Family Welfare, Transport, Information Technology</option><option value="245">Office of the Minister Home, Power, Urban Development, Education, Higher Education, Training &amp; Technical Education</option><option value="246">Office of the Minister Industries, Food &amp; Supplies, Environment, Forest &amp; Wild Life</option><option value="244">Office of the Minister Law &amp; Justice, Labour, Employment, Development, Art Culture &amp; Language, and Tourism</option><option value="247">Office of the Minister Social Welfare, Welfare of SC &amp; ST, Cooperative, Election</option><option value="252">Old Delhi District</option><option value="151">Planning Department</option><option value="65">Power Department</option><option value="153">Principal Accounts Office</option><option value="225">Principal District &amp; Sessions Judge Central District, Tis Hazari Court, Delhi</option><option value="233">Principal District &amp; Sessions Judge, Dwarka Court, South West District</option><option value="226">Principal District &amp; Sessions Judge, Karkardooma Court, East District</option><option value="230">Principal District &amp; Sessions Judge, Karkardooma Court, North East District</option><option value="235">Principal District &amp; Sessions Judge, Karkardooma Court, Shahdara District</option><option value="229">Principal District &amp; Sessions Judge, Patiala House Court, New Delhi District</option><option value="232">Principal District &amp; Sessions Judge, Rohini Court, North District</option><option value="228">Principal District &amp; Sessions Judge, Rohini Court, North West District</option><option value="234">Principal District &amp; Sessions Judge, Rouse Avenue Court, Central District</option><option value="227">Principal District &amp; Sessions Judge, Saket Court, South District</option><option value="231">Principal District &amp; Sessions Judge, Saket Court, South East District</option><option value="236">Principal District &amp; Sessions Judge, Tis Hazari Court, West District</option><option value="154">Prohibition Department</option><option value="44">Pt. Madan Mohan Malaviya Hospital</option><option value="155">Public Grievances Commission</option><option value="82">Public Works Department</option><option value="156">Public Works Department (PWD) - Engineer in Chief</option><option value="157">Punjabi Academy</option><option value="158">Pusa Institute of Technology</option><option value="159">Rajiv Gandhi Super Speciality Hospital</option><option value="160">Rajya Sainik Board</option><option value="47">Rao Tula Ram Memorial Hospital</option><option value="21">Registrar Co-operative Societies</option><option value="59">Revenue Department</option><option value="210">Sahitya Kala Parishad</option><option value="162">Sanjay Gandhi Memorial Hospital</option><option value="163">Sanskrit Academy</option><option value="46">Sardar Vallabh Bhai Patel Hospital</option><option value="49">Satyawadi Raja Harish Chandra Hospital (SRHC)</option><option value="164">Services Department</option><option value="206">Shaheed Rajguru College of Applied Sciences for Women</option><option value="207">Shaheed Sukhdev College of Business Studies</option><option value="165">Sharda Ukil School of Art</option><option value="218">Shri Dada Dev Matri Svum Shishu Chikitsalaya</option><option value="166">Sindhi Academy</option><option value="167">Social Welfare Department</option><option value="188">South Delhi Municipal Corporation</option><option value="168">State Council of Educational Research and Training (SCERT)</option><option value="170">Tourism Department</option><option value="171">Trade &amp; Taxes (Sales Tax) Department</option><option value="172">Transport Department</option><option value="173">Urban Development</option><option value="174">Urdu Academy</option><option value="175">Vigilance and Anti Corruption</option><option value="176">Weight &amp; Measures Department</option><option value="177">Women &amp; Child Development Department</option>                            </select>
+                        </td>
+                    </tr>
+
+<!--                    <tr>
+                        <th><samp style="color:#FF0000"><b>*</b></samp> From Date </th>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" id="FromDateId" name="FromDate" class="form-control" 
+                                       style="height: 27px !important;width: 140px;" value="" 
+                                       maxlength="10" placeholder="DD/MM/YYYY"/>
+                            </div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <th><samp style="color:#FF0000"><b>*</b></samp> To Date</th>
+                        <td>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-calendar"></i>
+                                </div>
+                                <input type="text" id="ToDateId" value="" name="ToDate" style="height: 27px !important;width: 140px;" class="form-control" maxlength="10" placeholder="DD/MM/YYYY"/>
+                            </div>
+                        </td>
+
+                    </tr>-->
+
+
+
+                    <!-------------------------------------------New Captch Div Starts Here-------------------------------------------------->
+
+                    <tr>
+                        <th><samp style="color:#FF0000"><b>*</b></samp> Enter Captcha code</th>
+                        <td>
+
+                            <div id="captcha" name="captcha"> <input type="text" id="capVal" style="font-size: 18px; color:#000; font-weight:bold; background-color:#CCC; height: 27px !important;width: 140px;" class="Midinput alphaNumeric" name="div_captcha" value="837995"  readonly="readonly"/> </div>
+
+                            <!-------------------------------------------New Captch Div ends Here-------------------------------------------------->
+
+                            <input id="6_letters_code" name="6_letters_code" type="text" maxlength="10" style="height: 27px !important;width: 140px;" class="Midinput alphaNumeric" autocomplete="off" onpaste='return false'  onkeypress="return allowNumericOnly(event);" onblur="chcekCapVal();">
+<!--                            <sec class="question"><img src="https://rtionline.delhi.gov.in/images/questionToolTip.png" /></sec>-->
+                            <br>
+                            <small><a href='javascript: refreshCaptcha();'>Can not read the image? click here to refresh </a></small>
+
+
+                        </td>
+                    </tr>
+
+                    <tr><th>&nbsp;</th>
+                        <td>
+                            <input type="submit" value="Submit" name="requestSubmit"  id="requestSubmit" class="btnPaySubmit" /> 
+                            <input type="reset" value="Reset"  class="btnSubmit"/>
+
+                            <input type="hidden" name="hndSessionFromId" value="" />
+
+                        </td>
+                    </tr>
+                </table>
+
+            </div>	
+        </form>	
+        <br class="clearfix" />
+    </div>
+    <!--end left Sidebar-->
+
+    <br class="clearfix" />
+</div> <!--End Page-->
+
+<script type="text/javascript" src="RTIMIS/js/bootstrap.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+                                $(document).ready(function () {
+                                    var date_input = $('input[name="FromDate"]'); //our date input has the name "date"
+                                    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+                                    date_input.datepicker({
+                                        format: 'dd/mm/yyyy',
+                                        container: container,
+                                        todayHighlight: true,
+                                        autoclose: true,
+                                        endDate: '+0d',
+                                    })
+                                    //date_input.datepicker().datepicker('setDate', new Date(2008, 9, 03));
+                                    date_input.datepicker().datepicker('setDate', 'today');
+                                })
+                                $(document).ready(function () {
+                                    var date_input = $('input[name="ToDate"]'); //our date input has the name "date"
+                                    var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+                                    date_input.datepicker({
+                                        format: 'dd/mm/yyyy',
+                                        container: container,
+                                        todayHighlight: true,
+                                        autoclose: true,
+                                        endDate: '+0d',
+                                    })
+                                    date_input.datepicker().datepicker('setDate', 'today');
+                                })
+</script>
+<!-----------------------End Calendar Code------------------>
+
+
+<div id="page-bottom">
+
+	<p><a href="https://rtionline.delhi.gov.in/index.php">Home</a>| <a href="http://india.gov.in/" target="_blank">National Portal of India</a>| <a href="https://dsscic.nic.in/online-appeal-application/onlineappealapplication" target="_blank">Complaint &amp; Second Appeal to CIC</a>| <a href="https://rtionline.delhi.gov.in/FAQ-RTI-DL-Eng.pdf" target="_blank">FAQ</a>  </p>
+	
+	<p class="Copyright">Contents of the site provided by Administrative Reforms Department, Government of NCT of Delhi</p>
+	<p class="Copyright">Copyright &copy; 2017. All rights reserved. Designed, Developed and Hosted by National Informatics Centre, New Delhi</p>
+            <p class="Copyright">
+                <img src="https://rtionline.delhi.gov.in/images/logo/niclogo.png" style="float: right;width:195px; height: 25px;margin-top: -57px;margin-right: -35px;" alt="nic-logo" />
+            </p>
+		
+
+				</div> <!--end page-bottom-->
+</div>
+
+<br class="clearfix" />
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "batch_id": "dm2026q3_01",
+  "seed": 20260908,
+  "sampling_rate": 0.1,
+  "states": {
+    "Delhi": {
+      "universe": 223,
+      "n": 22,
+      "n_legal": 7,
+      "n_plain": 15
+    },
+    "Maharashtra": {
+      "universe": 328,
+      "n": 33,
+      "n_legal": 10,
+      "n_plain": 23
+    }
+  },
+  "ras": [
+    "RA1",
+    "RA2",
+    "RA3",
+    "RA4"
+  ],
+  "cap_per_stratum": 15,
+  "min_stratum_size": 5,
+  "frame_csv": "data/frame_dl_mh.csv",
+  "frame_sha256": "b76983d6513011ef2addb3c2237fafa4d4df1d431b6d7a8cf556353ab4138dbf",
+  "frame_rows": 551,
+  "source": "portal scrape 2026-09-07 via scripts/build_frame.py (see data/frame_provenance.json)",
+  "templates": {
+    "Delhi": {
+      "plain": "plain_v3.txt",
+      "legal_salience": "legal_salience_v3.txt"
+    },
+    "Maharashtra": {
+      "plain": "plain_v4_mh150.txt",
+      "legal_salience": "legal_salience_v4_mh150.txt",
+      "note": "portal caps request text at 150 words"
+    }
+  }
+}

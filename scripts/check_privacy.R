@@ -1,0 +1,5 @@
+source("scripts/00_config.R")
+issues <- find_private_files()
+if (length(issues)) stop("Private data found in tracked or unignored files: ", paste(issues, collapse = ", "))
+check_public_assignments(read_csv_text(file.path(project_root, "data", "release", "assignments.csv")))
+message("Privacy check passed")

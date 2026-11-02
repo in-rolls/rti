@@ -1,0 +1,42 @@
+# Frozen Delhi + Maharashtra combined-batch design. Sibling of
+# rti-telangana and rti-karnataka, sampled at 10% within each state.
+# Changing anything here means a new batch_id AND a new seed — never edit
+# a batch that has been drawn.
+batch_id: dm2026q3_01
+seed: 20260908
+states: [Delhi, Maharashtra]
+frame_csv: data/frame_dl_mh.csv
+
+sampling:
+  strategy: department_group_proportional_within_state
+  rate: 0.10            # Delhi 22 of 223, Maharashtra 33 of 328
+  cap_per_stratum: 15
+  min_stratum_size: 5   # smaller groups pooled into one OTHER stratum
+
+treatments:
+  legal_salience:
+    share: 0.30         # per state: Delhi 7 legal / 15 plain, Maharashtra 10 / 23
+
+research_assistants:
+  - RA1
+  - RA2
+  - RA3
+  - RA4
+
+templates:
+  Delhi:
+    plain: out/dm2026q3_01/templates/plain_v3.txt
+    legal_salience: out/dm2026q3_01/templates/legal_salience_v3.txt
+  Maharashtra:   # portal caps request text at 150 words
+    plain: out/dm2026q3_01/templates/plain_v4_mh150.txt
+    legal_salience: out/dm2026q3_01/templates/legal_salience_v4_mh150.txt
+
+languages:
+  default: en
+
+filing:
+  portals:
+    Delhi: https://rtionline.delhi.gov.in
+    Maharashtra: https://rtionline.maharashtra.gov.in
+  fee_inr: 10
+  reference_period: "01-08-2025 to 31-07-2026"

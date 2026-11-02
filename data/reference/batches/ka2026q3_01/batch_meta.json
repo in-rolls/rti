@@ -1,0 +1,25 @@
+{
+  "batch_id": "ka2026q3_01",
+  "seed": 20260907,
+  "state": "Karnataka",
+  "n": 180,
+  "n_legal": 54,
+  "n_plain": 126,
+  "ras": [
+    "RA1",
+    "RA2",
+    "RA3",
+    "RA4"
+  ],
+  "cap_per_stratum": 15,
+  "min_stratum_size": 5,
+  "frame_csv": "data/frame_karnataka.csv",
+  "frame_sha256": "cce25893407f5aa8fe843e4d2345111d6fd0a68e76d03ec5547e2e6ad671e3fe",
+  "frame_rows": 1800,
+  "strata": 59,
+  "source": "portal scrape 2026-09-07 via scripts/build_frame.py (see data/frame_provenance.json)",
+  "templates": {
+    "plain": "plain_v3.txt",
+    "legal_salience": "legal_salience_v3.txt"
+  }
+}

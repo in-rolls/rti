@@ -1,0 +1,17 @@
+batch_id,template_version,treatment,path
+b2026q3_02,wave1-rti-information-v1,legal_salience,b2026q3_02/templates/legal_salience.txt
+b2026q3_02,wave1-rti-information-v1,plain,b2026q3_02/templates/plain.txt
+tg2026q3_02,v3,plain,tg2026q3_02/templates/plain_v3.txt
+tg2026q3_02,v3,legal_salience,tg2026q3_02/templates/legal_salience_v3.txt
+tg2026q3_03,v3,plain,tg2026q3_02/templates/plain_v3.txt
+tg2026q3_03,v3,legal_salience,tg2026q3_02/templates/legal_salience_v3.txt
+ka2026q3_01,v3,legal_salience,ka2026q3_01/templates/legal_salience_v3.txt
+ka2026q3_01,v3,plain,ka2026q3_01/templates/plain_v3.txt
+dm2026q3_01,v3,plain,dm2026q3_01/templates/plain_v3.txt
+dm2026q3_01,v3,legal_salience,dm2026q3_01/templates/legal_salience_v3.txt
+dm2026q3_01,v4_mh150,plain,dm2026q3_01/templates/plain_v4_mh150.txt
+dm2026q3_01,v4_mh150,legal_salience,dm2026q3_01/templates/legal_salience_v4_mh150.txt
+dm2026q3_02,v3,plain,dm2026q3_01/templates/plain_v3.txt
+dm2026q3_02,v3,legal_salience,dm2026q3_01/templates/legal_salience_v3.txt
+dm2026q3_02,v6_mh150,plain,dm2026q3_02/templates/plain_v6_mh150.txt
+dm2026q3_02,v6_mh150,legal_salience,dm2026q3_02/templates/legal_salience_v6_mh150.txt

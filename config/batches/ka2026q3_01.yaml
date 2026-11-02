@@ -1,0 +1,36 @@
+# Frozen Karnataka initial-batch design. Sibling of rti-telangana
+# (tg2026q3_02), same design at a 10% sampling rate. Changing anything here
+# means a new batch_id AND a new seed — never edit a batch that has been drawn.
+batch_id: ka2026q3_01
+seed: 20260907
+state: Karnataka
+frame_csv: data/frame_karnataka.csv
+
+sampling:
+  strategy: department_group_proportional
+  n: 180                # 10% of the 1,800-office universe
+  cap_per_stratum: 15
+  min_stratum_size: 5   # smaller groups pooled into one OTHER stratum
+
+treatments:
+  legal_salience:
+    n_legal: 54
+    n_plain: 126
+
+research_assistants:
+  - RA1
+  - RA2
+  - RA3
+  - RA4
+
+templates:
+  plain: out/ka2026q3_01/templates/plain_v3.txt
+  legal_salience: out/ka2026q3_01/templates/legal_salience_v3.txt
+
+languages:
+  default: en
+
+filing:
+  portal: https://rtionline.karnataka.gov.in
+  fee_inr: 10
+  reference_period: "01-08-2025 to 31-07-2026"

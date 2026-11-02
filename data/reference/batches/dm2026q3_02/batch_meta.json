@@ -1,0 +1,33 @@
+{
+  "batch_id": "dm2026q3_02",
+  "seed": 20260930,
+  "prior_batch": "dm2026q3_01",
+  "states": {
+    "Delhi": {
+      "n_union": 44,
+      "n_new": 22,
+      "n_legal_new": 7,
+      "template_version": "v3",
+      "id_start": 23
+    },
+    "Maharashtra": {
+      "n_union": 66,
+      "n_new": 33,
+      "n_legal_new": 10,
+      "template_version": "v6_mh150",
+      "id_start": 34
+    }
+  },
+  "ras": [
+    "RA1",
+    "RA2",
+    "RA3",
+    "RA4"
+  ],
+  "cap_union": 30,
+  "min_stratum_size": 5,
+  "frame_csv": "data/frame_dl_mh.csv",
+  "frame_sha256": "b76983d6513011ef2addb3c2237fafa4d4df1d431b6d7a8cf556353ab4138dbf",
+  "design_note": "docs/design_notes/2026-09-29_supplementary_batches.md",
+  "rationale": "oversample states with smaller online-filable universes for credible within-state estimates; KA/TN portals unreliable, RA capacity reallocated"
+}
