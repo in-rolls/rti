@@ -2,13 +2,13 @@
 
 Reproducible sampling, RA assignments, and a tracking dashboard for filing
 RTI applications to Karnataka public authorities. Sibling of
-[rti-telangana](https://github.com/priyadarshiamar/rti-telangana) and, like
+[rti-telangana](https://github.com/in-rolls/rti-telangana) and, like
 it, an extension of the Tamil Nadu pipeline in
 [in-rolls/rti](https://github.com/in-rolls/rti): scrape the portal's own
 universe, freeze the frame, one seeded draw, randomized treatment
 assignment, balanced RA worklists, and a static GitHub Pages viewer.
 
-**Dashboard:** https://priyadarshiamar.github.io/rti-karnataka/
+**Dashboard:** https://in-rolls.github.io/rti-karnataka/
 
 ## The universe
 
