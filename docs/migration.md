@@ -26,4 +26,10 @@ Private-original verification is in progress before response extraction and even
 
 The replacement viewer must be deployed and checked before the redundant organization forks are archived. Priyadarshi's upstream repositories and Pages sites are separate and remain intact. No original repository is deleted.
 
-Our analysis fork was renamed to `in-rolls/rti-paper` on November 2, 2026, preserving its private visibility and PR. Priyadarshi intends to transfer the original to `in-rolls/rti-analysis`; subsequent paper changes should be proposed against that repository. GitHub's documented transfer restrictions may require resolving the existing fork in the destination account before his transfer succeeds. The fork remains in `in-rolls` at the user's direction.
+Our analysis fork was renamed to `in-rolls/rti-paper` on November 2, 2026, preserving its private visibility and PR. Priyadarshi has transferred the original to `in-rolls/rti-analysis`. GitHub confirms that it is the parent of our private `in-rolls/rti-paper` fork; both coexist within the organization. Subsequent paper changes should be proposed against the transferred original.
+
+## Verification results
+
+The locked R environment was restored locally. All 80 fieldwork test assertions, lint, privacy checks, actionlint, and the GitHub Actions check pass. The Linux workflow also reproduces the committed public release without differences. An isolated draw–render–register smoke test and viewer filtering/link checks pass. Local Docker and visual browser rendering were unavailable.
+
+Recovered private inputs reproduce the paper's email audit, RA filing summary, and matched-event CSVs exactly. The paper passes 212 assertions with one full-originals check skipped; its analysis CSV and four result CSVs are unchanged. Full receipt/response-document verification and deployment remain pending.
