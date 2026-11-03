@@ -8,7 +8,7 @@ extension of the Tamil Nadu pipeline in
 universe, freeze the frame, one seeded draw, randomized treatment
 assignment, balanced RA worklists, and a static GitHub Pages viewer.
 
-**Dashboard:** https://priyadarshiamar.github.io/rti-telangana/
+**Dashboard:** https://in-rolls.github.io/rti-telangana/
 
 ## The universe
 
