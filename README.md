@@ -1,6 +1,6 @@
 # Right to Information fieldwork
 
-This repository contains the fieldwork pipeline for an audit of India's Right to Information system: office frames, issued assignments, letter templates, intake, and public worklists for five states. The maintained pipeline uses R. The results paper is developed separately in the private research repository.
+This repository contains the fieldwork pipeline for an audit of India's Right to Information system: office frames, issued assignments, letter templates, intake, and public worklists for five states. The maintained pipeline uses R. [in-rolls/rti-analysis](https://github.com/in-rolls/rti-analysis) contains the analysis and results paper. The two projects exchange versioned files with checksums; neither imports the other's R code.
 
 [Fieldwork viewer](https://in-rolls.github.io/rti/) · [Study design](design/study_plan.tex) · [Data dictionary](docs/data_schema.md) · [Migration record](docs/migration.md)
 
@@ -32,6 +32,12 @@ Generated public datasets are in `data/release/`. The site is built in `_site/`;
 | `site/` | One viewer for all states and batches |
 | `tests/testthat/` | Behavioral and historical-preservation tests |
 
+## Reading the code
+
+Start with `scripts/01_build_release.R`, which verifies the frozen sources and builds the public datasets. `scripts/02_build_site.R` uses those datasets to build the viewer. Other scripts expose the draw, render, register, and intake commands described below; their implementation lives in `R/`.
+
+`R/frames.R` contains the state-specific parsers. `R/sampling.R` supplies one allocation and randomization implementation, selected by configuration. `R/intake.R` owns application updates and the submission ledger. `R/io.R` centralizes identifiers, file access, and source verification; `R/release.R` builds public datasets and worklists. Letter rendering and privacy checks have their own modules. A new state needs a parser and configuration, rather than a copy of the sampler, intake, or viewer.
+
 ## Issued and future batches
 
 `config/batches.csv` identifies the six issued batches. Their assignments, treatments, assistant assignments, and instruments are immutable. They were drawn using the historical Python programs; the R pipeline verifies those records instead of attempting to reproduce Python's draws with an R seed.
@@ -49,7 +55,7 @@ Rscript scripts/render_batch.R data/private/example_batch config/private/filer.y
 Rscript scripts/issue_batch.R data/private/example_batch
 ```
 
-Personalized letters stay under `data/private/letters/`. Registration writes `data/private/batches.rds`; later draws and intake read that same register. Two proposals drawn before registration may overlap, but the second cannot be registered after the first if IDs or offices conflict. Run one registry or intake writer at a time. Publish a new issued batch only after review by adding its frozen files and provenance to the public batch catalog. Historical programs remain available at the revisions recorded in [the source manifest](docs/source_manifest.csv).
+Personalized letters stay under `data/private/letters/`. Registration writes `data/private/batches.rds`; later draws and intake read that same register. Two proposals drawn before registration may overlap, but the second cannot be registered after the first if IDs or offices conflict. Run one registry or intake writer at a time. Publish a new issued batch only after review by adding its complete frozen assignments, instruments, and provenance to the public catalogs. The private registration remains as evidence: subsequent commands use the public copy only when every registered assignment field matches, and reject partial or changed publication. Historical programs remain available under the tags in [the history map](docs/history.csv).
 
 ## Filing and follow-up
 

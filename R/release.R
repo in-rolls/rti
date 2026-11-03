@@ -66,7 +66,25 @@ read_issued_assignments <- function(root = project_root) {
     return(frozen)
   }
   batches <- readRDS(path)
-  issued <- dplyr::bind_rows(c(list(frozen), lapply(batches, `[[`, "assignments")))
+  combine_issued_assignments(frozen, batches)
+}
+
+combine_issued_assignments <- function(frozen, batches) {
+  pending <- lapply(batches, function(batch) {
+    rows <- batch$assignments
+    published <- frozen[frozen$batch_id %in% rows$batch_id, , drop = FALSE]
+    if (!nrow(published)) return(rows)
+    same_ids <- nrow(published) == nrow(rows) && setequal(published$application_id, rows$application_id)
+    same_columns <- all(names(rows) %in% names(published))
+    if (!same_ids || !same_columns) stop("Published batch differs from its private registration")
+    published <- published[match(rows$application_id, published$application_id), , drop = FALSE]
+    same_values <- vapply(names(rows), function(column) {
+      identical(as.character(rows[[column]]), as.character(published[[column]]))
+    }, logical(1))
+    if (!all(same_values)) stop("Published batch differs from its private registration")
+    NULL
+  })
+  issued <- dplyr::bind_rows(c(list(frozen), pending))
   assert_key(issued, "application_id")
   assert_key(issued, "authority_id")
   issued

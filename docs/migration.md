@@ -1,6 +1,6 @@
 # Consolidation record
 
-The migration brings the state fieldwork repositories into `in-rolls/rti` and retains the private research repository as the analysis boundary. The maintained fieldwork code uses R, with shared allocation, treatment assignment, assistant allocation, intake, validation, letters, and worklists. Portal parsing and batch design remain explicit differences.
+The project has two maintained repositories: `in-rolls/rti` for fieldwork and `in-rolls/rti-analysis` for analysis and the paper. Both are intended to be public; private source documents and intake state stay outside Git. The maintained fieldwork code uses R, with shared allocation, treatment assignment, assistant allocation, intake, validation, letters, and worklists. Portal parsing and batch design remain explicit differences.
 
 ## Preserved evidence
 
@@ -10,7 +10,7 @@ The six batches contain 1,665 assignments: 1,000 Tamil Nadu, 375 Telangana, 180 
 
 Historical batch YAML files are preserved under `config/batches/` as source evidence. They are not executable R configurations, and their original paths remain unchanged within the files. `config/batches.csv` is the authoritative catalog for issued assignments. `config/example_batch.yaml` demonstrates the prospective R sampler. Future specifications must describe actual selection and randomization explicitly, rather than relying on historical comments that disagree with the original code.
 
-Python source is preserved in Git history and the source repositories at the recorded commits. It is not part of the maintained pipeline. Original random draws are preserved as immutable assignments; the R sampler is for new batches and does not claim seed compatibility with Python.
+Python source is preserved in Git history. `docs/history.csv` records the state histories imported under `history/` tags in this repository, including the merged address-update PRs after transfer. These tags preserve complete commit ancestry and original trees, including code, environment files, dashboards, and documentation that are not part of the maintained R tree. For example, `git show history/rti-karnataka:README.md` reads the original Karnataka README. Original random draws are preserved as immutable assignments; the R sampler is for new batches and does not claim seed compatibility with Python.
 
 The maintained instrument text and controlled vocabularies were extracted from `in-rolls/rti` at `e795a6d1f78b385e1960dac5db28337ad0ac6cf7`, from `src/rti/letters/wave1.py` and `src/rti/enums.py`. These are transformed text/configuration assets rather than byte-identical source files. Issued templates remain separately frozen and hashed.
 
@@ -24,9 +24,9 @@ Private intake is saved in one RDS file, with applications, events, and submissi
 
 Private-original verification is in progress before response extraction and event matching move out of the paper repository. The three frozen configuration files and 18 frozen sheet exports were recovered through the connected Drive and match the manifest. The local ZIP supplies 472 matching originals. The currently accessible Drive listing and ZIP together still lack 131 pinned receipt or response-document paths; the remaining parts of the original download are needed to resolve these gaps. The existing frozen analysis inputs remain authoritative; the old 135-row application table is retained only as historical evidence.
 
-The replacement viewer must be deployed and checked before the redundant organization forks are archived. Priyadarshi's upstream repositories and Pages sites are separate and remain intact. No original repository is deleted.
+The replacement viewer must be deployed and checked before the transferred state repositories are retired. Their full histories are preserved here, but deleting a repository also removes its Pages address. An archived repository can keep serving its old address. No source history or original document should be discarded to reduce the number of active repositories.
 
-Our analysis fork was renamed to `in-rolls/rti-paper` on November 2, 2026, preserving its private visibility and PR. Priyadarshi has transferred the original to `in-rolls/rti-analysis`. GitHub confirms that it is the parent of our private `in-rolls/rti-paper` fork; both coexist within the organization. Subsequent paper changes should be proposed against the transferred original.
+Priyadarshi transferred the original analysis repository to `in-rolls/rti-analysis`. The development fork, `in-rolls/rti-paper`, will be deleted after its paper branch is merged into the original and every unique commit is verified there. The fork is not a third deliverable.
 
 ## Verification results
 

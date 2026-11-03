@@ -77,3 +77,21 @@ testthat::test_that("registration rejects reused IDs and offices and intake adds
   testthat::expect_equal(synced$applications$application_id, c("KA-001", "KA-002"))
   testthat::expect_equal(synced$applications$notes, c("Reviewed correction", ""))
 })
+
+testthat::test_that("publishing a registered batch preserves one copy and rejects changed records", {
+  rows <- dplyr::tibble(
+    application_id = c("KA-181", "KA-182"), authority_id = c("a", "b"),
+    batch_id = "new", treatment = c("plain", "legal_salience"), assigned_ra = "RA1"
+  )
+  batches <- list(new = list(assignments = rows))
+  testthat::expect_equal(combine_issued_assignments(rows[2:1, ], batches), rows[2:1, ])
+  testthat::expect_equal(combine_issued_assignments(rows[FALSE, ], batches), rows)
+  changed <- rows
+  changed$treatment[1] <- "legal_salience"
+  testthat::expect_error(combine_issued_assignments(changed, batches), "differs")
+  testthat::expect_error(combine_issued_assignments(rows[1, ], batches), "differs")
+  testthat::expect_error(combine_issued_assignments(rows[, -5], batches), "differs")
+  changed <- rows
+  changed$batch_id <- "different"
+  testthat::expect_error(combine_issued_assignments(changed, batches), "duplicate key")
+})

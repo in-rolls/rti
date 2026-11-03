@@ -31,6 +31,7 @@ privacy:
 	Rscript scripts/check_privacy.R
 
 hooks:
-	git config core.hooksPath hooks
+	git config extensions.worktreeConfig true
+	git config --worktree core.hooksPath hooks
 
 check: privacy
