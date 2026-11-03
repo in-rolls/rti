@@ -1,0 +1,21 @@
+engine: r-v1
+batch_id: example_not_issued
+seed: 20261102
+state_codes: [KA]
+sampling:
+  strategy: proportional
+  sample_size: 100
+  cap: 20
+  minimum: 0
+treatment:
+  n_legal: 30
+  blocks: []
+assistants: [RA1, RA2, RA3, RA4]
+template_version: rti-information-r1
+language: en
+channel: portal
+instrument: letters/instrument.txt
+legal_salience: letters/legal_salience.txt
+period_start: '2025-11-01'
+period_end: '2026-10-31'
+fee: 10

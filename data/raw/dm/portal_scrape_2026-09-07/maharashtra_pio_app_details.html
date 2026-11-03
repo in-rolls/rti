@@ -1,0 +1,446 @@
+﻿ 
+  
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><title>RTI Online :: Online RTI Information System</title><meta name="description" content="Online RTI Information Systems, Government of India RTI Request &#38; Appeal Management Information System (RTI-MIS) (Based on Right to Information Act 2005) RTI Online Request ,RTI Online First Appeal, Online View Status." /><meta name="keywords" content="RTI, RTI Online, RTIMIS, RTI-information, RTI Request, RTI First Appeal, RTI Appeal,RTI Status, RTI View Status, RTI Login, RTI Registration"/><meta name="author" content="http://www.rtionline.gov.in" /><meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<link rel="SHORTCUT ICON" href="https://rtionline.maharashtra.gov.in/images/rti-header.png" />
+<link rel="stylesheet" type="text/css" href="https://rtionline.maharashtra.gov.in/style/style.css" />
+<!--jquery Validation-->
+<link rel="stylesheet" type="text/css" href="https://rtionline.maharashtra.gov.in/style/jquery.validate.css" />
+<link rel="stylesheet" type="text/css" href="https://rtionline.maharashtra.gov.in/style/jquery.datepick.css"/>
+
+<script src="https://rtionline.maharashtra.gov.in/jquery/jquery-1.4.4.min.js" type="text/javascript"></script>
+<script src="https://rtionline.maharashtra.gov.in/jquery/jquery.datepick.js" type="text/javascript"></script>
+
+<script src="https://rtionline.maharashtra.gov.in/javascripts/comman.js" type="text/javascript"></script>
+<script src="https://rtionline.maharashtra.gov.in/javascripts/jquery.validate.js" type="text/javascript"></script>
+<script src="https://rtionline.maharashtra.gov.in/javascripts/tool-tip.js" type="text/javascript"></script>
+<script src="https://rtionline.maharashtra.gov.in/javascripts/validate_characters.js" type="text/javascript"></script>
+ <script src="https://rtionline.maharashtra.gov.in/javascripts/accessibility.js" type="text/javascript"></script>
+
+<!--End jquery Validation--><!--Start Google Analytics Code -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39220736-1']);
+  _gaq.push(['_setDomainName', 'rtionline.gov.in']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'stats.g.doubleclick.net/dc.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<!--End  Google Analytics Code --><script type="text/javascript">
+	function disableBackButton()
+	{
+		window.history.forward(1);
+	}
+	setTimeout("disableBackButton()", 0);
+</script>
+
+<!--javascript is off-->
+
+<noscript>
+<meta http-equiv="refresh" content="0; URL=https://rtionline.maharashtra.gov.in/error.php"/>
+</noscript>
+
+<!--end javascript is off-->
+</head>
+<body onload="disableBackButton();" onunload="disableBackButton();">
+
+
+<div id="wrapper">
+<div class ="accessbility" >
+  <div class= "acc">
+     <div class="city_top_social" onload="ThemeCheck()">
+        <a class="whitecolor" onclick="increaseFontSizeBy1px()"> अ+ </a>&nbsp;&nbsp;&nbsp;
+        <a class="whitecolor" onclick="defaultFontSize()"> अ </a>&nbsp;&nbsp;&nbsp;
+        <a class="whitecolor" onclick="decreaseFontSizeBy1px()"> अ- </a>
+    </div>
+    <div class="changeTheme">
+        <button onclick="myFunction()" style="background-color: black; height: 20px; width: 20px;"></button>
+        <button onclick="myFunction2()" style="background-color: white; height: 20px; width: 20px;"></button>
+    </div>
+   
+</div>
+</div>
+	<div id="header">
+	 	 <div id="emblem">
+      <div id="nation-emblem-img">
+        <img src="https://rtionline.maharashtra.gov.in/images/logo/logoEnglish.png" alt="national-emblem" />
+      </div>
+      <div id="rti-transparent-img">
+        <img src="https://rtionline.maharashtra.gov.in/images/trp_logoRTI_Marathi.png" alt="rti-logo" />
+      </div>
+	 </div>
+    <div class="orgChart" >
+		<a href="https://rtionline.maharashtra.gov.in/organizationChart.php" style="font-weight:bold; color:white;">ऑनलाइन उपलब्ध सार्वजनिक प्राधिकरणे</a>
+		</div>
+		<div id="logo">
+			<h1>ऑनलाईन माहितीचा अधिकार<br></h1>
+      
+		</div>
+		<div id="slogan">
+    <b>आवृत्ती २.०</b>
+		<span>सामान्य प्रशासन विभाग, मंत्रालय, मुंबई यांच्या पुढाकाराने</span>
+		</div>
+	</div>
+	
+<!-- captcha code Script-->
+<script language='JavaScript' type='text/javascript'>
+	function getXMLHTTP() { //fuction to return the xml http object
+		var xmlhttp = false;
+		try {
+			xmlhttp = new XMLHttpRequest();
+		} catch (e) {
+			try {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {
+				try {
+					xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch (e1) {
+					xmlhttp = false;
+				}
+			}
+		}
+
+		return xmlhttp;
+	}
+
+
+	/*.............................Captcha Numeric New Function...................................................*/
+
+	function refreshCaptcha()
+
+	{
+
+		var strURL = "../captcha.php";
+		var req = getXMLHTTP();
+
+		if (req) {
+
+			req.onreadystatechange = function() {
+				if (req.readyState == 4) {
+					// only if "OK"
+					if (req.status == 200) {
+						document.getElementById('captcha').innerHTML = req.responseText;
+					} else {
+						alert("There was a problem while using XMLHTTP:\n" + req.statusText);
+					}
+				}
+			}
+			req.open("GET", strURL, true);
+			req.send(null);
+
+		}
+
+	}
+
+
+
+	function chcekCapVal() {
+		//alert(document.getElementById('6_letters_code').value);die;
+		if (document.getElementById('6_letters_code').value != '') {
+			// S--
+			document.getElementById('msg_captcha').innerHTML = "";
+			// s--
+			if (document.getElementById('capVal').value != document.getElementById('6_letters_code').value) {
+				alert("Captcha code does not match");
+				//document.getElementById('6_letters_code').focus();
+				document.getElementById('msg_captcha').innerHTML = "Captcha do not match";
+				return false;
+			}
+		}
+		// S--
+		else {
+			document.getElementById('msg_captcha').innerHTML = "Please enter Captcha Code";
+		}
+		// s--
+	}
+
+	/*.............................Captcha Numeric New Function ends...................................................*/
+</script>
+<script language="javascript" type="text/javascript">
+	function getXMLHTTP() { //fuction to return the xml http object
+		var xmlhttp = false;
+		try {
+			xmlhttp = new XMLHttpRequest();
+		} catch (e) {
+			try {
+				xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {
+				try {
+					xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+				} catch (e1) {
+					xmlhttp = false;
+				}
+			}
+		}
+
+		return xmlhttp;
+	}
+
+	function getPioList(MinistryId) {
+		
+	}
+
+	function lookupMinistry(inputString) {
+		inputString = inputString.split(' ').join('%');
+		if (inputString.length == 0) {
+			$('#suggestions').hide();
+		} else {
+			$.post("getMinistry.php", {
+				queryString: "" + inputString + ""
+			}, function(data) {
+				if (data.length > 0) {
+					$('#suggestions').show();
+					$('#autoSuggestionsList').html(data);
+				}
+			});
+		}
+	}
+
+	function fill(thisValue) {
+		$('#searchMinistry').val(thisValue);
+		setTimeout("$('#suggestions').hide();", 200);
+	}
+
+	function getNodalList(MinistryId) {}
+
+	function selMinistry(minId) {
+		var ministrylistbox = document.getElementById("MinistryId")
+
+		for (var x = 1; x < ministrylistbox.length; x++) {
+			if (ministrylistbox.options[x].value == minId)
+				ministrylistbox.selectedIndex = x;
+		}
+		getPioList(minId);
+	}
+
+	function chkPAname(departName) {
+		if (departName.length > 0) {
+			var depart_name = departName.replace(/&amp;/g, '&');
+			// alert("Your request will be filed with \n\n" + depart_name);
+			//return false;
+		}
+	}
+</script>
+<script type="text/javascript">
+	function validate() {
+
+
+		var Captcha = document.getElementById('6_letters_code').value;
+		if (Captcha == "") {
+			document.getElementById('msg_captcha').innerHTML = "Please enter the Captcha";
+			return false;
+		} else {
+			document.getElementById('msg_captcha').innerHTML = "";
+			if (document.forms["FrmFirstAppeal"]["div_captcha"].value != document.getElementById('6_letters_code').value) {
+				document.getElementById('msg_captcha').innerHTML = "Captcha do not match";
+				return false;
+			}
+		}
+		var value = document.getElementById('MinistryId').value;
+		if(value==""){
+            document.getElementById('msg_MinistryId').innerHTML="Please Select Department";
+            return false;
+        } 
+        else{
+            document.getElementById('msg_MinistryId').innerHTML="";
+        }
+	}
+</script>
+<!-- End captcha code Script-->
+
+
+<div id="menu" ">
+		<ul style="display:flex;"><li><a class="button" href="https://rtionline.maharashtra.gov.in/index.php?lan=M">मुख्य पृष्ठ</a></li><li><a class="button" href="https://rtionline.maharashtra.gov.in/guidelinesM.php?request">अर्ज सादर करा</a></li><li><a class="button" href="https://rtionline.maharashtra.gov.in/guidelinesM.php?appeal">प्रथम अपील सादर करा</a></li><li><a href="https://rtionline.maharashtra.gov.in/request/status.php?lan=M">सद्यस्थिती पाहा</a>
+          </li><li><a class="button" href="https://rtionline.maharashtra.gov.in/request/status_history.php?lan=M">इतिहास पहा</a></li><li><a href="https://rtionline.maharashtra.gov.in/RTI Website FAQ Marathi.pdf" target="_blank">नेहमीचे प्रश्न</a></li><li><a class="button" href="https://rtionline.maharashtra.gov.in/request/contact.php?lan=M">संपर्क</a></li><li class="link"><a class="button" href="https://rtionline.maharashtra.gov.in/UMcitizen_Eng_maha.pdf" target="_blank">वापरकर्ता पुस्तिका</a></li></ul><br class="clearfix" />
+	</div>
+
+<form method="POST" action="" id="langForm">
+    <span>
+        <select name="LangDropdown" onchange="this.form.submit()">
+            <option value="M" selected>मराठी</option>
+            <option value="E" >English</option>
+        </select>
+        <noscript><input type="submit" name="submit_1" value="Submit" /></noscript>
+    </span>
+</form>
+
+<style>
+	#content-frm .login-tab td {
+		width: 10%;
+		font-size: 12px;
+		text-align: left;
+		padding: 1px;
+		/*border-bottom:1px #999999 solid;*/
+		/*border-right:1px #999999 solid;*/
+	}
+	.suggestionsBox {
+        overflow: scroll;
+        max-height: 350px;
+        position: absolute;
+        float: right;
+        text-align: left;
+        left: 0;
+        font-size: 13px;
+        margin: -10px auto 0 350px;
+        width: 300px;
+        -moz-border-radius: 7px;
+        -webkit-border-radius: 7px;
+        border: 1px solid #000;
+	    background: #fff;
+        color: #000;
+        z-index: 999;
+        }
+        
+        .suggestionList li{
+            margin: 0px 0px 3px 0px;
+            padding: 3px;
+            cursor: pointer;
+        }
+        .suggestionList li:hover{
+            background-color: #ececec;
+        }
+
+		.LoginTabBody {
+    width: 95%;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+    border: 1px solid #888;
+    padding: 20px;
+    color: #1b75bc;
+    text-align: justify;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.LoginTabBody table{
+	width: 100%;
+	font-size: 12px;
+	text-align: left;
+}
+.LoginTabBody a {
+    text-decoration: underline;
+    color: black;
+}
+.LoginTabBody a:hover {
+    color: #57cfcf;
+}
+
+.LoginTabBody td .loginBtn {
+    width: 110px;
+    height: 27px;
+    color: #fff;
+    font-size: 14px;
+    padding: 0px 0px 0px 0px;
+    font-weight: 600;
+    background: url(../images/btn.gif) repeat-x;
+    border: none;
+    cursor: pointer;
+}
+</style>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>PIO FAA Details</title>
+</head>
+
+<div id="slider-From">
+	<h4>
+	PIO and FAA Details 	</h4>
+	<span style=" color:#FF0000;"></span>
+
+</div>
+<br class="clearfix" />
+<div id="page">
+	<!--Start Left SideBar-->
+	<div>
+					<form name="FrmFirstAppeal" action="List_PIO_FAA_Details.php?lan="  method="post" autocomplete="off" onsubmit="return validate();">
+				<div class="LoginTabBody">
+					<table border="0" cellpadding="0" cellspacing="10px" class="login-tab" align="center">
+
+						<tr>
+							<td><strong> Search Public Authority :  </strong></td>
+							<td colspan="3"><input class="form-control" type="text" name="searchMinistry" id="searchMinistry" onKeyUp="lookupMinistry(this.value);" style="width: 350px;" placeholder="Type name or part of name of public authority" /></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>
+								<span class="suggestionsBox" id="suggestions" style="display:none;">
+									<img src="https://rtionline.maharashtra.gov.in/images/upArrow.png" style="position: relative; top: -12px; left: 80px;" alt="upArrow" />
+									<div class="suggestionList" id="autoSuggestionsList">&nbsp;</div>
+								</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td><samp style="color:#FF0000"><b>*</b></samp><strong> विभाग :</strong></td>
+							<td colspan="3">
+
+								<select name="MinistryId" id="MinistryId" class="form-control" onchange="getPioList(this.value);" style="width: 100%;">
+
+									<option value="">--Select--</option>
+
+									<option value="246">Additional Director Industrial Safety and Health, Nagpur</option><option value="240">Additional Director, Industrial Safety and Health, Pune Region Three</option><option value="272">Administrative General and Official Trustee, Maharashtra state, Mumbai</option><option value="9">Agriculture, Dairy Development, Animal Husbandry and Fisheries Department</option><option value="119">Ahilyanagar Municipal Corporation</option><option value="136">Akola Municipal Corporation</option><option value="78">Amravati Municipal Corporation</option><option value="234">Annasaheb Patil Aarthik Magas Vikas Mahamandal Maryadit , Mumbai </option><option value="354">Central Laboratory Mahape, Maharashtra Pollution Control Board</option><option value="107">Chandrapur Municipal Corporation</option><option value="274">Charity Commissioner, Maharashtra state, Mumbai</option><option value="233">Chatrapati Shahu Maharaj Research, Training and Human Development Institure(SARTHI), Pune</option><option value="270">Chief Electrical Inspector Office , Mumbai</option><option value="88">Chief Minister's Office, Government Of Maharashtra</option><option value="232">Chief Secretary Office</option><option value="116">Collector Office, Ahilyanagar</option><option value="206">Collector Office, Akola</option><option value="61">Collector Office,Amravati </option><option value="164">Collector Office, Beed</option><option value="191">Collector Office, Bhandara</option><option value="207">Collector Office, Buldhana</option><option value="108">Collector Office, Chandrapur</option><option value="179">Collector Office, Dharashiv</option><option value="152">Collector Office, Dhule</option><option value="125">Collector Office, Gadchiroli</option><option value="132">Collector Office, Gondia</option><option value="205">Collector Office, Hingoli</option><option value="111">Collector Office , Jalgaon</option><option value="167">Collector Office, Jalna</option><option value="124">Collector Office, Kolhapur</option><option value="175">Collector Office, Latur</option><option value="182">Collector Office, Mumbai City</option><option value="166">Collector Office, Mumbai Suburban</option><option value="57">Collector Office, Nagpur</option><option value="99">Collector Office, Nanded</option><option value="145">Collector Office, Nandurbar</option><option value="60">Collector Office,Nashik </option><option value="204">Collector Office, Palghar</option><option value="151">Collector Office, Parbhani</option><option value="48">Collector Office, Pune</option><option value="121">Collector Office, Raigad</option><option value="183">Collector Office, Ratnagiri</option><option value="62">Collector Office,Sambhajinagar</option><option value="197">Collector Office, Sangli</option><option value="156">Collector Office, Satara</option><option value="170">Collector office, Sindhudurgh</option><option value="139">Collector Office, Solapur</option><option value="46">Collector Office,Thane</option><option value="160">Collector Office, Wardha</option><option value="177">Collector Office, Washim</option><option value="102">Collector Office, Yavatmal</option><option value="71">Commissioner of Police, Amravati</option><option value="219">Commissioner of Police, Mira Bhayandar Vasai-Virar</option><option value="209">Commissioner of Police, Mumbai</option><option value="70">Commissioner of Police, Nagpur</option><option value="69">Commissioner of Police, Nashik</option><option value="51">Commissioner of Police, Navi Mumbai  </option><option value="215">Commissioner of Police, Pimpri Chinchwad</option><option value="86">Commissioner of Police, Pune</option><option value="72">Commissioner of Police,Sambhajinagar</option><option value="141">Commissioner of Police, Solapur</option><option value="53">Commissioner of Police, Thane</option><option value="36">Co-operation, Textiles and Marketing Department</option><option value="224">Cooperative Commissioner's Office, Pune</option><option value="230">Departmental Co-ordinator, Co-operative Societies, Konkan Division</option><option value="225">Departmental Co-ordinator, Co-operative Societies, Pune</option><option value="252">Deputy Director,  Industrial Safety and Health, Ahilyanagar</option><option value="263">Deputy Director, Industrial Safety and Health, Akola</option><option value="247">Deputy Director, Industrial Safety and Health, Amravati</option><option value="261">Deputy Director, Industrial Safety and Health, Bhandara</option><option value="262">Deputy Director, Industrial Safety and Health, Chandrapur</option><option value="251">Deputy Director,  Industrial Safety and Health,  Dhule</option><option value="250">Deputy Director, Industrial Safety and Health, Jalgaon</option><option value="245">Deputy Director,  Industrial Safety and Health, Nanded</option><option value="255">Deputy Director, Industrial Safety and Health, Ratnagiri</option><option value="254">Deputy Director, Industrial Safety and Health, Sangli</option><option value="259">Deputy Director, Industrial Safety and Health, Solapur</option><option value="293">Deputy Director Land Record , Konkan Pradesh, Mumbai</option><option value="319">Deputy Director Of Land Record, Amravati Region, Amravati</option><option value="307">Deputy Director Of Land Record Chhatrapati Sambhajinagar</option><option value="325">Deputy Director of Land Record Nagpur</option><option value="333">Deputy Director Of Land Record Nanded</option><option value="301">Deputy Director Of Land Record Nashik Region Nashik</option><option value="287">Deputy Director of Land Record, Pune Region Pune</option><option value="281">Deputy Director of Town Planning, Greater Mumbai</option><option value="278">Deputy Director of Town Planning, Traffic &amp; Transportation, Pune</option><option value="284">Deputy Director of Town Planning, T&amp;T, Chhatrapati SambhajiNagar</option><option value="153">Dhule Municipal Corporation</option><option value="223">Directorate General of Information and Public Relations</option><option value="239">Directorate of Industrial Safety and Health, Mumbai</option><option value="275">Directorate of Town Planning, Head Office, Pune</option><option value="227">District Deputy Registrar, Co Institute 2, Mumbai</option><option value="228">District Deputy Registrar, Co Institute 3, Mumbai</option><option value="229">District Deputy Registrar, Co Institute 4, Mumbai</option><option value="231">District Deputy Registrar, Co-operative Societies, Thane Division</option><option value="306">District Superintendent Of Land Record Ahilyanagar No -1 Ahilyanagar</option><option value="335">District Superintendent Of Land Record Ahilyanagar No -2 Shirdi</option><option value="321">District Superintendent Of Land Record Akola</option><option value="320">District Superintendent Of Land Record Amravati</option><option value="313">District Superintendent Of Land Record Beed</option><option value="322">District Superintendent Of Land Record Buldana</option><option value="318">District Superintendent Of Land Record Dharashiv</option><option value="303">District Superintendent Of Land Record Dhule</option><option value="317">District Superintendent Of Land Record Hingoli</option><option value="305">District Superintendent Of Land Record Jalgaon</option><option value="311">District Superintendent Of Land Record,Jalna</option><option value="316">District Superintendent Of Land Record Latur</option><option value="304">District Superintendent Of Land Record Nandurbar</option><option value="302">District Superintendent Of Land Record Nashik No -1</option><option value="334">District Superintendent Of Land Record Nashik No -2 Malegaon</option><option value="309">District Superintendent Of Land Record no.1 Chhatrapati Sambhajinagar</option><option value="314">District Superintendent Of Land Record no.1 Nanded</option><option value="315">District Superintendent Of Land Record no.2 Bhokar</option><option value="310">District Superintendent Of Land Record no.2 Chhatrapati Sambhajinagar Head Quarter Kannad</option><option value="312">District Superintendent Of Land Record Parbhani</option><option value="299">District Superintendent of Land Record Raigad</option><option value="300">District Superintendent of Land Record Raigad kr.2 Mangaav</option><option value="297">District superintendent of land record Ratnagiri</option><option value="298">District Superintendent of Land Record, Sindhudurg</option><option value="294">District Superintendent of Land Records,  Mumbai Suburban District</option><option value="295">District superintendent of land record, thane</option><option value="324">District Superintendent Of Land Record Washim</option><option value="323">District Superintendent Of Land Record Yavatmal</option><option value="288">District Superintentend Of Land Records pune</option><option value="290">District Superintentend Of Land Records, Sangli</option><option value="289">District Superintentend Of Land Records Satara</option><option value="296">District Superitendent Of Land Record, Palghar</option><option value="291">District supertendet Land Record Kolhapur</option><option value="292">District supertendet Land Record solapur</option><option value="329">District Supritendent of Land Record, Bhandara</option><option value="331">District Supritendent of Land Record, Chandrapur</option><option value="332">District Supritendent of Land Record, Gadchiroli</option><option value="330">District Supritendent of Land Record, Gondia</option><option value="326">District Supritendent of Land Record, Nagpur</option><option value="327">District Supritendent of Land Record, Nagpur Gramin</option><option value="328">District Supritendent of Land Record, Wardha</option><option value="49">Divisional Commissioner Office, Amravati</option><option value="58">Divisional Commissioner Office, Nagpur</option><option value="67">Divisional Commissioner Office, Nashik</option><option value="68">Divisional Commissioner Office, Pune</option><option value="83">Divisional Commissioner Office, Sambhajinagar</option><option value="226">Divisional Joint Registrar, Co-operative Societies, Mumbai</option><option value="40">Electronics, Information Technology and Artficial Intelligence Department </option><option value="220">Employment Guarantee Scheme Department</option><option value="16">Environment Department</option><option value="21">Finance Department</option><option value="26">Food, Civil Supplies and Consumer Protection Department</option><option value="2">General Administration Department</option><option value="37">Higher and Technical Education Department</option><option value="3">Home Department</option><option value="30">Housing Department</option><option value="244">Industrial Safety and Health, Marathwada region , chhatrpati sambhajinagar</option><option value="24">Industries, Energy and Labour Department</option><option value="114">Jalgaon Municipal Corporation</option><option value="260">Joint Director Indudtrial Safety and Health, Thane</option><option value="253">Joint Director, Industrial Safety and Health, Kolhapur</option><option value="249">Joint Director,  Industrial Safety and Health, Nashik</option><option value="248">Joint Director, Industrial Safety and Health, Palghar</option><option value="241">Joint Director, Industrial Safety and Health, Pune Region one</option><option value="242">Joint Director, Industrial Safety and Health, Pune Region Two</option><option value="256">Joint Director,  Industrial Safety and health Raigad</option><option value="258">Joint Director, Industrial Safety and Health, Satara</option><option value="243">Joint Director, Industrial Safety and Health, Vasai</option><option value="257">Joint Director of Industrial Safety and Health, Kalyan</option><option value="285">Joint Director of Town Planning, Amravati Division, Amravati</option><option value="283">Joint Director of Town Planning, Chhatrapati SambhajiNagar</option><option value="276">Joint Director of Town Planning, Digital Planning Cell, Pune</option><option value="280">Joint Director of Town Planning, Konkan Division, Navi Mumbai</option><option value="279">Joint Director of Town Planning, Nagpur Division, Nagpur</option><option value="282">Joint Director of Town Planning, Nashik Division, Nashik</option><option value="277">Joint Director of Town Planning, Pune Division Pune</option><option value="211">Kalyan Dombivali Municipal Corporation</option><option value="188">Kolhapur Municipal Corporation </option><option value="56">Konkan Commissioner Office</option><option value="308">Land Record Training Academy, Chhatrapati Sambhajinagar</option><option value="173">Latur Municipal Corporation</option><option value="23">Law and Judiciary Department</option><option value="265">Maharashtra Electricity Regulatory Commission , Mumbai</option><option value="269">Maharashtra Energy Development Agency , Pune </option><option value="213">Maharashtra Information Technology Corporation</option><option value="235">Maharashtra Institution for Transformation -MITRA , Mumbai</option><option value="341">Maharashtra Pollution Control Board, Head Quarter</option><option value="214">Maharashtra Public Service Commission</option><option value="338">Maharashtra State Board for Literature and Culture, Mumbai</option><option value="34">Medical Education and Drugs Department</option><option value="18">Minorities Development Department</option><option value="217">Mira Bhaindar Municipal Corporation </option><option value="201">Municipal Council, Buldhana</option><option value="129">Municipal Council, Desaiganj (Wadsa), Gadchiroli</option><option value="128">Municipal Council, Gadchiroli</option><option value="159">Municipal Council, Satara</option><option value="80">Nagpur Improvement Trust</option><option value="47">Nagpur Municipal Corporation</option><option value="98">Nanded Municipal Corporation</option><option value="76">Nashik Municipal Corporation</option><option value="54">Navi Mumbai Municipal Corporation </option><option value="218">Other Backward Bahujan Welfare Department</option><option value="216">Panvel Municipal Corporation</option><option value="150">Parbhani Municipal Corporation</option><option value="29">Parliamentary Affairs Department</option><option value="236">Parshuram Aarthik Vikas Mahamandal, Pune</option><option value="222">Persons with Disabilities Welfare Department</option><option value="87">Pimpri Chinchwad Municipal Corporation</option><option value="27">Planning Department</option><option value="33">Public Health Department</option><option value="11">Public Works Department</option><option value="77">Pune Municipal Corporation</option><option value="351">Regional Office, Amravati, Maharashtra Pollution Control Board</option><option value="353">Regional Office, Chandrapur, Maharashtra Pollution Control Board</option><option value="349">Regional Office, Chhatrapati Sambhajinagar, Maharashtra Pollution Control Board</option><option value="346">Regional Office, Kalyan, Maharashtra Pollution Control Board</option><option value="350">Regional Office, Kolhapur, Maharashtra Pollution Control Board</option><option value="342">Regional Office, Mumbai, Maharashtra Pollution Control Board</option><option value="352">Regional Office, Nagpur, Maharashtra Pollution Control Board</option><option value="348">Regional Office, Nashik, Maharashtra Pollution Control Board</option><option value="343">Regional Office, Navi Mumbai, Maharashtra Pollution Control Board</option><option value="347">Regional Office, Pune, Maharashtra Pollution Control Board</option><option value="344">Regional Office, Raigad, Maharashtra Pollution Control Board</option><option value="345">Regional Office, Thane, Maharashtra Pollution Control Board</option><option value="273">Registrar of Firms, Maharashtra state, Mumbai</option><option value="12">Revenue and Forest Department</option><option value="41">Rural Development Department</option><option value="79">Sambhajinagar Municipal Corporation</option><option value="165">Sangli, Miraj and Kupwad city Municipal Corporation </option><option value="19">School Education and Sports Department</option><option value="286">Settlement Commissioner and Director Of Land Record (M.S.), Pune</option><option value="238">Shree Vasavi Kanyaka Aarthik Vikas Mahamandal ,Nagpur</option><option value="340">Shri Saibaba sansthan trust, shirdi</option><option value="39">Skill Development and Entrepreneurship Department</option><option value="28">Social Justice and Special Assistance Department</option><option value="212">Soil and Water Conservation Department</option><option value="143">Solapur Municipal Corporation</option><option value="90">State Information Commission,  Amaravti</option><option value="93">State Information Commission, Greater Mumbai</option><option value="96">State Information Commission, Konkan</option><option value="89">State Information Commission, Maharashtra</option><option value="94">State Information Commission, Nagpur</option><option value="95">State Information Commission, Nashik</option><option value="91">State Information Commission,  Pune</option><option value="92">State Information Commission,Sambhajinagar</option><option value="117">Superintendent of Police, Ahilyanagar</option><option value="138">Superintendent of Police, Akola</option><option value="74">Superintendent of Police, Amravati  </option><option value="187">Superintendent of Police, Beed</option><option value="144">Superintendent of Police, Bhandara</option><option value="200">Superintendent of Police, Buldhana</option><option value="109">Superintendent of Police, Chandrapur</option><option value="180">Superintendent of Police,Dharashiv</option><option value="154">Superintendent of Police, Dhule</option><option value="126">Superintendent of Police, Gadchiroli</option><option value="133">Superintendent of Police, Gondia</option><option value="130">Superintendent of Police, Hingoli</option><option value="115">Superintendent of Police, Jalgaon</option><option value="168">Superintendent of Police, Jalna</option><option value="123">Superintendent of Police, Kolhapur</option><option value="176">Superintendent of Police, Latur Rural</option><option value="59">Superintendent of Police, Nagpur Rural</option><option value="100">Superintendent of Police, Nanded</option><option value="146">Superintendent of Police, Nandurbar</option><option value="73">Superintendent of Police, Nashik Rural</option><option value="202">Superintendent of Police, Palghar</option><option value="148">Superintendent of Police, Parbhani</option><option value="85">Superintendent of Police, Pune </option><option value="122">Superintendent of Police, Raigad</option><option value="185">Superintendent of Police, Ratnagiri</option><option value="75">Superintendent of Police, Sambhajinagar Rural </option><option value="199">Superintendent of Police, Sangli</option><option value="157">Superintendent of Police , Satara</option><option value="172">Superintendent of Police, Sindhudurgh</option><option value="140">Superintendent of Police, Solapur Rural</option><option value="52">Superintendent of Police, Thane Rural</option><option value="161">Superintendent of Police, Wardha</option><option value="196">Superintendent of Police, Washim Rural</option><option value="104">Superintendent of Police, Yavatmal</option><option value="137">Tehsil Office, Akola</option><option value="135">Tehsil Office, Gondia</option><option value="112">Tehsil Office, Jalgaon</option><option value="81">Tehsil office, Nagpur</option><option value="82">Tehsil office, Pune </option><option value="158">Tehsil Office, Satara</option><option value="178">Tehsil Office, Washim</option><option value="103">Tehsil Office, Yavatmal</option><option value="221">Textile Department</option><option value="55">Thane Municipal Corporation</option><option value="17">Tourism &amp; Cultural Affairs Department</option><option value="35">Tribal Development Department</option><option value="20">Urban Development Department</option><option value="193">Vasai Virar City Municipal Corporation</option><option value="237">Veer Shiromani Maharana Pratap Aarthik Vikas Mahamandal ,Chhatrapati  Sambhajinagar</option><option value="163">Wardha Municipal Council</option><option value="22">Water Resources Department</option><option value="31">Water Supply and Sanitation Department</option><option value="38">Women and Child Development Department</option><option value="105">Yavatmal Municipal Council</option><option value="118">Zilla Parishad, Ahilyanagar</option><option value="210">Zilla Parishad, Akola</option><option value="66">Zilla Parishad, Amravati</option><option value="186">Zilla Parishad, Beed</option><option value="190">Zilla Parishad, Bhandara</option><option value="208">Zilla Parishad, Buldhana</option><option value="110">Zilla Parishad, Chandrapur</option><option value="181">Zilla Parishad , Dharashiv</option><option value="192">Zilla Parishad, Dhule</option><option value="127">Zilla Parishad, Gadchiroli</option><option value="134">Zilla Parishad, Gondia</option><option value="131">Zilla Parishad, Hingoli</option><option value="113">Zilla Parishad, Jalgaon</option><option value="169">Zilla Parishad, Jalna</option><option value="189">Zilla Parishad, Kolhapur</option><option value="174">Zilla Parishad, Latur</option><option value="64">Zilla Parishad, Nagpur</option><option value="101">Zilla Parishad, Nanded</option><option value="147">Zilla Parishad, Nandurbar</option><option value="63">Zilla Parishad, Nashik</option><option value="203">Zilla Parishad, Palghar</option><option value="149">Zilla Parishad, Parbhani</option><option value="65">Zilla Parishad, Pune</option><option value="120">Zilla Parishad, Raigad</option><option value="184">Zilla Parishad, Ratnagiri</option><option value="50">Zilla Parishad, Sambhajinagar</option><option value="198">Zilla Parishad, Sangli</option><option value="155">Zilla Parishad, Satara</option><option value="171">Zilla Parishad , Sindhudurgh</option><option value="142">Zilla Parishad, Solapur</option><option value="84">Zilla Parishad, Thane</option><option value="162">Zilla Parishad, Wardha </option><option value="195">Zilla Parishad, Washim</option><option value="106">Zilla Parishad, Yavatmal</option>								</select>
+								<span style="color:#D00;" id="msg_MinistryId"></span>
+
+							</td>
+						</tr>
+
+
+
+
+
+
+						<tr>
+							<td><samp style="color:#FF0000"><b>*</b></samp> <strong>सुरक्षा संकेतांकाची नोंद करा:</strong></td>
+							<td>
+								<!-- <img src="https://rtionline.maharashtra.gov.in/captcha_code_file.php?rand=638255032" id='captchaimg' class="captcha" alt="captchaImage"/> -->
+
+								<!-------------------------------------------New Captch Div Starts Here-------------------------------------------------->
+
+
+								<div id="captcha" name="captcha"> <input type="text" id="capVal" style="font-size: 18px; color:#000; font-weight:bold; background-color:#CCC" class="Midinput alphaNumeric" name="div_captcha" value="9tm3vz" readonly="readonly" /> </div>
+
+								<!-------------------------------------------New Captch Div ends Here-------------------------------------------------->
+
+								<input type="text" name="6_letters_code" id="6_letters_code" class="Midinput alphaNumeric" maxlength="6" autocomplete="off" onBlur="chcekCapVal();" onpaste='return false' onkeypress="return allowNumericOnly(event);" />
+
+								<br />
+								<span style="height:41px;"><a href='javascript: location.reload();'>वाचता येत नाही ? रिफ्रेश करण्यासाठी येथे क्लिक करा</a></span>
+							</td>
+							<td>
+								<p style="color:red;" id="msg_captcha">
+						</tr>
+
+						<tr>
+							<th>&nbsp;</th>
+							<td><input type="submit" name="Submit" value="Submit" id="Submit" class="loginBtn" />
+								<input type="reset" value="Reset" class="loginBtn" />
+							</td>
+						</tr>
+					</table>
+				</div>
+			</form>
+				<br class="clearfix" />
+	</div>
+	<!--end left Sidebar-->
+
+	<!--<br class="clearfix" />-->
+
+</div>

@@ -1,0 +1,25 @@
+{
+  "batch_id": "tg2026q3_03",
+  "seed": 20260929,
+  "state": "Telangana",
+  "n_new": 125,
+  "n_union": 375,
+  "n_legal_new": 38,
+  "prior_batch": "tg2026q3_02",
+  "cap_union": 23,
+  "min_stratum_size": 5,
+  "ras": [
+    "RA1",
+    "RA2",
+    "RA3",
+    "RA4"
+  ],
+  "frame_csv": "data/frame_telangana.csv",
+  "frame_sha256": "9d22df8159cf527e96d81eab3ef710862620107b2ce107cb090ef4296a2e5218",
+  "design_note": "docs/design_notes/2026-09-29_supplementary_batches.md",
+  "rationale": "oversample states with smaller online-filable universes for credible within-state estimates; KA/TN portals unreliable, RA capacity reallocated",
+  "templates": {
+    "plain": "plain_v3.txt",
+    "legal_salience": "legal_salience_v3.txt"
+  }
+}

@@ -1,0 +1,7 @@
+batch_id,path,n,randomization
+b2026q3_02,data/reference/analysis_inputs/tn.csv,1000,department_tier
+tg2026q3_02,data/reference/analysis_inputs/tg_wave1.csv,250,batch
+tg2026q3_03,data/reference/analysis_inputs/tg_wave2.csv,125,batch
+ka2026q3_01,data/reference/analysis_inputs/ka.csv,180,batch
+dm2026q3_01,data/reference/analysis_inputs/dm_wave1.csv,55,batch
+dm2026q3_02,data/reference/analysis_inputs/dm_wave2.csv,55,batch

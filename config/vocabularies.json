@@ -1,0 +1,151 @@
+{
+  "topics": [
+    "rti_meta",
+    "attendance",
+    "financial"
+  ],
+  "topic_labels": {
+    "rti_meta": "RTI register for the last 12 months",
+    "attendance": "Sanctioned strength and attendance on a date",
+    "financial": "Budget allocated against expenditure, two financial years"
+  },
+  "languages": [
+    "en",
+    "hi",
+    "ta",
+    "te",
+    "kn",
+    "mr"
+  ],
+  "language_names": {
+    "en": "English",
+    "hi": "Hindi",
+    "ta": "Tamil",
+    "te": "Telugu",
+    "kn": "Kannada",
+    "mr": "Marathi"
+  },
+  "reviewed_languages": [
+    "en",
+    "hi"
+  ],
+  "channels": [
+    "portal",
+    "post"
+  ],
+  "filing_outcomes": [
+    "filed",
+    "not_filed"
+  ],
+  "not_filed_reasons": [
+    "authority_not_listed",
+    "portal_down",
+    "login_failed",
+    "otp_not_received",
+    "captcha_failed",
+    "payment_failed",
+    "authority_abolished",
+    "address_invalid",
+    "duplicate_of_other_application",
+    "dropped_by_design",
+    "other"
+  ],
+  "not_filed_reason_labels": {
+    "authority_not_listed": "The office is not in the portal's dropdown",
+    "portal_down": "Portal unreachable after three attempts",
+    "login_failed": "Could not log in",
+    "otp_not_received": "OTP never arrived",
+    "captcha_failed": "CAPTCHA could not be solved",
+    "payment_failed": "Payment gateway failed",
+    "authority_abolished": "Office abolished or merged",
+    "address_invalid": "No usable postal address",
+    "duplicate_of_other_application": "Same office already covered by another application",
+    "dropped_by_design": "Dropped deliberately by the researchers",
+    "other": "Something else (explain in notes)"
+  },
+  "payment_modes": [
+    "online",
+    "ipo",
+    "dd",
+    "court_fee_stamp",
+    "cash",
+    "bpl_exempt",
+    "not_paid"
+  ],
+  "payment_mode_labels": {
+    "online": "Online (net banking, UPI, card)",
+    "ipo": "Indian Postal Order",
+    "dd": "Demand draft",
+    "court_fee_stamp": "Court fee stamp",
+    "cash": "Cash at the counter",
+    "bpl_exempt": "Exempt (below poverty line)",
+    "not_paid": "Not paid"
+  },
+  "event_types": [
+    "acknowledgment",
+    "transfer_6_3",
+    "fee_demand",
+    "clarification_demand",
+    "id_demand",
+    "personal_contact",
+    "interim_reply",
+    "response_received",
+    "denial",
+    "returned_undelivered",
+    "reminder_sent",
+    "first_appeal_filed",
+    "first_appeal_decided",
+    "second_appeal_filed",
+    "hearing_notice",
+    "second_appeal_decided",
+    "note"
+  ],
+  "event_type_labels": {
+    "acknowledgment": "Acknowledgement received",
+    "transfer_6_3": "Transferred to another office under s.6(3)",
+    "fee_demand": "Further fee demanded",
+    "clarification_demand": "Clarification demanded",
+    "id_demand": "Proof of citizenship or identity demanded",
+    "personal_contact": "PIO telephoned or asked me to come in person",
+    "interim_reply": "Interim or holding reply",
+    "response_received": "Substantive reply received",
+    "denial": "Information refused",
+    "returned_undelivered": "Letter came back undelivered",
+    "reminder_sent": "Reminder sent by us",
+    "first_appeal_filed": "First appeal filed",
+    "first_appeal_decided": "First appeal decided",
+    "second_appeal_filed": "Second appeal filed",
+    "hearing_notice": "Hearing notice received",
+    "second_appeal_decided": "Second appeal decided",
+    "note": "Something else worth recording"
+  },
+  "mediums": [
+    "portal",
+    "email",
+    "post",
+    "speed_post",
+    "phone",
+    "in_person"
+  ],
+  "medium_labels": {
+    "portal": "On the RTI portal",
+    "email": "By email",
+    "post": "By ordinary post",
+    "speed_post": "By Speed Post or registered post",
+    "phone": "By telephone",
+    "in_person": "In person"
+  },
+  "directions": [
+    "inbound",
+    "outbound"
+  ],
+  "outbound_event_types": [
+    "first_appeal_filed",
+    "reminder_sent",
+    "second_appeal_filed"
+  ],
+  "filing_outcome_labels": {
+    "filed": "Filed",
+    "not_filed": "Could not file"
+  }
+}

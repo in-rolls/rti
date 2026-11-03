@@ -1,0 +1,13 @@
+source("scripts/00_config.R")
+args <- commandArgs(trailingOnly = TRUE)
+if (length(args) != 1L) stop("Usage: Rscript scripts/issue_batch.R REVIEWED_BATCH_DIRECTORY")
+metadata <- jsonlite::read_json(file.path(args[1], "metadata.json"), simplifyVector = TRUE)
+path <- file.path(args[1], "assignments.csv")
+if (!identical(hash_file(path), metadata$assignments_sha256)) stop("Proposed assignments changed after drawing")
+batch <- list(assignments = read_csv_text(path), metadata = metadata)
+register_batch(batch, read_issued_assignments())
+registry <- file.path(project_root, "data", "private", "batches.rds")
+batches <- if (file.exists(registry)) readRDS(registry) else list()
+batches[[metadata$config$batch_id]] <- batch
+save_rds_atomic(batches, registry)
+message("Registered ", metadata$config$batch_id, " for subsequent draws and intake")
