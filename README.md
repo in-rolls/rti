@@ -1,6 +1,6 @@
 # Right to Information fieldwork
 
-This repository contains the fieldwork pipeline for an audit of India's Right to Information system: office frames, issued assignments, letter templates, intake, and public worklists for five states. The maintained pipeline uses R. [in-rolls/rti-analysis](https://github.com/in-rolls/rti-analysis) contains the analysis and results paper. The two projects exchange versioned files with checksums; neither imports the other's R code.
+This repository contains the fieldwork pipeline for an audit of India's Right to Information system: office frames, issued assignments, letter templates, intake, and public worklists for five states. The maintained pipeline uses R. [in-rolls/rti_analysis](https://github.com/in-rolls/rti_analysis) contains the analysis and results paper. The two projects exchange versioned files with checksums; neither imports the other's R code.
 
 [Fieldwork viewer](https://in-rolls.github.io/rti/) · [Study design](design/study_plan.tex) · [Data dictionary](docs/data_schema.md) · [Migration record](docs/migration.md)
 

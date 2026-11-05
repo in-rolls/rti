@@ -1,6 +1,6 @@
 # Consolidation record
 
-The project has two maintained repositories: `in-rolls/rti` for fieldwork and `in-rolls/rti-analysis` for analysis and the paper. Both are intended to be public; private source documents and intake state stay outside Git. The maintained fieldwork code uses R, with shared allocation, treatment assignment, assistant allocation, intake, validation, letters, and worklists. Portal parsing and batch design remain explicit differences.
+The project has two maintained repositories: `in-rolls/rti` for fieldwork and `in-rolls/rti_analysis` for analysis and the paper. Both are intended to be public; private source documents and intake state stay outside Git. The maintained fieldwork code uses R, with shared allocation, treatment assignment, assistant allocation, intake, validation, letters, and worklists. Portal parsing and batch design remain explicit differences.
 
 ## Preserved evidence
 
@@ -33,3 +33,5 @@ Priyadarshi transferred the original analysis repository to `in-rolls/rti-analys
 The locked R environment was restored locally. All 80 fieldwork test assertions, lint, privacy checks, actionlint, and the GitHub Actions check pass. The Linux workflow also reproduces the committed public release without differences. An isolated draw–render–register smoke test and viewer filtering/link checks pass. Local Docker and visual browser rendering were unavailable.
 
 Recovered private inputs reproduce the paper's email audit, RA filing summary, and matched-event CSVs exactly. The paper passes 212 assertions with one full-originals check skipped; its analysis CSV and four result CSVs are unchanged. Full receipt/response-document verification and deployment remain pending.
+
+On 2026-11-05 the repositories were renamed to snake case, matching the other in-rolls study repositories: `rti-analysis` → `rti_analysis`, `rti-telangana` → `rti_telangana`, `rti-karnataka` → `rti_karnataka`, `rti-delhi-maharashtra` → `rti_delhi_maharashtra`. GitHub redirects the old repository addresses; it does not redirect GitHub Pages, so the state dashboards moved to `https://in-rolls.github.io/rti_<state>/`. The `history/rti-*` tags keep their names.
