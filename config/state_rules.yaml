@@ -3,7 +3,7 @@
 #
 # `statutory_days` is the deadline for a reply to a request made to the PIO
 # directly (s.7(1)). It becomes 35 when routed via an APIO (s.5(2)) and 45 for
-# security and intelligence organisations under s.24; neither is used here.
+# security and intelligence organizations under s.24; neither is used here.
 #
 # Verify each row against the state's own RTI Rules before a batch goes out and
 # update `verified_on`. Nothing downstream re-checks these numbers for you.
